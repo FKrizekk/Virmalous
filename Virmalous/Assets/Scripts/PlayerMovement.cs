@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	public Rigidbody rb;
 	
 	float MoveForce = 20f;
-	float maxHorizontalVelocity = 8f;
+	float maxHorizontalVelocity = 6f;
 	float maxVerticalVelocity = 100f;
 	float MouseSensitivity = 2f;
 	public float groundSpeed = 0f;
@@ -54,8 +54,13 @@ public class PlayerMovement : MonoBehaviour
 		//Check jump
 		if(Input.GetKeyDown(KeyCode.Space) && grounded)
 		{
-			rb.AddForce(0,jumpForce,0, ForceMode.Impulse);
+			// Keep the horizontal momentum when jumping
+			Vector3 horizontalVelocity = rb.velocity;
+			horizontalVelocity.y = 0f;
 			
+			rb.AddForce(new Vector3(0,jumpForce,0), ForceMode.VelocityChange);
+			
+			rb.velocity += horizontalVelocity;
 		}
 		
 		//Check slide
@@ -128,11 +133,13 @@ public class PlayerMovement : MonoBehaviour
 		//Move Player
 		if(grounded)
 		{
-			rb.AddRelativeForce(inputVector * MoveForce, ForceMode.Force);
+			rb.AddRelativeForce(inputVector * MoveForce, ForceMode.VelocityChange);
 		}else
 		{
-			rb.AddRelativeForce(inputVector * MoveForce/7, ForceMode.Force);
+			rb.AddRelativeForce(inputVector * MoveForce/4 , ForceMode.Force);
 		}
+		
+		
 	}
 	
 	void UpdateCamera()
