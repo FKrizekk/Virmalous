@@ -1,0 +1,301 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+[System.Serializable]
+public class FootstepsPreset
+{
+	public AudioClip[] run;
+	public AudioClip[] jump;
+	public AudioClip[] land;
+}
+
+public class PlayerMovement : MonoBehaviour
+{
+	
+	public GameObject cam;
+	public Rigidbody rb;
+	
+	float MoveForce = 20f;
+	float maxHorizontalVelocity = 8f;
+	float maxVerticalVelocity = 100f;
+	float MouseSensitivity = 2f;
+	public float groundSpeed = 0f;
+	float jumpForce = 13.5f;
+	
+	bool sliding = false;
+	bool grounded = false;
+	bool isBoosting = false;
+	
+	//Audio
+	public FootstepsPreset stone;
+	public FootstepsPreset wood;
+	
+	public AudioSource source;
+	int stepIndex = 0;
+	string surface = "Stone";
+	
+	
+	// Start is called before the first frame update
+	void Start()
+	{
+		cam = transform.GetChild(0).GetChild(0).gameObject;
+		rb = GetComponent<Rigidbody>();
+		
+		StartCoroutine(Footsteps());
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		UpdateCamera();
+		
+		//Check jump
+		if(Input.GetKeyDown(KeyCode.Space) && grounded)
+		{
+			rb.AddForce(0,jumpForce,0, ForceMode.Impulse);
+			
+		}
+		
+		//Check slide
+		if(Input.GetKeyDown("c") && grounded)
+		{
+			SlideStart();
+		}
+		
+		if(Input.GetKeyUp("c"))
+		{
+			SlideStop();
+		}
+		
+	}
+	
+	void SlideStart()
+	{
+		rb.AddForce(transform.forward * 25, ForceMode.Impulse);
+		
+		transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+		sliding = true;
+	}
+	
+	void SlideStop()
+	{
+		transform.localScale = new Vector3(1f,1f,1f);
+		sliding = false;
+	}
+	
+	void FixedUpdate()
+	{
+		Move();
+		
+		if(!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d") && grounded && !sliding)
+		{
+			rb.AddForce(new Vector3(-rb.velocity.x/3, 0, -rb.velocity.z/3), ForceMode.VelocityChange);
+		}else if(!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d") && !grounded)
+		{
+			//rb.AddForce(new Vector3(-rb.velocity.x/15, 0, -rb.velocity.z/15));
+		}
+		
+		// Limit the velocity when not boosting
+		if (!isBoosting)
+		{
+			// Limit the horizontal velocity
+			Vector3 horizontalVelocity = rb.velocity;
+			horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxHorizontalVelocity);
+			horizontalVelocity.y = rb.velocity.y;
+			rb.velocity = horizontalVelocity;
+		}
+		
+		
+	}
+	
+	void Move()
+	{
+		Vector3 inputVector;
+		
+		//Get input
+		float moveX = Input.GetAxisRaw("Horizontal");
+		float moveY = Input.GetAxisRaw("Vertical");
+		if(Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
+		{
+			inputVector = new Vector3(moveX/1.41421f,0,moveY/1.41421f);
+		}else
+		{
+			inputVector = new Vector3(moveX, 0, moveY);
+		}
+		
+		//Move Player
+		if(grounded)
+		{
+			rb.AddRelativeForce(inputVector * MoveForce, ForceMode.Force);
+		}else
+		{
+			rb.AddRelativeForce(inputVector * MoveForce/7, ForceMode.Force);
+		}
+	}
+	
+	void UpdateCamera()
+	{
+		//Get input
+		float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity;
+		float mouseY = Input.GetAxis("Mouse Y") * -MouseSensitivity;
+		
+		//Rotate Player (yaw)
+		transform.eulerAngles += new Vector3(0,mouseX,0);
+		
+		//Rotate Camera (pitch)
+		cam.transform.eulerAngles = cam.transform.eulerAngles + new Vector3(mouseY,0,0);
+	}
+
+	
+	void OnCollisionEnter(Collision col)
+	{
+		if(col.gameObject.tag == "Wood" || col.gameObject.tag == "Stone")
+		{
+			grounded = true;
+			PlayLandSound(col.gameObject.tag);
+		}
+	}
+	
+	void OnCollisionStay(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Wood"))
+		{
+			grounded = true;
+			surface = "Wood";
+		}else if(collision.gameObject.CompareTag("Stone"))
+		{
+			grounded = true;
+			surface = "Stone";
+		}
+	}
+	
+	void OnCollisionExit(Collision col)
+	{
+		if(col.gameObject.tag == "Wood" || col.gameObject.tag == "Stone")
+		{
+			grounded = false;
+			PlayJumpSound(col.gameObject.tag);
+		}
+	}
+	
+	void PlayFootstep()
+	{
+		switch (surface)
+		{
+			case "Stone":
+				stepIndex+=1;
+				try
+				{
+					source.PlayOneShot(stone.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				}
+				catch (System.Exception)
+				{
+					stepIndex = 0;
+					source.PlayOneShot(stone.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					break;
+				}
+				break;
+			case "Wood":
+				stepIndex+=1;
+				try
+				{
+					source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				}
+				catch (System.Exception)
+				{
+					stepIndex = 0;
+					source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					break;
+				}
+				break;
+			default:
+				source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				break;
+		}
+	}
+	
+	void PlayJumpSound(string tag)
+	{
+		switch (tag)
+		{
+			case "Stone":
+				stepIndex+=1;
+				try
+				{
+					source.PlayOneShot(stone.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				}
+				catch (System.Exception)
+				{
+					stepIndex = 0;
+					source.PlayOneShot(stone.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					break;
+				}
+				break;
+			case "Wood":
+				stepIndex+=1;
+				try
+				{
+					source.PlayOneShot(wood.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				}
+				catch (System.Exception)
+				{
+					stepIndex = 0;
+					source.PlayOneShot(wood.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					break;
+				}
+				break;
+			default:
+				source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				break;
+		}
+	}
+	
+	void PlayLandSound(string tag)
+	{
+		switch (tag)
+		{
+			case "Stone":
+				stepIndex+=1;
+				try
+				{
+					source.PlayOneShot(stone.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				}
+				catch (System.Exception)
+				{
+					stepIndex = 0;
+					source.PlayOneShot(stone.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					break;
+				}
+				break;
+			case "Wood":
+				stepIndex+=1;
+				try
+				{
+					source.PlayOneShot(wood.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				}
+				catch (System.Exception)
+				{
+					stepIndex = 0;
+					source.PlayOneShot(wood.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					break;
+				}
+				break;
+			default:
+				source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				break;
+		}
+	}
+	
+	IEnumerator Footsteps()
+	{
+		yield return new WaitUntil(() => Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"));
+		if(grounded)
+		{
+			PlayFootstep();
+		}
+		yield return new WaitForSeconds(0.2f);
+		StartCoroutine(Footsteps());
+	}
+}
