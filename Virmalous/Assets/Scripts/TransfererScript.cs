@@ -30,7 +30,6 @@ public class TransfererScript : MonoBehaviour
 	{
 		string currentScene = SceneManager.GetActiveScene().name;
 		string nextScene = "LEVEL" + (int.Parse(currentScene.Split("LEVEL")[1]) + 1);
-		Debug.Log(nextScene);
 		StartCoroutine(LoadSceneAsync(nextScene));
 	}
 	

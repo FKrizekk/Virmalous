@@ -13,9 +13,8 @@ public class PlayerScript : MonoBehaviour
 	
 	public static GameObject cam;
 	
-	//Layermask against everything except layer 8 (player)
-	public static int layerMask = 1 << 8;
-	
+	//Layermask for raycasting
+	public static int layerMask;
 	
 	public GameObject transfererPrefab;
 	
@@ -27,9 +26,10 @@ public class PlayerScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		transferer = GameObject.Find("Transferer");
+		//Layermask against everything except layer 8 (player)
+		layerMask = ~LayerMask.GetMask("Player");
 		
-		layerMask = ~layerMask;
+		transferer = GameObject.Find("Transferer");
 		
 		//Get cam
 		cam = transform.GetChild(0).GetChild(0).gameObject;
@@ -72,6 +72,7 @@ public class PlayerScript : MonoBehaviour
 	void OnCollisionEnter(Collision col) {
 		if(col.gameObject.tag == "Finish")
 		{
+			//Touched crystal pedestal
 			FinishLevel();
 		}
 		if(col.gameObject.tag == "Lava")
@@ -83,6 +84,5 @@ public class PlayerScript : MonoBehaviour
 	void FinishLevel()
 	{
 		TransfererScript.StartTransfer(gameObject);
-		Destroy(gunParent.transform.GetChild(0).gameObject);
 	}
 }

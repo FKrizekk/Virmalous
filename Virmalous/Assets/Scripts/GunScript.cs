@@ -164,12 +164,20 @@ public class GunScript : MonoBehaviour
 
 		// Smoothly move the gun towards the target position
 		obj.transform.localPosition = Vector3.Lerp(obj.transform.localPosition, targetPosition, swaySpeed * Time.deltaTime);
-
+		
 		RaycastHit hit;
 		if(Physics.Raycast(PlayerScript.cam.transform.position, PlayerScript.cam.transform.forward, out hit, Mathf.Infinity, PlayerScript.layerMask))
 		{
 			Debug.DrawRay(PlayerScript.cam.transform.position, PlayerScript.cam.transform.forward*100);
-			obj.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((hit.point - transform.position), Vector3.up), Time.deltaTime*10);
+			//obj.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((hit.point - transform.position), Vector3.up), Time.deltaTime*10);
+			// Calculate the direction from the gun's current position to the hit point
+			Vector3 directionToTarget = hit.point - obj.transform.position;
+			
+			// Calculate the rotation needed to face the target point
+			Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
+			
+			// Rotate the gun smoothly towards the target point using Slerp (Spherical Linear Interpolation)
+			obj.transform.rotation = Quaternion.Slerp(obj.transform.rotation, targetRotation, Time.deltaTime * 10);
 		}
 	}
 }
