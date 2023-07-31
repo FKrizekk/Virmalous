@@ -87,7 +87,20 @@ public class PlayerMovement : MonoBehaviour
 		canMove = false;
 		sliding = true;
 		
-		slideDirection = transform.forward;
+		Vector3 inputVector;
+		
+		//Get input
+		float moveX = Input.GetAxisRaw("Horizontal");
+		float moveY = Input.GetAxisRaw("Vertical");
+		if(Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
+		{
+			inputVector = new Vector3(moveX/1.41421f,0,moveY/1.41421f);
+		}else
+		{
+			inputVector = new Vector3(moveX, 0, moveY);
+		}
+		
+		slideDirection = transform.TransformDirection(inputVector.normalized);
 		Debug.Log(slideDirection);
 		
 		transform.localScale = new Vector3(0.5f,0.5f,0.5f);
@@ -96,6 +109,21 @@ public class PlayerMovement : MonoBehaviour
 	void Slide()
 	{
 		rb.AddForce(slideDirection * SlideForce, ForceMode.VelocityChange);
+		
+		Vector3 inputVector;
+		
+		//Get input
+		float moveX = Input.GetAxisRaw("Horizontal");
+		float moveY = Input.GetAxisRaw("Vertical");
+		if(Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
+		{
+			inputVector = new Vector3(moveX/1.41421f,0,moveY/1.41421f);
+		}else
+		{
+			inputVector = new Vector3(moveX, 0, moveY);
+		}
+		
+		rb.AddRelativeForce(inputVector.normalized*100, ForceMode.Force);
 	}
 	
 	void SlideStop()
