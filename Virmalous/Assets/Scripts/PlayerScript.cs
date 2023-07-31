@@ -83,5 +83,6 @@ public class PlayerScript : MonoBehaviour
 	void FinishLevel()
 	{
 		TransfererScript.StartTransfer(gameObject);
+		Destroy(gunParent.transform.GetChild(0).gameObject);
 	}
 }
