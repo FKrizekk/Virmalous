@@ -330,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
 	IEnumerator Footsteps()
 	{
 		yield return new WaitUntil(() => Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"));
-		if(grounded)
+		if(grounded && canMove)
 		{
 			PlayFootstep();
 		}
