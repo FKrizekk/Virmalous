@@ -13,12 +13,16 @@ public class FootstepsPreset
 
 public class PlayerMovement : MonoBehaviour
 {
+	public static bool canMove = true;
 	
 	public GameObject cam;
 	public Rigidbody rb;
 	
 	float MoveForce = 20f;
-	float maxHorizontalVelocity = 6f;
+	float AirMoveForce = 40f;
+	float SlideForce = 25f;
+	float maxHorizontalVelocity = 4f;
+	float maxAirHorizontalVelocity = 20f;
 	float maxVerticalVelocity = 100f;
 	float MouseSensitivity = 2f;
 	public float groundSpeed = 0f;
@@ -27,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 	bool sliding = false;
 	bool grounded = false;
 	bool isBoosting = false;
+
+	Vector3 slideDirection;
 	
 	//Audio
 	public FootstepsPreset stone;
@@ -64,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		
 		//Check slide
-		if(Input.GetKeyDown("c") && grounded)
+		if(Input.GetKeyDown("c"))
 		{
 			SlideStart();
 		}
@@ -78,21 +84,37 @@ public class PlayerMovement : MonoBehaviour
 	
 	void SlideStart()
 	{
-		rb.AddForce(transform.forward * 25, ForceMode.Impulse);
+		canMove = false;
+		sliding = true;
+		
+		slideDirection = transform.forward;
+		Debug.Log(slideDirection);
 		
 		transform.localScale = new Vector3(0.5f,0.5f,0.5f);
-		sliding = true;
+	}
+	
+	void Slide()
+	{
+		rb.AddForce(slideDirection * SlideForce, ForceMode.VelocityChange);
 	}
 	
 	void SlideStop()
 	{
-		transform.localScale = new Vector3(1f,1f,1f);
+		canMove = true;
 		sliding = false;
+		
+		transform.localScale = new Vector3(1f,1f,1f);
 	}
 	
 	void FixedUpdate()
 	{
-		Move();
+		if(canMove)
+		{
+			Move();
+		}else if(sliding)
+		{
+			Slide();
+		}
 		
 		if(!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d") && grounded && !sliding)
 		{
@@ -105,11 +127,21 @@ public class PlayerMovement : MonoBehaviour
 		// Limit the velocity when not boosting
 		if (!isBoosting)
 		{
-			// Limit the horizontal velocity
-			Vector3 horizontalVelocity = rb.velocity;
-			horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxHorizontalVelocity);
-			horizontalVelocity.y = rb.velocity.y;
-			rb.velocity = horizontalVelocity;
+			if(grounded)
+			{
+				// Limit the horizontal velocity on the ground
+				Vector3 horizontalVelocity = rb.velocity;
+				horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxHorizontalVelocity);
+				horizontalVelocity.y = rb.velocity.y;
+				rb.velocity = horizontalVelocity;
+			}else
+			{
+				// Limit the horizontal velocity in the air
+				Vector3 horizontalVelocity = rb.velocity;
+				horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, maxAirHorizontalVelocity);
+				horizontalVelocity.y = rb.velocity.y;
+				rb.velocity = horizontalVelocity;
+			}
 		}
 		
 		
@@ -136,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
 			rb.AddRelativeForce(inputVector * MoveForce, ForceMode.VelocityChange);
 		}else
 		{
-			rb.AddRelativeForce(inputVector * MoveForce/4 , ForceMode.Force);
+			rb.AddRelativeForce(inputVector * AirMoveForce , ForceMode.Force);
 		}
 		
 		
