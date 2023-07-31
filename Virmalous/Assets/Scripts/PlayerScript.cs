@@ -74,6 +74,7 @@ public class PlayerScript : MonoBehaviour
 		{
 			//Touched crystal pedestal
 			FinishLevel();
+			col.gameObject.GetComponent<PedestalScript>().GetCrystal();
 		}
 		if(col.gameObject.tag == "Lava")
 		{
