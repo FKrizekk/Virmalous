@@ -1,3 +1,3 @@
 # Virmalous
 
-Virmalous is a pulse-pounding retro-style exorcism adventure. Armed with five weapon types, including various guns and spells. Banish malevolent spirits in haunted locations. Uncover ancient evil, engage in fast-paced battles, and face all kinds of **demons**. Are you ready for the exorcism of a lifetime?
+Virmalous is a pulse-pounding retro-style fps exorcism adventure. Armed with five weapons and their variants, including various guns and spells. Banish malevolent demons in haunted locations, uncover an ancient evil, engage in fast-paced battles, and face all kinds of **abominations**. Are you ready for the exorcism of a lifetime?
