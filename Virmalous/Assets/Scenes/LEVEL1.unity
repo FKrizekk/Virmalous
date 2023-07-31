@@ -2866,17 +2866,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4642726d5ffa04041a4562949b75c4e6, type: 3}
---- !u!114 &1025359278 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3100790936639136479, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
-  m_PrefabInstance: {fileID: 1095293509}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7425b940acc8df54cab3aa57f91375a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1095293509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3147,7 +3136,7 @@ PrefabInstance:
     - target: {fileID: 1095293514, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: gunParent
       value: 
-      objectReference: {fileID: 1025359278}
+      objectReference: {fileID: 0}
     - target: {fileID: 630258936238171646, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3256,7 +3245,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3100790936639136479, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
 --- !u!1 &1258776722 stripped
 GameObject:

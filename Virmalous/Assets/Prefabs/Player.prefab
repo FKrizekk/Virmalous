@@ -403,7 +403,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8431460632264356336}
-  - component: {fileID: 3100790936639136479}
   m_Layer: 8
   m_Name: GUNPARENT
   m_TagString: Untagged
@@ -426,33 +425,6 @@ Transform:
   m_Father: {fileID: 6940890673596853663}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3100790936639136479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7708900666574142341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7425b940acc8df54cab3aa57f91375a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gun0:
-    prefab: {fileID: 6533287036527474777, guid: b752d1dc366dbc141aa49ae31e86bb86, type: 3}
-    clips:
-    - {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
-    - {fileID: 8300000, guid: cd092ad13de41c24c9d3838981942e04, type: 3}
-    - {fileID: 8300000, guid: 49935d2469955e347b4f657da6f18e85, type: 3}
-  gun1:
-    prefab: {fileID: 0}
-    clips: []
-  gun2:
-    prefab: {fileID: 0}
-    clips: []
-  gun3:
-    prefab: {fileID: 0}
-    clips: []
 --- !u!1 &7992630333762332161
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +437,7 @@ GameObject:
   - component: {fileID: 1095293513}
   - component: {fileID: 1095293511}
   - component: {fileID: 1095293514}
+  - component: {fileID: 9195635875317030628}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -519,16 +492,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 1095293513}
   groundSpeed: 0
   stone:
-    run: []
-    jump: []
-    land: []
+    run:
+    - {fileID: 8300000, guid: ecd647025e0a3c04fbd5829fff509e09, type: 3}
+    - {fileID: 8300000, guid: 3bd1b93317b7a3a49b13011cdaa64d0b, type: 3}
+    - {fileID: 8300000, guid: 7b4b6eb734482064c8c1e5fd45d4d76c, type: 3}
+    - {fileID: 8300000, guid: fba95cafa5bba8649a7d269656e7317b, type: 3}
+    - {fileID: 8300000, guid: e924ff5d774024542830602ee674d9a9, type: 3}
+    - {fileID: 8300000, guid: 281c105661e5ee14b8e76523200338bd, type: 3}
+    - {fileID: 8300000, guid: 3069c9f7e833f8e4099228c28f9d65dd, type: 3}
+    - {fileID: 8300000, guid: 82354d1fee336984994fbdcc8154c89c, type: 3}
+    - {fileID: 8300000, guid: 068414160a0ccf34ca0c11b55d43ffc8, type: 3}
+    - {fileID: 8300000, guid: 02d4b2dff380d194fab91c0864b0c386, type: 3}
+    jump:
+    - {fileID: 8300000, guid: 8420cf17e21d6354a98e6ef6d19dc9cc, type: 3}
+    - {fileID: 8300000, guid: e708389b7a8f64a46aa12d201c187b69, type: 3}
+    - {fileID: 8300000, guid: f85e18b3e969dac4bbfc7f6b18139932, type: 3}
+    - {fileID: 8300000, guid: caceea3cf407e1b47a4024a755887675, type: 3}
+    - {fileID: 8300000, guid: 322f3dcfdbd5b5742a885bfbc4fe5365, type: 3}
+    - {fileID: 8300000, guid: 866abdf3a931850498786581089be202, type: 3}
+    land:
+    - {fileID: 8300000, guid: 3d8f480d252db9449b2f978284506f8e, type: 3}
+    - {fileID: 8300000, guid: 79e6e1370ee1ca747b469e68d0dcb0fe, type: 3}
+    - {fileID: 8300000, guid: b796f7e3b1a4d7344b7ee8d6c077a68f, type: 3}
+    - {fileID: 8300000, guid: 1f080a1e65d584c4ca3e3c75fbb406b3, type: 3}
+    - {fileID: 8300000, guid: 45bc125cb8cb195408490bec63fde615, type: 3}
+    - {fileID: 8300000, guid: c2e0d3f88cb48f240af40a1f1bac7e8c, type: 3}
   wood:
-    run: []
-    jump: []
-    land: []
+    run:
+    - {fileID: 8300000, guid: 505a015d5525e0442ae4a62d5bac304d, type: 3}
+    - {fileID: 8300000, guid: 7ffe843b3b9c8d14792d912d39646105, type: 3}
+    - {fileID: 8300000, guid: 2802b1a72217c464ea0171ad67e835f7, type: 3}
+    - {fileID: 8300000, guid: 88da42c7018c0fa41870ccf17d13da9c, type: 3}
+    - {fileID: 8300000, guid: 8b4e405a508185e428652ccc26469d53, type: 3}
+    - {fileID: 8300000, guid: cee4ef3ef0fd155409f7b5a5162cece8, type: 3}
+    - {fileID: 8300000, guid: b30822d7e7d412d459397d0749be742a, type: 3}
+    - {fileID: 8300000, guid: 7f31ac62883f78b4ba610e164f57f879, type: 3}
+    - {fileID: 8300000, guid: 2c37f11b2d56b374ebf354853c6ad643, type: 3}
+    - {fileID: 8300000, guid: 75d4e54cf94712d4e8de7ce385abceb2, type: 3}
+    jump:
+    - {fileID: 8300000, guid: 7d22997c3222c124d91d351ddc1c6ee4, type: 3}
+    - {fileID: 8300000, guid: fcbaf164018fc614a9729400cf40f9de, type: 3}
+    land:
+    - {fileID: 8300000, guid: bb5ec83ccc5c69f43b31f100278bff91, type: 3}
+    - {fileID: 8300000, guid: 623ad07c146cedd4db6b902fd1612618, type: 3}
   source: {fileID: 0}
 --- !u!114 &1095293514
 MonoBehaviour:
@@ -543,7 +552,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transfererPrefab: {fileID: 3382113818841279303, guid: 47e8d2c5d4cbf2544be9d927b88d6053, type: 3}
-  gunParent: {fileID: 0}
+--- !u!114 &9195635875317030628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992630333762332161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39dc838c86195b24396442885169cf86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 6533287036527474777, guid: 6c86ad6c2dc99da4ba97bc7776e2fba9, type: 3}
 --- !u!1001 &1793139238121127064
 PrefabInstance:
   m_ObjectHideFlags: 0

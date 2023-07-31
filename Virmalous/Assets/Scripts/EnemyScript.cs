@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy1Script : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
 	NavMeshAgent nav;
 	public GameObject player;
@@ -58,17 +58,12 @@ public class Enemy1Script : MonoBehaviour
 		nav.SetDestination(targetPos);
 	}
 	
-	public void GotHit(Vector3 point)
+	public void GotHit(int amount, Vector3 point)
 	{
 		killPoint = point;
-		health -= 50;
+		health -= amount;
 	}
 	
-	public void GotHitCrit(Vector3 point)
-	{
-		killPoint = point;
-		health -= 100;
-	}
 	
 	void Death()
 	{

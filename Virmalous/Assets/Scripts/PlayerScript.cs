@@ -20,8 +20,6 @@ public class PlayerScript : MonoBehaviour
 	
 	GameObject transferer;
 	
-	public GunScript gunParent;
-	
 	
 	// Start is called before the first frame update
 	void Start()
@@ -42,25 +40,10 @@ public class PlayerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(Input.GetMouseButtonDown(0))
-		{
-			Shoot();
-		}
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			Application.Quit();
 		}
-		
-		if(Input.GetKeyDown("1"))
-		{
-			gunParent.SetGun(0);
-		}
-	}
-	
-	void Shoot()
-	{
-		//Start shooting animation on gun
-		gunParent.Shoot();
 	}
 	
 	private void LockCursor()

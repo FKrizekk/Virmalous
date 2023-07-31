@@ -5257,9 +5257,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5900055662415717091}
+  - component: {fileID: -1614234720228624659}
   - component: {fileID: 7500257799295280163}
   - component: {fileID: 8595777906082251944}
-  - component: {fileID: -4709650565903276183}
   m_Layer: 3
   m_Name: gun0
   m_TagString: Untagged
@@ -5284,6 +5284,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1614234720228624659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533287036527474777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d3a95834e24fb40b88349b9328a55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 7495c98f26961e441aa45d80fab397be, type: 3}
+  - {fileID: 8300000, guid: 36a8b7193377acf44a5c6ba0dbae1779, type: 3}
+  - {fileID: 8300000, guid: 49935d2469955e347b4f657da6f18e85, type: 3}
+  source: {fileID: 8595777906082251944}
+  anim: {fileID: 7500257799295280163}
+  particleSystem: {fileID: 2086417001837144851}
 --- !u!95 &7500257799295280163
 Animator:
   serializedVersion: 4
@@ -5400,18 +5419,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-4709650565903276183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6533287036527474777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4da678f60f3e26458b25438fda76148, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6570827611982835152
 GameObject:
   m_ObjectHideFlags: 0
