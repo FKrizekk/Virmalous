@@ -31,7 +31,7 @@ public class PlayerWeaponController : MonoBehaviour
 			Destroy(obj);
 		}
 		
-		obj = Instantiate(weapons[index], transform.TransformPoint(new Vector3(0,-1,-1)), Quaternion.EulerAngles(new Vector3(0,0,90)), transform);
+		obj = Instantiate(weapons[index], transform.TransformPoint(new Vector3(0,-1,-1)), Quaternion.Euler(new Vector3(0,0,90)), transform);
 		obj.transform.SetParent(gunParent.transform);
 	}
 	

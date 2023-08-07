@@ -18,12 +18,14 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject cam;
 	public Rigidbody rb;
 	
+	public GameObject speedlines;
+	ParticleSystem speeldinesParticleSystem;
+	
 	float MoveForce = 20f;
 	float AirMoveForce = 40f;
 	float SlideForce = 25f;
 	float maxHorizontalVelocity = 4f;
 	float maxAirHorizontalVelocity = 20f;
-	float maxVerticalVelocity = 100f;
 	float MouseSensitivity = 2f;
 	public float groundSpeed = 0f;
 	float jumpForce = 13.5f;
@@ -46,8 +48,10 @@ public class PlayerMovement : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		cam = transform.GetChild(0).GetChild(0).gameObject;
+		cam = GameObject.Find("CameraParent");
 		rb = GetComponent<Rigidbody>();
+		
+		speeldinesParticleSystem = speedlines.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
 		
 		StartCoroutine(Footsteps());
 	}
@@ -95,13 +99,17 @@ public class PlayerMovement : MonoBehaviour
 		if(Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
 		{
 			inputVector = new Vector3(moveX/1.41421f,0,moveY/1.41421f);
+		}else if(moveX == 0 && moveY == 0)
+		{
+			inputVector = new Vector3(0,0,1);
 		}else
 		{
 			inputVector = new Vector3(moveX, 0, moveY);
 		}
 		
 		slideDirection = transform.TransformDirection(inputVector.normalized);
-		Debug.Log(slideDirection);
+		
+		speedlines.SetActive(true);
 		
 		transform.localScale = new Vector3(0.5f,0.5f,0.5f);
 	}
@@ -130,6 +138,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		canMove = true;
 		sliding = false;
+		
+		speedlines.SetActive(false);
 		
 		transform.localScale = new Vector3(1f,1f,1f);
 	}
@@ -222,6 +232,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			grounded = true;
 			PlayLandSound(col.gameObject.tag);
+			PlayerScript.cameraShake.Shake(0.1f,0.1f);
 		}
 	}
 	

@@ -5297,8 +5297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 7495c98f26961e441aa45d80fab397be, type: 3}
-  - {fileID: 8300000, guid: 36a8b7193377acf44a5c6ba0dbae1779, type: 3}
+  - {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
+  - {fileID: 8300000, guid: cd092ad13de41c24c9d3838981942e04, type: 3}
   - {fileID: 8300000, guid: 49935d2469955e347b4f657da6f18e85, type: 3}
   source: {fileID: 8595777906082251944}
   anim: {fileID: 7500257799295280163}

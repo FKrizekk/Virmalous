@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -16,9 +18,11 @@ public class PlayerScript : MonoBehaviour
 	//Layermask for raycasting
 	public static int layerMask;
 	
-	public GameObject transfererPrefab;
+	//public GameObject transfererPrefab;
 	
-	GameObject transferer;
+	public GameObject transferer;
+	
+	public static CameraShake cameraShake;
 	
 	
 	// Start is called before the first frame update
@@ -27,12 +31,15 @@ public class PlayerScript : MonoBehaviour
 		//Layermask against everything except layer 8 (player)
 		layerMask = ~LayerMask.GetMask("Player");
 		
-		transferer = GameObject.Find("Transferer");
+		transferer.SetActive(true);
 		
 		//Get cam
-		cam = transform.GetChild(0).GetChild(0).gameObject;
+		cam = GameObject.Find("CameraParent");
+		
+		cameraShake = GameObject.Find("CameraParent/Camera").GetComponent<CameraShake>();
 		
 		LockCursor();
+		
 		//Disable vsync
 		QualitySettings.vSyncCount = 0;
 	}
@@ -44,7 +51,32 @@ public class PlayerScript : MonoBehaviour
 		{
 			Application.Quit();
 		}
+		
+		/* // Check for crosshair-based UI interaction
+		if (Input.GetMouseButtonDown(0))
+		{
+			Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+			if (Physics.Raycast(ray, out RaycastHit hit))
+			{
+				Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
+				// Check if the collider has a Unity UI button
+				Button button = hit.collider.GetComponent<Button>();
+				if (button != null)
+				{
+					// Check if the hit point is within the bounds of the button
+					RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
+					Vector3 localHitPoint;
+					if (RectTransformUtility.ScreenPointToWorldPointInRectangle(buttonRectTransform, hit.point, cam.GetComponent<Camera>(), out localHitPoint))
+					{
+						// Perform the button click
+						button.onClick.Invoke();
+					}
+				}
+			}
+		} */
 	}
+	
 	
 	private void LockCursor()
 	{

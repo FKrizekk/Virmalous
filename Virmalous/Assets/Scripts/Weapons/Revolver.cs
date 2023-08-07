@@ -30,7 +30,7 @@ public class Revolver : MonoBehaviour
 	
 	void Start()
 	{
-		cam = GameObject.Find("Body/Camera");
+		cam = GameObject.Find("CameraParent/Camera");
 		
 		player = GameObject.Find("Player");
 		rb = player.GetComponent<Rigidbody>();

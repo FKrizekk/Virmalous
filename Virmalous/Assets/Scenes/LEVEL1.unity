@@ -2878,6 +2878,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1258776726}
     - target: {fileID: 1095293511, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: speedlines
+      value: 
+      objectReference: {fileID: 2007920754}
+    - target: {fileID: 1095293511, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: Wood.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -3137,6 +3141,10 @@ PrefabInstance:
       propertyPath: gunParent
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 138127151761021728, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 630258936238171646, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3209,6 +3217,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 375
       objectReference: {fileID: 0}
+    - target: {fileID: 3183126181981699143, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.55
+      objectReference: {fileID: 0}
     - target: {fileID: 3709164806951502007, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_Range
       value: 13
@@ -3229,10 +3241,30 @@ PrefabInstance:
       propertyPath: m_BounceIntensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3894817887361128415, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932965001256518877, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932965001256518877, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_Cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 1281839815}
+    - target: {fileID: 5940949665175200164, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_CameraType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6021278806635039255, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8a4835f537d55304b858b88a661f0dc0, type: 3}
+    - target: {fileID: 6940890673596853663, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7992630333762332161, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3349,6 +3381,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!20 &1281839815 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1146059806636834187, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+  m_PrefabInstance: {fileID: 1095293509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1350704582
 GameObject:
   m_ObjectHideFlags: 0
@@ -4873,6 +4910,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1912372864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7575766536340512607, guid: 426d99caf51a1dd40918a465cf59a2db, type: 3}
+  m_PrefabInstance: {fileID: 1634710385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1912372866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912372864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1001 &1985721943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5008,6 +5070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4642726d5ffa04041a4562949b75c4e6, type: 3}
+--- !u!1 &2007920754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 138127151761021728, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+  m_PrefabInstance: {fileID: 1095293509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2028724125
 PrefabInstance:
   m_ObjectHideFlags: 0

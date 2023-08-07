@@ -10,6 +10,7 @@ TagManager:
   - Wood
   - Flesh
   - Lava
+  - Door
   layers:
   - Default
   - TransparentFX

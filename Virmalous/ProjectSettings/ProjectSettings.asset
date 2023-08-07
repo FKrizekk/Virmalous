@@ -47,7 +47,7 @@ PlayerSettings:
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
-  m_ActiveColorSpace: 0
+  m_ActiveColorSpace: 1
   m_MTRendering: 1
   mipStripping: 0
   numberOfMipsStripped: 0
@@ -154,7 +154,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.Ovenix-Entertainment.Virmalous
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -272,7 +273,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b6fbd99d95e146f4bb8c1ecec171f957, type: 3}
+      m_Icon: {fileID: 2800000, guid: fdae36dec764cd141a42367f073581cc, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -816,7 +817,7 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 2
   cloudProjectId: 96cc3c6e-8d76-446c-8268-25b4f00d141d
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
