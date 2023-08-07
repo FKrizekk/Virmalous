@@ -109,8 +109,6 @@ public class PlayerMovement : MonoBehaviour
 		
 		slideDirection = transform.TransformDirection(inputVector.normalized);
 		
-		speedlines.SetActive(true);
-		
 		transform.localScale = new Vector3(0.5f,0.5f,0.5f);
 	}
 	
@@ -138,8 +136,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		canMove = true;
 		sliding = false;
-		
-		speedlines.SetActive(false);
 		
 		transform.localScale = new Vector3(1f,1f,1f);
 	}

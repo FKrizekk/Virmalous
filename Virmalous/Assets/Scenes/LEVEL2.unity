@@ -517,6 +517,20 @@ MonoBehaviour:
   weapons:
   - {fileID: 6533287036527474777, guid: 6c86ad6c2dc99da4ba97bc7776e2fba9, type: 3}
   - {fileID: 0}
+--- !u!114 &470206689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470206678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2f33e602bc28c48b981b6a58cb8d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 50dd3f2e2a2434946bc1a4299bb8ed91, type: 3}
 --- !u!1 &496351248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3950418442739814453, guid: 13c5785d9f0f1c647a6c167f24f4e943, type: 3}
@@ -9088,14 +9102,14 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassEffects: 1
+  BypassListenerEffects: 1
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
