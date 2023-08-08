@@ -9051,7 +9051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3894817887361128415, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3932965001256518877, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_Cameras.Array.size
@@ -9061,6 +9061,26 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[0]
       value: 
       objectReference: {fileID: 136225822}
+    - target: {fileID: 4493064074901104608, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493064074901104608, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493064074901104608, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -933
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493064074901104608, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -293
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493064074901104608, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4793712842560063269, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 0
@@ -9443,7 +9463,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: b3b1c69fabc9246449cf77d7237c5846, type: 3}
     - target: {fileID: 8988868219258250915, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
       propertyPath: m_FillAmount
-      value: 0.442
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988868219258250915, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3100790936639136479, guid: a91c46fdff03a0b4da6388edff5d94ed, type: 3}

@@ -228,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			grounded = true;
 			PlayLandSound(col.gameObject.tag);
-			PlayerScript.cameraShake.Shake(0.1f,0.1f);
+			PlayerScript.uIShake.Shake(0.1f,1f);
 		}
 	}
 	

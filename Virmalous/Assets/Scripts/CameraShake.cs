@@ -28,6 +28,8 @@ public class CameraShake : MonoBehaviour
 		
 		yield return new WaitForSeconds(time);
 		
+		transform.localPosition = Vector3.zero;
+		
 		shaking = false;
 	}
 }

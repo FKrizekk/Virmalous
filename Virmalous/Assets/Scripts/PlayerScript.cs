@@ -21,15 +21,19 @@ public class PlayerScript : MonoBehaviour
 	public GameObject transferer;
 	
 	public static CameraShake cameraShake;
+	public static UIShake uIShake;
 	
 	
 	int health = 500;
 	
+	Vector3 currentObjectivePos;
+	
 	//UI
 	Image healthBar;
+	Image objectiveMarker;
 	
 	
-	// Start is called before the first frame update
+	//Start is called before the first frame update
 	void Start()
 	{
 		//Layermask against everything except layer 8 (player)
@@ -41,8 +45,10 @@ public class PlayerScript : MonoBehaviour
 		cam = GameObject.Find("CameraParent");
 		
 		cameraShake = GameObject.Find("CameraParent/Camera").GetComponent<CameraShake>();
+		uIShake = GameObject.Find("Player/Canvas/UIParent").GetComponent<UIShake>();
 		
-		healthBar = GameObject.Find("Player/Canvas/HealthParent/HealthBar").GetComponent<Image>();
+		healthBar = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthBar").GetComponent<Image>();
+		objectiveMarker = GameObject.Find("Player/Canvas/UIParent/ObjectiveMarker").GetComponent<Image>();
 		
 		LockCursor();
 		
@@ -55,11 +61,15 @@ public class PlayerScript : MonoBehaviour
 		Application.Quit();
 	}
 
-	// Update is called once per frame
+	//Update is called once per frame
 	void Update()
 	{
 		//Smoothly update healthBar
 		healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/500f, Time.deltaTime*10);
+		
+		//Update Objective Marker Position
+		Vector3 screenPos = cam.transform.GetChild(0).gameObject.GetComponent<Camera>().WorldToScreenPoint(currentObjectivePos); //Convert world coordinates to screen coordinates
+		objectiveMarker.transform.position = screenPos;
 		
 		//Check if dead
 		if(health <= 0)
@@ -67,6 +77,14 @@ public class PlayerScript : MonoBehaviour
 			Die();
 		}
 		
+		if(Input.GetMouseButtonDown(1))
+		{
+			RaycastHit hit;
+			if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, Mathf.Infinity, layerMask))
+			{
+				currentObjectivePos = hit.point;
+			}
+		}
 		
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
