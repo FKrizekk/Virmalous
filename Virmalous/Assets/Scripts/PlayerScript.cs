@@ -48,7 +48,7 @@ public class PlayerScript : MonoBehaviour
 		uIShake = GameObject.Find("Player/Canvas/UIParent").GetComponent<UIShake>();
 		
 		healthBar = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthBar").GetComponent<Image>();
-		objectiveMarker = GameObject.Find("Player/Canvas/UIParent/ObjectiveMarker").GetComponent<Image>();
+		objectiveMarker = GameObject.Find("Player/Canvas/UIParent/ObjectiveParent/ObjectiveMarker").GetComponent<Image>();
 		
 		LockCursor();
 		
