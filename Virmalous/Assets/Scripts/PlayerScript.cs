@@ -8,6 +8,9 @@ public class PlayerScript : MonoBehaviour
 {
 	bool isCursorLocked = true; // Initial state: cursor is locked
 	
+	//Layermask for raycasting
+	public static int layerMask;
+	
 	//Volume
 	public static float MasterVol = 0.5f;
 	public static float SfxVol = 0.5f;
@@ -15,14 +18,15 @@ public class PlayerScript : MonoBehaviour
 	
 	public static GameObject cam;
 	
-	//Layermask for raycasting
-	public static int layerMask;
-	
-	//public GameObject transfererPrefab;
-	
 	public GameObject transferer;
 	
 	public static CameraShake cameraShake;
+	
+	
+	int health = 500;
+	
+	//UI
+	Image healthBar;
 	
 	
 	// Start is called before the first frame update
@@ -38,15 +42,32 @@ public class PlayerScript : MonoBehaviour
 		
 		cameraShake = GameObject.Find("CameraParent/Camera").GetComponent<CameraShake>();
 		
+		healthBar = GameObject.Find("Player/Canvas/HealthParent/HealthBar").GetComponent<Image>();
+		
 		LockCursor();
 		
 		//Disable vsync
 		QualitySettings.vSyncCount = 0;
 	}
+	
+	void Die()
+	{
+		Application.Quit();
+	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		//Smoothly update healthBar
+		healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/500f, Time.deltaTime*10);
+		
+		//Check if dead
+		if(health <= 0)
+		{
+			Die();
+		}
+		
+		
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			Application.Quit();
@@ -77,6 +98,11 @@ public class PlayerScript : MonoBehaviour
 		} */
 	}
 	
+	public void ChangeHealth(int amount)
+	{
+		health = Mathf.Clamp(health + amount, 0, 500);
+	}
+	
 	
 	private void LockCursor()
 	{
@@ -94,6 +120,7 @@ public class PlayerScript : MonoBehaviour
 		if(col.gameObject.tag == "Lava")
 		{
 			//Touched LAVA
+			ChangeHealth(-100);
 		}
 	}
 	
