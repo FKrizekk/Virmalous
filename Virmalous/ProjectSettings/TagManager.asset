@@ -11,6 +11,7 @@ TagManager:
   - Flesh
   - Lava
   - Door
+  - Screen
   layers:
   - Default
   - TransparentFX

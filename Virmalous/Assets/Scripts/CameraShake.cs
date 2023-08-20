@@ -24,12 +24,12 @@ public class CameraShake : MonoBehaviour
 	IEnumerator shake(float time, float magnitude)
 	{
 		shakeMagn = magnitude;
-		shaking = true;
+		shaking = true; //Starts Update if
 		
-		yield return new WaitForSeconds(time);
+		yield return new WaitForSeconds(time); //Waits seconds
 		
-		transform.localPosition = Vector3.zero;
+		shaking = false; //Stops Update if
 		
-		shaking = false;
+		transform.localPosition = Vector3.zero; //Resets camera to center
 	}
 }

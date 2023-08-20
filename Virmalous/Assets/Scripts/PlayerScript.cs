@@ -42,12 +42,12 @@ public class PlayerScript : MonoBehaviour
 		transferer.SetActive(true);
 		
 		//Get cam
-		cam = GameObject.Find("CameraParent");
+		cam = GameObject.Find("CameraParent"); 
 		
 		cameraShake = GameObject.Find("CameraParent/Camera").GetComponent<CameraShake>();
 		uIShake = GameObject.Find("Player/Canvas/UIParent").GetComponent<UIShake>();
 		
-		healthBar = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthBar").GetComponent<Image>();
+		healthBar = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthBar").GetComponent<Image>(); //The Health Bar Image changed based on health
 		objectiveMarker = GameObject.Find("Player/Canvas/UIParent/ObjectiveParent/ObjectiveMarker").GetComponent<Image>();
 		
 		LockCursor();
