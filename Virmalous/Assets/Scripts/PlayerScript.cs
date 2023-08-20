@@ -31,7 +31,8 @@ public class PlayerScript : MonoBehaviour
 	//UI
 	Image healthBar;
 	Image objectiveMarker;
-	
+
+	public static bool isInteracting = false;
 	
 	//Start is called before the first frame update
 	void Start()
@@ -77,6 +78,7 @@ public class PlayerScript : MonoBehaviour
 			Die();
 		}
 		
+		//-------------------------OBJECTIVE DEBUGGGGG-----------------------------
 		if(Input.GetMouseButtonDown(1))
 		{
 			RaycastHit hit;
@@ -85,35 +87,25 @@ public class PlayerScript : MonoBehaviour
 				currentObjectivePos = hit.point;
 			}
 		}
+		//-------------------------OBJECTIVE DEBUGGGGG-----------------------------
+		
 		
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			Application.Quit();
 		}
 		
-		/* // Check for crosshair-based UI interaction
-		if (Input.GetMouseButtonDown(0))
+		RaycastHit hit2;
+		if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit2, 6, layerMask))
 		{
-			Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-
-			if (Physics.Raycast(ray, out RaycastHit hit))
+			if(hit2.collider.gameObject.tag == "Screen")
 			{
-				Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
-				// Check if the collider has a Unity UI button
-				Button button = hit.collider.GetComponent<Button>();
-				if (button != null)
-				{
-					// Check if the hit point is within the bounds of the button
-					RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
-					Vector3 localHitPoint;
-					if (RectTransformUtility.ScreenPointToWorldPointInRectangle(buttonRectTransform, hit.point, cam.GetComponent<Camera>(), out localHitPoint))
-					{
-						// Perform the button click
-						button.onClick.Invoke();
-					}
-				}
+				isInteracting = true;
+			}else
+			{
+				isInteracting = false;
 			}
-		} */
+		}
 	}
 	
 	public void ChangeHealth(int amount)

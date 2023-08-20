@@ -64,7 +64,7 @@ public class Revolver : MonoBehaviour
 		
 		if(Input.GetMouseButtonDown(0))
 		{
-			if(!shooting)
+			if(!shooting && !PlayerScript.isInteracting)
 			{
 				Shoot();
 			}
