@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 	float MoveForce = 20f;
 	float AirMoveForce = 40f;
 	float SlideForce = 25f;
+	float varSlideForce = 25f;
 	float maxHorizontalVelocity = 4f;
 	float maxAirHorizontalVelocity = 20f;
 	float MouseSensitivity = 2f;
@@ -109,12 +110,19 @@ public class PlayerMovement : MonoBehaviour
 		
 		slideDirection = transform.TransformDirection(inputVector.normalized);
 		
+		if(grounded)
+		{
+			rb.AddForce(slideDirection * SlideForce, ForceMode.VelocityChange);
+			varSlideForce = MoveForce;
+		}else{
+			varSlideForce = 1f;
+		}
+		
 		transform.localScale = new Vector3(0.5f,0.5f,0.5f);
 	}
 	
 	void Slide()
 	{
-		rb.AddForce(slideDirection * SlideForce, ForceMode.VelocityChange);
 		
 		Vector3 inputVector;
 		
@@ -129,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
 			inputVector = new Vector3(moveX, 0, moveY);
 		}
 		
-		rb.AddRelativeForce(inputVector.normalized*100, ForceMode.Force);
+		rb.AddForce(slideDirection*varSlideForce, ForceMode.VelocityChange);
 	}
 	
 	void SlideStop()
@@ -218,7 +226,18 @@ public class PlayerMovement : MonoBehaviour
 		transform.eulerAngles += new Vector3(0,mouseX,0);
 		
 		//Rotate Camera (pitch)
-		cam.transform.eulerAngles = cam.transform.eulerAngles + new Vector3(mouseY,0,0);
+		float angleDiff;
+		if(cam.transform.eulerAngles.x >= 0 && cam.transform.eulerAngles.x <= 90)
+		{
+			angleDiff = Vector3.Angle(transform.forward, cam.transform.forward) + mouseY;
+		}else
+		{
+			angleDiff = Vector3.Angle(transform.forward, cam.transform.forward) + mouseY*-1;
+		}
+		if(angleDiff < 90)
+		{
+			cam.transform.eulerAngles = cam.transform.eulerAngles + new Vector3(mouseY,0,0);
+		}
 	}
 
 	
@@ -228,7 +247,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			grounded = true;
 			PlayLandSound(col.gameObject.tag);
-			PlayerScript.uIShake.Shake(0.1f,1f);
+			PlayerScript.uIShake.Shake(0.1f,2f);
 		}
 	}
 	

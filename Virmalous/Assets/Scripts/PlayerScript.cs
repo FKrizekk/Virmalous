@@ -24,13 +24,15 @@ public class PlayerScript : MonoBehaviour
 	public static UIShake uIShake;
 	
 	
-	int health = 500;
+	int health = 2000;
+	int maxHealth = 10000;
 	
 	Vector3 currentObjectivePos;
 	
 	//UI
 	Image healthBar;
-	Image objectiveMarker;
+	TMP_Text healthText;
+	public Animator damageOverlayAnim;
 
 	public static bool isInteracting = false;
 	
@@ -38,7 +40,8 @@ public class PlayerScript : MonoBehaviour
 	void Start()
 	{
 		//Layermask against everything except layer 8 (player)
-		layerMask = ~LayerMask.GetMask("Player");
+		layerMask = LayerMask.GetMask("Player") | (1 << 2);
+		layerMask = ~layerMask;
 		
 		transferer.SetActive(true);
 		
@@ -49,7 +52,7 @@ public class PlayerScript : MonoBehaviour
 		uIShake = GameObject.Find("Player/Canvas/UIParent").GetComponent<UIShake>();
 		
 		healthBar = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthBar").GetComponent<Image>(); //The Health Bar Image changed based on health
-		objectiveMarker = GameObject.Find("Player/Canvas/UIParent/ObjectiveParent/ObjectiveMarker").GetComponent<Image>();
+		healthText = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthText").GetComponent<TMP_Text>();
 		
 		LockCursor();
 		
@@ -66,35 +69,31 @@ public class PlayerScript : MonoBehaviour
 	void Update()
 	{
 		//Smoothly update healthBar
-		healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/500f, Time.deltaTime*10);
-		
-		//Update Objective Marker Position
-		Vector3 screenPos = cam.transform.GetChild(0).gameObject.GetComponent<Camera>().WorldToScreenPoint(currentObjectivePos); //Convert world coordinates to screen coordinates
-		objectiveMarker.transform.position = screenPos;
+		healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/maxHealth, Time.deltaTime*10);
+		//Smoothly update healthText
+		string currentHealth = Mathf.Lerp(float.Parse(healthText.text.Split(" / ")[0].Contains(',') ? healthText.text.Split(" / ")[0].Remove(healthText.text.Split(" / ")[0].IndexOf(','), 1) : healthText.text.Split(" / ")[0]), health, Time.deltaTime*10).ToString();
+		string maxHealthText = maxHealth.ToString(); if(maxHealthText.Length >= 4){maxHealthText = maxHealthText.Insert(maxHealthText.Length-3, ",");}
+		if(currentHealth.Contains('.')){currentHealth = currentHealth.Split('.')[0];}
+		if(int.Parse(currentHealth) > (health - 300)){currentHealth = health.ToString();}
+		if(currentHealth.Length >= 4){currentHealth = currentHealth.Insert(currentHealth.Length-3, ",");}
+		healthText.text = currentHealth + " / " + maxHealthText;
 		
 		//Check if dead
 		if(health <= 0)
 		{
 			Die();
 		}
-		
-		//-------------------------OBJECTIVE DEBUGGGGG-----------------------------
-		if(Input.GetMouseButtonDown(1))
-		{
-			RaycastHit hit;
-			if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, Mathf.Infinity, layerMask))
-			{
-				currentObjectivePos = hit.point;
-			}
-		}
-		//-------------------------OBJECTIVE DEBUGGGGG-----------------------------
-		
-		
+			
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			Application.Quit();
 		}
 		
+		InteractionCheck();
+	}
+	
+	void InteractionCheck()
+	{
 		RaycastHit hit2;
 		if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit2, 6, layerMask))
 		{
@@ -108,9 +107,21 @@ public class PlayerScript : MonoBehaviour
 		}
 	}
 	
+	public void GotHit(int amount)
+	{
+		damageOverlayAnim.SetBool("GotHit", true);
+		ChangeHealth(-amount);
+		Invoke("stopDamageOverlay", 0.1f);
+	}
+	
+	void stopDamageOverlay()
+	{
+		damageOverlayAnim.SetBool("GotHit", false);
+	}
+	
 	public void ChangeHealth(int amount)
 	{
-		health = Mathf.Clamp(health + amount, 0, 500);
+		health = Mathf.Clamp(health + amount, 0, maxHealth);
 	}
 	
 	
@@ -131,6 +142,14 @@ public class PlayerScript : MonoBehaviour
 		{
 			//Touched LAVA
 			ChangeHealth(-100);
+		}
+	}
+	
+	private void OnTriggerEnter(Collider col) {
+		if(col.gameObject.tag == "Health")
+		{
+			ChangeHealth(col.transform.parent.GetComponent<Health>().healPoints);
+			Destroy(col.gameObject);
 		}
 	}
 	

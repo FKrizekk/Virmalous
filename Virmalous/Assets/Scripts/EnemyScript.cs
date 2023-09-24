@@ -14,6 +14,9 @@ public class EnemyScript : MonoBehaviour
 	public AudioClip[] clips;
 	
 	int health = 100;
+	int damage = 500;
+	float attackCooldown = 1.5f;
+	float lastAttackTime = 0;
 	
 	public GameObject ragdoll;
 	public GameObject blood;
@@ -25,6 +28,14 @@ public class EnemyScript : MonoBehaviour
 	{
 		nav = GetComponent<NavMeshAgent>();
 		player = GameObject.Find("Player");
+		
+		StartCoroutine(Screaming());
+	}
+	
+	IEnumerator Screaming()
+	{
+		yield return new WaitForSeconds(Random.Range(2.5f, 9f));
+		PlaySound(0);
 	}
 
 	// Update is called once per frame
@@ -33,7 +44,7 @@ public class EnemyScript : MonoBehaviour
 		//Update animator state
 		anim.SetBool("Walking", nav.hasPath);
 
-		int layerMask = 1 << 6;
+		int layerMask = 1 << 6 | 1 << 2;
 		layerMask = ~layerMask;
 		
 		RaycastHit hit;
@@ -52,9 +63,20 @@ public class EnemyScript : MonoBehaviour
 		}
 	}
 	
+	private void OnCollisionStay(Collision col) {
+		foreach (ContactPoint contact in col.contacts)
+		{
+			Debug.Log(contact.otherCollider.gameObject.name);
+			if(contact.otherCollider.gameObject.tag == "Player" && (Time.time - lastAttackTime) >= attackCooldown)
+			{
+				contact.otherCollider.gameObject.transform.parent.gameObject.GetComponent<PlayerScript>().GotHit(damage);
+				lastAttackTime = Time.time;
+			}
+		}
+	}
+	
 	void MoveTo(Vector3 targetPos)
 	{
-		PlaySound(0);
 		nav.SetDestination(targetPos);
 	}
 	
@@ -62,14 +84,18 @@ public class EnemyScript : MonoBehaviour
 	{
 		killPoint = point;
 		health -= amount;
+		Bleed();
 	}
 	
+	void Bleed()
+	{
+		Instantiate(blood, killPoint, Quaternion.identity);
+	}
 	
 	void Death()
 	{
 		GameObject deadguy = Instantiate(ragdoll, transform.position, Quaternion.identity);
 		deadguy.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position).normalized * 100, ForceMode.VelocityChange);
-		Instantiate(blood, killPoint, Quaternion.identity);
 		Destroy(gameObject);
 	}
 	

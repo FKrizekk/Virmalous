@@ -12,6 +12,8 @@ TagManager:
   - Lava
   - Door
   - Screen
+  - Health
+  - EnemyRagdoll
   layers:
   - Default
   - TransparentFX
