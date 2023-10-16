@@ -33,7 +33,8 @@ public class PlayerScript : MonoBehaviour
 	//UI
 	Image healthBar;
 	TMP_Text healthText;
-	public Animator damageOverlayAnim;
+	public static Animator damageOverlayAnim;
+	public static Animator healOverlayAnim;
 
 	public static bool isInteracting = false;
 	public static bool isReloading = false;
@@ -55,8 +56,11 @@ public class PlayerScript : MonoBehaviour
 		
 		healthBar = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthBar").GetComponent<Image>(); //The Health Bar Image changed based on health
 		healthText = GameObject.Find("Player/Canvas/UIParent/HealthParent/HealthText").GetComponent<TMP_Text>();
-		
-		LockCursor();
+
+		healOverlayAnim = GameObject.Find("HealOverlay").GetComponent<Animator>();
+        damageOverlayAnim = GameObject.Find("DamageOverlay").GetComponent<Animator>();
+
+        LockCursor();
 		
 		//Disable vsync
 		QualitySettings.vSyncCount = 0;
@@ -111,19 +115,20 @@ public class PlayerScript : MonoBehaviour
 	
 	public void GotHit(int amount)
 	{
-		damageOverlayAnim.SetBool("GotHit", true);
 		ChangeHealth(-amount);
-		Invoke("stopDamageOverlay", 0.1f);
-	}
-	
-	void stopDamageOverlay()
-	{
-		damageOverlayAnim.SetBool("GotHit", false);
 	}
 	
 	public static void ChangeHealth(int amount)
 	{
 		health = Mathf.Clamp(health + amount, 0, maxHealth);
+		if(Mathf.Abs(amount) == amount)
+		{
+			healOverlayAnim.SetBool("GotHealed", true);
+		}
+		else
+		{
+			damageOverlayAnim.SetBool("GotHit", true);
+		}
 	}
 	
 	

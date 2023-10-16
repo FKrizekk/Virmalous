@@ -131,25 +131,27 @@ public class PlayerMovement : MonoBehaviour
 			inputVector = new Vector3(moveX, 0, moveY);
 		}
 
+		if(moveX != 0 || moveY!= 0)
+		{
+			// Define the source direction and the target direction
+			Vector3 sourceDirection = slideDirection;
+			Vector3 targetDirection = transform.TransformDirection(inputVector);
 
-        // Define the source direction and the target direction
-        Vector3 sourceDirection = slideDirection;
-		Vector3 targetDirection = transform.TransformDirection(inputVector);
+			// Calculate the rotation to align the source with the target
+			Quaternion startRotation = Quaternion.LookRotation(sourceDirection);
+			Quaternion endRotation = Quaternion.LookRotation(targetDirection);
 
-		// Calculate the rotation to align the source with the target
-        Quaternion startRotation = Quaternion.LookRotation(sourceDirection);
-        Quaternion endRotation = Quaternion.LookRotation(targetDirection);
+			float step = 0.5f;
 
-		float step = 10f;
+			// Interpolate between start and end rotation over several frames
+			Quaternion currentRotation = Quaternion.Slerp(startRotation, endRotation, step);
 
-        // Interpolate between start and end rotation over several frames
-        Quaternion currentRotation = Quaternion.Slerp(startRotation, endRotation, step);
+			slideDirection += currentRotation * Vector3.forward;
 
-        slideDirection += currentRotation * sourceDirection;
+			rb.velocity = new Vector3(slideDirection.x * varSlideForce, rb.velocity.y, slideDirection.z * varSlideForce);
 
-		rb.velocity = new Vector3(slideDirection.x * varSlideForce, rb.velocity.y, slideDirection.z * varSlideForce);
-
-		varSlideForce = Mathf.Clamp(rb.velocity.magnitude, 0, SlideForce);
+			varSlideForce = Mathf.Clamp(rb.velocity.magnitude, 0, SlideForce);
+		}
     }
 
     void SlideStop()
@@ -225,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
 			rb.velocity = new Vector3(moveVector.x, rb.velocity.y, moveVector.z);
 		}else
 		{
-            rb.velocity = new Vector3(airMoveVector.x, rb.velocity.y, airMoveVector.z);
+			rb.AddForce(new Vector3(airMoveVector.x, 0, airMoveVector.z));
         }
 		
 		
@@ -253,6 +255,11 @@ public class PlayerMovement : MonoBehaviour
 		{
 			cam.transform.eulerAngles = cam.transform.eulerAngles + new Vector3(mouseY,0,0);
 		}
+	}
+
+	public void Dash()
+	{
+
 	}
 
 	

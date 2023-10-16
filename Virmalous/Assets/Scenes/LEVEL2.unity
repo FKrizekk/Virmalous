@@ -8269,7 +8269,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0.641
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -20379,7 +20379,7 @@ GameObject:
   - component: {fileID: 1853609177}
   - component: {fileID: 1853609176}
   m_Layer: 3
-  m_Name: OmniBlade
+  m_Name: GravBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20455,7 +20455,7 @@ GameObject:
   - component: {fileID: 1877687415}
   - component: {fileID: 1877687414}
   m_Layer: 3
-  m_Name: OmniBladeFill
+  m_Name: GravBladeFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23667,3 +23667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f1ba8df83c16a4c8a5975ff1c44632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  medkitImage: {fileID: 692468949}
+  medkitText: {fileID: 824608995}
+  dashImage: {fileID: 1724916545}
+  gravBladeImage: {fileID: 1877687414}
