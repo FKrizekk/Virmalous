@@ -29,8 +29,8 @@ public class TransfererScript : MonoBehaviour
 	public void StartLoad()
 	{
 		string currentScene = SceneManager.GetActiveScene().name;
-		string nextScene = "LEVEL" + (int.Parse(currentScene.Split("LEVEL")[1]) + 1);
-		StartCoroutine(LoadSceneAsync(nextScene));
+		//string nextScene = "LEVEL" + (int.Parse(currentScene.Split("LEVEL")[1]) + 1);
+		StartCoroutine(LoadSceneAsync(currentScene));
 	}
 	
 	private IEnumerator LoadSceneAsync(string sceneToLoad)

@@ -12568,7 +12568,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
     volumeMultiplier: 1
   - clip: {fileID: 8300000, guid: cd092ad13de41c24c9d3838981942e04, type: 3}
-    volumeMultiplier: 1
+    volumeMultiplier: 0.3
   - clip: {fileID: 8300000, guid: 49935d2469955e347b4f657da6f18e85, type: 3}
     volumeMultiplier: 1
   - clip: {fileID: 8300000, guid: 695b5da710e34c141acb6d1f84c31bef, type: 3}

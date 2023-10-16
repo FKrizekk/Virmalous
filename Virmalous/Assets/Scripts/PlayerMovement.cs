@@ -65,8 +65,9 @@ public class PlayerMovement : MonoBehaviour
 			horizontalVelocity.y = 0f;
 			
 			rb.AddForce(new Vector3(0,jumpForce,0), ForceMode.VelocityChange);
-			
-			rb.velocity += horizontalVelocity;
+            PlayJumpSound(surface);
+
+            rb.velocity += horizontalVelocity;
 		}
 		
 		//Check slide
@@ -291,7 +292,6 @@ public class PlayerMovement : MonoBehaviour
 		if(col.gameObject.tag == "Wood" || col.gameObject.tag == "Stone")
 		{
 			grounded = false;
-			PlayJumpSound(col.gameObject.tag);
 		}
 	}
 	
