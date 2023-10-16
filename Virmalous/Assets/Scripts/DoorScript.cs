@@ -9,7 +9,7 @@ public class DoorScript : MonoBehaviour
 	
 	public void AnimationStart()
 	{
-		source.PlayOneShot(doorSound, PlayerScript.MasterVol*PlayerScript.SfxVol);
+		source.PlayOneShot(doorSound);
 		PlayerScript.cameraShake.Shake(1f,0.2f);
 	}
 }

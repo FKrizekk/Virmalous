@@ -60,7 +60,7 @@ public class InteractableScreenScript : MonoBehaviour
 	//The function the button on the canvas calls
 	public void ButtonPressed()
 	{
-		source.PlayOneShot(clip, PlayerScript.MasterVol*PlayerScript.SfxVol);
+		source.PlayOneShot(clip);
 		
 		if(currentStatus == status1)
 		{

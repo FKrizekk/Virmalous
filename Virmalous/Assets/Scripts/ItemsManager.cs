@@ -16,4 +16,13 @@ public class ItemsManager : MonoBehaviour
 	public static float gravBladeTeleportCooldown = 0.5f;
 	public static float gravBladeCooldown = 5f;
 	public static float gravBladeCharge = 0f;
+
+    private void Update()
+    {
+		if (Input.GetKeyDown("e") && medkitCount > 0)
+		{
+			medkitCount--;
+			PlayerScript.ChangeHealth(5000);
+		}
+    }
 }

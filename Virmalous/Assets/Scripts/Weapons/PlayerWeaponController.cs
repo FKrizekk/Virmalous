@@ -22,6 +22,10 @@ public class PlayerWeaponController : MonoBehaviour
 		{
 			SetGun(0);
 		}
+		else if(Input.GetKeyDown("2"))
+		{
+			SetGun(1);
+		}
 	}
 	
 	void SetGun(int index)

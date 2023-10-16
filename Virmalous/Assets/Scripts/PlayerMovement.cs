@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -18,17 +19,13 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject cam;
 	public Rigidbody rb;
 	
-	public GameObject speedlines;
-	ParticleSystem speeldinesParticleSystem;
-	
-	float MoveForce = 20f;
-	float AirMoveForce = 40f;
-	float SlideForce = 25f;
-	float varSlideForce = 25f;
-	float maxHorizontalVelocity = 4f;
+	float MoveForce = 18f;
+	float AirMoveForce = 15;
+	float SlideForce = 20f;
+	float varSlideForce = 20f;
+	float maxHorizontalVelocity = 20f;
 	float maxAirHorizontalVelocity = 20f;
 	float MouseSensitivity = 2f;
-	public float groundSpeed = 0f;
 	float jumpForce = 13.5f;
 	
 	bool sliding = false;
@@ -51,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		cam = GameObject.Find("CameraParent");
 		rb = GetComponent<Rigidbody>();
-		
-		speeldinesParticleSystem = speedlines.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
 		
 		StartCoroutine(Footsteps());
 	}
@@ -112,7 +107,6 @@ public class PlayerMovement : MonoBehaviour
 		
 		if(grounded)
 		{
-			rb.AddForce(slideDirection * SlideForce, ForceMode.VelocityChange);
 			varSlideForce = MoveForce;
 		}else{
 			varSlideForce = 1f;
@@ -136,11 +130,29 @@ public class PlayerMovement : MonoBehaviour
 		{
 			inputVector = new Vector3(moveX, 0, moveY);
 		}
-		
-		rb.AddForce(slideDirection*varSlideForce, ForceMode.VelocityChange);
-	}
-	
-	void SlideStop()
+
+
+        // Define the source direction and the target direction
+        Vector3 sourceDirection = slideDirection;
+		Vector3 targetDirection = transform.TransformDirection(inputVector);
+
+		// Calculate the rotation to align the source with the target
+        Quaternion startRotation = Quaternion.LookRotation(sourceDirection);
+        Quaternion endRotation = Quaternion.LookRotation(targetDirection);
+
+		float step = 10f;
+
+        // Interpolate between start and end rotation over several frames
+        Quaternion currentRotation = Quaternion.Slerp(startRotation, endRotation, step);
+
+        slideDirection += currentRotation * sourceDirection;
+
+		rb.velocity = new Vector3(slideDirection.x * varSlideForce, rb.velocity.y, slideDirection.z * varSlideForce);
+
+		varSlideForce = Mathf.Clamp(rb.velocity.magnitude, 0, SlideForce);
+    }
+
+    void SlideStop()
 	{
 		canMove = true;
 		sliding = false;
@@ -203,15 +215,18 @@ public class PlayerMovement : MonoBehaviour
 		{
 			inputVector = new Vector3(moveX, 0, moveY);
 		}
-		
-		//Move Player
-		if(grounded)
+
+		Vector3 moveVector = transform.TransformDirection(inputVector) * MoveForce;
+		Vector3 airMoveVector = transform.TransformDirection(inputVector) * AirMoveForce;
+
+        //Move Player
+        if (grounded)
 		{
-			rb.AddRelativeForce(inputVector * MoveForce, ForceMode.VelocityChange);
+			rb.velocity = new Vector3(moveVector.x, rb.velocity.y, moveVector.z);
 		}else
 		{
-			rb.AddRelativeForce(inputVector * AirMoveForce , ForceMode.Force);
-		}
+            rb.velocity = new Vector3(airMoveVector.x, rb.velocity.y, airMoveVector.z);
+        }
 		
 		
 	}
@@ -281,12 +296,12 @@ public class PlayerMovement : MonoBehaviour
 				stepIndex+=1;
 				try
 				{
-					source.PlayOneShot(stone.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(stone.run[stepIndex]);
 				}
 				catch (System.Exception)
 				{
 					stepIndex = 0;
-					source.PlayOneShot(stone.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(stone.run[stepIndex]);
 					break;
 				}
 				break;
@@ -294,17 +309,17 @@ public class PlayerMovement : MonoBehaviour
 				stepIndex+=1;
 				try
 				{
-					source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(wood.run[stepIndex]);
 				}
 				catch (System.Exception)
 				{
 					stepIndex = 0;
-					source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(wood.run[stepIndex]);
 					break;
 				}
 				break;
 			default:
-				source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				source.PlayOneShot(wood.run[stepIndex]);
 				break;
 		}
 	}
@@ -317,12 +332,12 @@ public class PlayerMovement : MonoBehaviour
 				stepIndex+=1;
 				try
 				{
-					source.PlayOneShot(stone.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(stone.jump[stepIndex]);
 				}
 				catch (System.Exception)
 				{
 					stepIndex = 0;
-					source.PlayOneShot(stone.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(stone.jump[stepIndex]);
 					break;
 				}
 				break;
@@ -330,17 +345,17 @@ public class PlayerMovement : MonoBehaviour
 				stepIndex+=1;
 				try
 				{
-					source.PlayOneShot(wood.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(wood.jump[stepIndex]);
 				}
 				catch (System.Exception)
 				{
 					stepIndex = 0;
-					source.PlayOneShot(wood.jump[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(wood.jump[stepIndex]);
 					break;
 				}
 				break;
 			default:
-				source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				source.PlayOneShot(wood.run[stepIndex]);
 				break;
 		}
 	}
@@ -353,12 +368,12 @@ public class PlayerMovement : MonoBehaviour
 				stepIndex+=1;
 				try
 				{
-					source.PlayOneShot(stone.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(stone.land[stepIndex]);
 				}
 				catch (System.Exception)
 				{
 					stepIndex = 0;
-					source.PlayOneShot(stone.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(stone.land[stepIndex]);
 					break;
 				}
 				break;
@@ -366,17 +381,17 @@ public class PlayerMovement : MonoBehaviour
 				stepIndex+=1;
 				try
 				{
-					source.PlayOneShot(wood.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(wood.land[stepIndex]);
 				}
 				catch (System.Exception)
 				{
 					stepIndex = 0;
-					source.PlayOneShot(wood.land[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+					source.PlayOneShot(wood.land[stepIndex]);
 					break;
 				}
 				break;
 			default:
-				source.PlayOneShot(wood.run[stepIndex], PlayerScript.MasterVol*PlayerScript.SfxVol);
+				source.PlayOneShot(wood.run[stepIndex]);
 				break;
 		}
 	}

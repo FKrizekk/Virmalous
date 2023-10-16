@@ -87,7 +87,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -1.071, y: 91.676, z: 86.909}
+        value: {x: 0, y: 90, z: -330}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -96,7 +96,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.33333334
-        value: {x: -1.071, y: 91.676, z: 86.909}
+        value: {x: 0, y: 90, z: -330}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -105,7 +105,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.48333332
-        value: {x: -3.109, y: 91.347, z: 154.901}
+        value: {x: 0, y: 90, z: -390}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -201,7 +201,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: gunParent/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
+    path: gunParent/revolver/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -235,7 +235,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -278,11 +278,81 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002/Bone.003
   m_PositionCurves: []
   m_ScaleCurves: []
-  m_FloatCurves: []
-  m_PPtrCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: ParticleSystems/MuzzleFlash
+    classID: 1
+    script: {fileID: 0}
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    attribute: m_Materials.Array.data[1]
+    path: gunParent/revolver/Cylinder/Bullets/bullet1
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    attribute: m_Materials.Array.data[1]
+    path: gunParent/revolver/Cylinder/Bullets/bullet2
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    attribute: m_Materials.Array.data[1]
+    path: gunParent/revolver/Cylinder/Bullets/bullet3
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    attribute: m_Materials.Array.data[1]
+    path: gunParent/revolver/Cylinder/Bullets/bullet4
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    attribute: m_Materials.Array.data[1]
+    path: gunParent/revolver/Cylinder/Bullets/bullet5
+    classID: 23
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    attribute: m_Materials.Array.data[1]
+    path: gunParent/revolver/Cylinder/Bullets/bullet6
+    classID: 23
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -319,33 +389,88 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2412909947
+      path: 739154104
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 681679251
+      path: 1202033827
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 63951503
+      path: 3138821648
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    - serializedVersion: 2
+      path: 3470979438
+      attribute: 2086281974
+      script: {fileID: 0}
+      typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3480426258
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1450854056
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 561870398
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3206144925
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 3357463307
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1360495281
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 23
+      customType: 21
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    - {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    - {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    - {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    - {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
+    - {fileID: 2100000, guid: f493965287462bf42bff17dd7cd481aa, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -477,7 +602,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -1.071
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -486,7 +611,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -1.071
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -495,7 +620,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.48333332
-        value: -3.109
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -514,7 +639,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 91.676
+        value: 90
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -523,7 +648,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 91.676
+        value: 90
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -532,7 +657,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.48333332
-        value: 91.347
+        value: 90
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -551,7 +676,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 86.909
+        value: -330
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -560,7 +685,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 86.909
+        value: -330
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -569,7 +694,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.48333332
-        value: 154.901
+        value: -390
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -764,7 +889,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: gunParent/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
+    path: gunParent/revolver/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -810,7 +935,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: gunParent/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
+    path: gunParent/revolver/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -856,7 +981,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: gunParent/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
+    path: gunParent/revolver/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -893,7 +1018,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -930,7 +1055,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -967,7 +1092,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1013,7 +1138,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002/Bone.003
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1059,7 +1184,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002/Bone.003
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1105,7 +1230,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002/Bone.003
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1256,6 +1381,34 @@ AnimationClip:
     path: gunParent/revolver/Hammer
     classID: 4
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.56666666
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: ParticleSystems/MuzzleFlash
+    classID: 1
+    script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
@@ -1264,7 +1417,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: gunParent/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1274,7 +1427,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: gunParent/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1284,7 +1437,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: gunParent/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1294,7 +1447,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    path: gunParent/revolver/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1304,7 +1457,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    path: gunParent/revolver/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1314,27 +1467,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002/Bone.003
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: gunParent
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: gunParent
+    path: gunParent/revolver/rightHand/Armature/main/Index/Bone.005/Bone.006/Bone.007
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1353,8 +1486,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: gunParent/revolver/Trigger
+    attribute: m_LocalEulerAngles.y
+    path: gunParent
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1363,8 +1496,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: gunParent/revolver/Trigger
+    attribute: m_LocalEulerAngles.x
+    path: gunParent
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1374,7 +1507,27 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: gunParent/revolver/Trigger
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002/Bone.003
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: gunParent/revolver/rightHand/Armature/main/Thumb/Bone.002/Bone.003
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1495,7 +1648,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002
+    path: gunParent/revolver/Trigger
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1505,7 +1658,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002
+    path: gunParent/revolver/Trigger
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1515,7 +1668,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: gunParent/rightHand/Armature/main/Thumb/Bone.002
+    path: gunParent/revolver/Trigger
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1599,11 +1752,4 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
-    messageOptions: 0
-  - time: 0.6
-    functionName: StopShoot
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
     messageOptions: 0

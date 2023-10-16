@@ -13,8 +13,7 @@ public class ShotgunBasic : BaseWeapon
 
     private void Update()
     {
-        ammoCountText.text = PlayerScript.ammoCounts[weaponIndex].ToString() + "/" + maxAmmo.ToString();
-        SwayAndRotate();
+        WeaponUpdate();
 
         if (Input.GetMouseButtonDown(0) && Time.time - lastShotTime > 1/firerate && !PlayerScript.isInteracting && !PlayerScript.isReloading)
         {

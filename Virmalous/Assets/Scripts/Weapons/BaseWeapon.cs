@@ -57,6 +57,12 @@ public abstract class BaseWeapon : MonoBehaviour
         ammoCountText = GameObject.Find("WeaponInfo/AmmoCount").GetComponent<TMP_Text>();
     }
 
+    protected void WeaponUpdate()
+    {
+        ammoCountText.text = PlayerScript.ammoCounts[weaponIndex].ToString() + "/" + maxAmmo;
+        SwayAndRotate();
+    }
+
     public virtual void SwayAndRotate()
     {
         //Rotate gun towards reticle world position	

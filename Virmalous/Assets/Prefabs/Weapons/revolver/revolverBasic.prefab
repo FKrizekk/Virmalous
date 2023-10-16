@@ -1195,8 +1195,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3626418914591394272}
   m_LocalRotation: {x: 0.5, y: -0.50000006, z: -0.5, w: 0.50000006}
-  m_LocalPosition: {x: 3.319073, y: -0.31175995, z: 0.17763233}
-  m_LocalScale: {x: 3.6251116, y: 3.625111, z: 3.625111}
+  m_LocalPosition: {x: 3.3190737, y: -0.31175995, z: 0.17763233}
+  m_LocalScale: {x: 3.6251116, y: 3.6251116, z: 3.6251116}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5019443429187371972}
@@ -1313,7 +1313,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4034158705886786001}
-  m_LocalRotation: {x: 0.18301277, y: -0.6830127, z: 0.18301277, w: -0.6830127}
+  m_LocalRotation: {x: -0.18301266, y: 0.6830127, z: -0.18301266, w: 0.6830127}
   m_LocalPosition: {x: 0.66403276, y: 0.52148825, z: -0.000000059948704}
   m_LocalScale: {x: 0.22867186, y: 0.22867185, z: 0.22867183}
   m_ConstrainProportionsScale: 0
@@ -1321,7 +1321,7 @@ Transform:
   - {fileID: 7177245559776909601}
   m_Father: {fileID: 2155399262382049561}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 330}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -30}
 --- !u!33 &8709111081507700979
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1329,7 +1329,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4034158705886786001}
-  m_Mesh: {fileID: -7387706064836869012, guid: eeb6f2da6f04ffe4985027f61d9b235e, type: 3}
+  m_Mesh: {fileID: -7387706064836869012, guid: 5b1920135a905644e813521d91bd735b, type: 3}
 --- !u!23 &2592555419864987736
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12552,12 +12552,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8052869280730366610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7317d6feaf003a4d98f7377b1adc90b, type: 3}
+  m_Script: {fileID: 11500000, guid: 27d3a95834e24fb40b88349b9328a55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
   maxAmmo: 6
   firerate: 1
+  piercing: 2
   weaponIndex: 0
   relativePos: {x: 0.38, y: -0.36, z: 0.79}
   swayAmount: 0.2
@@ -12567,7 +12568,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
     volumeMultiplier: 1
   - clip: {fileID: 8300000, guid: cd092ad13de41c24c9d3838981942e04, type: 3}
-    volumeMultiplier: 0.3
+    volumeMultiplier: 1
   - clip: {fileID: 8300000, guid: 49935d2469955e347b4f657da6f18e85, type: 3}
     volumeMultiplier: 1
   - clip: {fileID: 8300000, guid: 695b5da710e34c141acb6d1f84c31bef, type: 3}
@@ -12575,8 +12576,6 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 658390573eb0b734c8b96e3dd74a037a, type: 3}
     volumeMultiplier: 1
   rayParticleSystem: {fileID: 2999147992212181464}
-  sphereCastRadius: 0.1
-  piercing: 2
 --- !u!95 &6736585401201172200
 Animator:
   serializedVersion: 4

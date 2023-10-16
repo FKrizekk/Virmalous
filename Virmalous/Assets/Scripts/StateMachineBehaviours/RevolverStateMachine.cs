@@ -7,12 +7,13 @@ public class RevolverStateMachine : StateMachineBehaviour {
 		if(stateInfo.IsTag("reload"))
 		{
 			animator.SetBool("Reload", false);
+			PlayerScript.isReloading = true;
 		}
 	}
 	
 	public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) {
 		Revolver revolver = GameObject.Find("revolverBasic(Clone)").GetComponent<Revolver>();
-		
+
 		if(animatorStateInfo.IsTag("reload"))
 		{
 			PlayerScript.isReloading = false;

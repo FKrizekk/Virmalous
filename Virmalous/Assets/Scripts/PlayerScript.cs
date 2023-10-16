@@ -7,14 +7,15 @@ using TMPro;
 public class PlayerScript : MonoBehaviour
 {
 	bool isCursorLocked = true; // Initial state: cursor is locked
+
+	public static int[] ammoCounts =
+	{
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+	};
+
 	
 	//Layermask for raycasting
 	public static int layerMask;
-	
-	//Volume
-	public static float MasterVol = 0.5f;
-	public static float SfxVol = 0.5f;
-	public static float MusicVol = 0.5f;
 	
 	public static GameObject cam;
 	
@@ -24,8 +25,8 @@ public class PlayerScript : MonoBehaviour
 	public static UIShake uIShake;
 	
 	
-	int health = 2000;
-	int maxHealth = 10000;
+	public static int health = 2000;
+	public static int maxHealth = 10000;
 	
 	Vector3 currentObjectivePos;
 	
@@ -35,6 +36,7 @@ public class PlayerScript : MonoBehaviour
 	public Animator damageOverlayAnim;
 
 	public static bool isInteracting = false;
+	public static bool isReloading = false;
 	
 	//Start is called before the first frame update
 	void Start()
@@ -119,7 +121,7 @@ public class PlayerScript : MonoBehaviour
 		damageOverlayAnim.SetBool("GotHit", false);
 	}
 	
-	public void ChangeHealth(int amount)
+	public static void ChangeHealth(int amount)
 	{
 		health = Mathf.Clamp(health + amount, 0, maxHealth);
 	}
@@ -148,7 +150,7 @@ public class PlayerScript : MonoBehaviour
 	private void OnTriggerEnter(Collider col) {
 		if(col.gameObject.tag == "Health")
 		{
-			ChangeHealth(col.transform.parent.GetComponent<Health>().healPoints);
+			ItemsManager.medkitCount++;
 			Destroy(col.gameObject);
 		}
 	}
