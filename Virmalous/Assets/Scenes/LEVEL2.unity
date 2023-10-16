@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transferer: {fileID: 3894817888446942618}
-  damageOverlayAnim: {fileID: 1411175748}
 --- !u!1001 &56875039
 PrefabInstance:
   m_ObjectHideFlags: 0

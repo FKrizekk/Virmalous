@@ -415,7 +415,7 @@ MonoBehaviour:
     electrifiedTime: 2
   maxHealth: 100
   damage: 500
-  attackRate: 1
+  attackRate: 3
   speed: 10
   angularSpeed: 270
   acceleration: 15
