@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Style.uss?fileID=7433441132597879392&amp;guid=5d8cae0d1a37b8240a41d4b90a4f9962&amp;type=3#Style" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center; justify-content: center; -unity-font: url(&apos;project://database/Assets/Textures/Fonts/PixeloidSansBold.ttf?fileID=12800000&amp;guid=5a38ab6c7d5eb0d41b5d94764a1adc74&amp;type=3#PixeloidSansBold&apos;);">
+        <ui:Label text="PAUSED" display-tooltip-when-elided="true" class="basic-label" style="font-size: 100%;" />
+        <ui:VisualElement name="Buttons" style="height: 508px; width: 612px; border-left-width: 15px; border-right-width: 15px; border-top-width: 15px; border-bottom-width: 15px; align-items: center; justify-content: center; -unity-font: url(&apos;project://database/Assets/Textures/Fonts/PixeloidSansBold.ttf?fileID=12800000&amp;guid=5a38ab6c7d5eb0d41b5d94764a1adc74&amp;type=3#PixeloidSansBold&apos;);">
+            <ui:Button text="RESUME" name="resumeButton" class="button-style" />
+            <ui:Button text="SETTINGS" name="settingsButton" class="button-style" />
+            <ui:Button text="QUIT" name="quitButton" class="button-style" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
