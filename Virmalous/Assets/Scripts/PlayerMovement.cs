@@ -177,9 +177,6 @@ public class PlayerMovement : MonoBehaviour
 		if(!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d") && grounded && !sliding)
 		{
 			rb.AddForce(new Vector3(-rb.velocity.x/3, 0, -rb.velocity.z/3), ForceMode.VelocityChange);
-		}else if(!Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("s") && !Input.GetKey("d") && !grounded)
-		{
-			//rb.AddForce(new Vector3(-rb.velocity.x/15, 0, -rb.velocity.z/15));
 		}
 		
 		// Limit the velocity when not boosting
