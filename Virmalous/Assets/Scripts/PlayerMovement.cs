@@ -19,17 +19,18 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject cam;
 	public Rigidbody rb;
 	
-	float MoveForce = 18f;
-	float AirMoveForce = 15;
+	float MoveForce = 15f;
+	float AirMoveForce = 12;
 	float SlideForce = 20f;
+	float dashForce = 40f;
 	float varSlideForce = 20f;
 	float maxHorizontalVelocity = 20f;
-	float maxAirHorizontalVelocity = 20f;
+	float maxAirHorizontalVelocity = 40f;
 	float MouseSensitivity = 2f;
 	float jumpForce = 13.5f;
 	
 	bool sliding = false;
-	bool grounded = false;
+	public static bool grounded = false;
 	bool isBoosting = false;
 
 	Vector3 slideDirection;
@@ -260,10 +261,9 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Dash()
 	{
-
+		rb.AddForce(rb.velocity.normalized * dashForce, ForceMode.Impulse);
 	}
 
-	
 	void OnCollisionEnter(Collision col)
 	{
 		if(col.gameObject.tag == "Wood" || col.gameObject.tag == "Stone")
@@ -410,7 +410,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			PlayFootstep();
 		}
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.3f);
 		StartCoroutine(Footsteps());
 	}
 }

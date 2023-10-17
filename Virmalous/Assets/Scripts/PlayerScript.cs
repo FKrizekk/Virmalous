@@ -18,6 +18,8 @@ public class PlayerScript : MonoBehaviour
 	public static int layerMask;
 	
 	public static GameObject cam;
+
+	public static GameManager game;
 	
 	public GameObject transferer;
 	
@@ -59,6 +61,8 @@ public class PlayerScript : MonoBehaviour
 
 		healOverlayAnim = GameObject.Find("HealOverlay").GetComponent<Animator>();
         damageOverlayAnim = GameObject.Find("DamageOverlay").GetComponent<Animator>();
+
+		game = GameObject.Find("Level").GetComponent<GameManager>();
 
         LockCursor();
 		

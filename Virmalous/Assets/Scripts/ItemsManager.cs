@@ -62,7 +62,7 @@ public class ItemsManager : MonoBehaviour
 		dashImage.fillAmount = Mathf.Clamp((Time.time - dashLastUseTime) / dashCooldown, 0, 1);
 
 		//GravBlade
-		gravBladeImage.fillAmount = Mathf.Clamp((Time.time - dashLastUseTime) / gravBladeCooldown, 0, 1);
+		gravBladeImage.fillAmount = Mathf.Clamp((Time.time - gravBladeLastUseTime) / gravBladeCooldown, 0, 1);
 	}
 
 	void ThrowGravBlade()
