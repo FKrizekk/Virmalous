@@ -1387,7 +1387,7 @@ Camera:
   field of view: 74
   orthographic: 0
   orthographic size: 5
-  m_Depth: 1
+  m_Depth: 4
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 8
@@ -1399,7 +1399,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!114 &5982515654020391974
@@ -2182,7 +2182,7 @@ Camera:
   field of view: 120
   orthographic: 0
   orthographic size: 10
-  m_Depth: 2
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 375
@@ -2221,8 +2221,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 1050406503818197001}
+  m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2

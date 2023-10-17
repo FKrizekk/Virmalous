@@ -12561,7 +12561,7 @@ MonoBehaviour:
   piercing: 2
   weaponIndex: 0
   relativePos: {x: 0.38, y: -0.36, z: 0.79}
-  swayAmount: 0.2
+  swayAmount: 0.1
   swaySpeed: 5
   barrel: {fileID: 6449800255522941205}
   clips:

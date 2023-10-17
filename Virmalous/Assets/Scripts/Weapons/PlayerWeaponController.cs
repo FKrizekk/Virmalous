@@ -30,6 +30,8 @@ public class PlayerWeaponController : MonoBehaviour
 	
 	void SetGun(int index)
 	{
+		PlayerScript.isReloading = false;
+
 		if(obj != null)
 		{
 			Destroy(obj);
