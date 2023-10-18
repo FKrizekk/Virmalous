@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Announcer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject itemPrefab;
+    public Item[] items;
 
-    // Update is called once per frame
-    void Update()
+    public void AnnounceItem(string tag)
     {
-        
+        foreach (var item in items)
+        {
+            if (item.tag == tag)
+            {
+                Instantiate(itemPrefab);
+            }
+        }
     }
 }
