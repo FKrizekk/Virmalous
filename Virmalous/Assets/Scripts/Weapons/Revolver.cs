@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 //The Revolver is a basic hitscan handgun without any special stuff
 public class Revolver : BaseWeapon
@@ -10,6 +11,7 @@ public class Revolver : BaseWeapon
 	void Update()
 	{
 		WeaponUpdate();
+		RotateParticleSystem();
 
         if (Input.GetMouseButtonDown(0) && Time.time - lastShotTime > 1 / firerate && !PlayerScript.isInteracting && !PlayerScript.isReloading)
         {
@@ -21,6 +23,15 @@ public class Revolver : BaseWeapon
             Reload();
         }
     }
+
+	void RotateParticleSystem()
+	{
+		RaycastHit hit;
+		if(Physics.Raycast(cam.transform.position,cam.transform.forward, out hit, Mathf.Infinity, PlayerScript.layerMask))
+		{
+			rayParticleSystem.transform.rotation = Quaternion.LookRotation(hit.point - rayParticleSystem.transform.position);
+		}
+	}
 	
 	public void Shoot()
 	{

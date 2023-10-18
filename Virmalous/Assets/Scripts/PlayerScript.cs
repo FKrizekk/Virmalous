@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
 		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 	};
 
+	public Announcer announcer;
 	
 	//Layermask for raycasting
 	public static int layerMask;
@@ -160,6 +161,7 @@ public class PlayerScript : MonoBehaviour
 		if(col.gameObject.tag == "Health")
 		{
 			ItemsManager.medkitCount++;
+			announcer.AnnounceItem("medkit");
 			Destroy(col.gameObject);
 		}
 	}

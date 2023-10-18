@@ -21,11 +21,12 @@ public class PlayerMovement : MonoBehaviour
 	
 	float MoveForce = 15f;
 	float AirMoveForce = 12;
+	float crouchForce = 7f;
 	float SlideForce = 20f;
 	float dashForce = 40f;
 	float varSlideForce = 20f;
 	float maxHorizontalVelocity = 20f;
-	float maxAirHorizontalVelocity = 40f;
+	float maxAirHorizontalVelocity = 20f;
 	float MouseSensitivity = 2f;
 	float jumpForce = 13.5f;
 	
@@ -116,24 +117,25 @@ public class PlayerMovement : MonoBehaviour
 		
 		transform.localScale = new Vector3(0.5f,0.5f,0.5f);
 	}
-	
+
 	void Slide()
 	{
-		
+
 		Vector3 inputVector;
-		
+
 		//Get input
 		float moveX = Input.GetAxisRaw("Horizontal");
 		float moveY = Input.GetAxisRaw("Vertical");
-		if(Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
+		if (Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
 		{
-			inputVector = new Vector3(moveX/1.41421f,0,moveY/1.41421f);
-		}else
+			inputVector = new Vector3(moveX / 1.41421f, 0, moveY / 1.41421f);
+		} else
 		{
 			inputVector = new Vector3(moveX, 0, moveY);
 		}
 
-		if(moveX != 0 || moveY!= 0)
+		//Sliding
+		if ((moveX != 0 || moveY != 0) && Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z) > crouchForce+3)
 		{
 			// Define the source direction and the target direction
 			Vector3 sourceDirection = slideDirection;
@@ -153,6 +155,16 @@ public class PlayerMovement : MonoBehaviour
 			rb.velocity = new Vector3(slideDirection.x * varSlideForce, rb.velocity.y, slideDirection.z * varSlideForce);
 
 			varSlideForce = Mathf.Clamp(rb.velocity.magnitude, 0, SlideForce);
+		}//Crouching
+		else if ((moveX != 0 || moveY != 0) && Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z) <= crouchForce+3 && grounded)
+		{
+            Vector3 moveVector = transform.TransformDirection(inputVector) * crouchForce;
+
+            rb.velocity = new Vector3(moveVector.x, rb.velocity.y, moveVector.z);
+		}
+		else if(moveX == 0 && moveY == 0 && grounded && Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z) <= crouchForce + 3)
+		{
+			rb.velocity = new Vector3(0,rb.velocity.y, 0);
 		}
     }
 

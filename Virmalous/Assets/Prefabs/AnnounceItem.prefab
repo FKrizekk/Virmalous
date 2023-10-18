@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1176296220208059899}
   - component: {fileID: 4301680260774690077}
   - component: {fileID: 3497118966582968368}
-  - component: {fileID: 4994856760942378646}
+  - component: {fileID: -1970311255393740624}
   m_Layer: 0
-  m_Name: MessageItem
+  m_Name: AnnounceItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -834, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1176296220208059899
@@ -100,7 +100,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4994856760942378646
+--- !u!114 &-1970311255393740624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,9 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4213885580102214662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d289df57f2c3dd94c807ac61bd6adb2b, type: 3}
+  m_Script: {fileID: 11500000, guid: bfdaa76a7f1e9c744ac84f8ae6e990c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemImage: {fileID: 4301680260774690077}
+  _itemName: {fileID: 3091551169743736926}
 --- !u!1 &6027187068934807005
 GameObject:
   m_ObjectHideFlags: 0

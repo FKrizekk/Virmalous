@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Medkit
   image: {fileID: 21300000, guid: d8f50a31e3598364f83fb7c6d6bc2ae8, type: 3}
   description: You can heal yourself with this
+  tag: medkit

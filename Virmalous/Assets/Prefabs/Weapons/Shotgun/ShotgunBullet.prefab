@@ -103,6 +103,8 @@ MonoBehaviour:
   bulletSpeed: 15
   rb: {fileID: 5472870253187704680}
   damage: 0
+  piercing: 0
+  bulletHitPrefab: {fileID: 4838975812995819571, guid: f2654c0725482d248a569a510ffa2d76, type: 3}
 --- !u!65 &441005264592522299
 BoxCollider:
   m_ObjectHideFlags: 0

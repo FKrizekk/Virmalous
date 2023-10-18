@@ -1468,6 +1468,42 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &257515559857746732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8879677593821486917}
+  m_Layer: 3
+  m_Name: AnnouncerParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8879677593821486917
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257515559857746732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7074563074118497570}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &376428185731598210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,6 +2638,7 @@ RectTransform:
   - {fileID: 124069999333823442}
   - {fileID: 104801550240231345}
   - {fileID: 104801549242083702}
+  - {fileID: 8879677593821486917}
   m_Father: {fileID: 4824465212856975292}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2634,6 +2671,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938d98d2ef5fee64cb624a590462cf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  announcerParent: {fileID: 8879677593821486917}
+  itemPrefab: {fileID: 4213885580102214662, guid: 198fe32d58959584bb454c31ef979a7e, type: 3}
+  items:
+  - {fileID: 11400000, guid: 4f30c3ca95e1cfe4a9e9577514520dee, type: 2}
 --- !u!1 &3997358427932742237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,6 +3943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e128529657433a4aa70520b166fc2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  announcer: {fileID: 7942169452009888682}
   transferer: {fileID: 3997358427932742237}
 --- !u!114 &9144878381580098406
 MonoBehaviour:

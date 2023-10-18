@@ -10,6 +10,7 @@ namespace Assets.Scripts.Weapons
         public Rigidbody rb;
         public int damage;
         public int piercing;
+        public GameObject bulletHitPrefab;
 
         int targetsHit = 0;
 
@@ -25,13 +26,15 @@ namespace Assets.Scripts.Weapons
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag == "Enemy")
+            if(other.gameObject.tag == "Enemy" && targetsHit < piercing)
             {
                 other.gameObject.GetComponent<HitCollider>().Hit(damage, transform.position);
                 targetsHit++;
             }
-
-            if(other.gameObject.tag != "Bullet" && targetsHit >= piercing) { Die(); }
+            else if ((other.gameObject.tag != "Bullet" && targetsHit >= piercing) || ((other.gameObject.tag != "Player" && targetsHit >= piercing)))
+            {
+                Die();
+            }
         }
 
         void Die()
