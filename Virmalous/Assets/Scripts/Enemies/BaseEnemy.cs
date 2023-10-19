@@ -38,6 +38,7 @@ public abstract class BaseEnemy : Entity
     protected NavMeshAgent nav;
     protected GameObject player;
     protected int layerMask;
+    protected Rigidbody rb;
 
     protected bool playerInSight = false;
 
@@ -47,6 +48,7 @@ public abstract class BaseEnemy : Entity
 
         //Get references
         nav = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
 
         //Set layermask for raycasting

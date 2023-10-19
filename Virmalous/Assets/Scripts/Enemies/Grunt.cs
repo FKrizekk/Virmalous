@@ -13,7 +13,7 @@ public class Grunt : BaseEnemy
         //Move to player if in sight
         if (playerInSight) { nav.SetDestination(player.transform.position); }
 
-        anim.SetBool("Walking", nav.hasPath);
+        anim.SetBool("Walking", nav.hasPath && Vector3.Distance(player.transform.position, transform.position) > 5);
 
         EnemyUpdate();
     }
