@@ -91,19 +91,4 @@ public class GameData
 		
 		isCompleted = false
 	};
-	
-	public GameData(GameManager game)
-	{
-		MouseSensitivity = game.data.MouseSensitivity;
-		
-		MasterVol = game.data.MasterVol;
-		SfxVol = game.data.SfxVol;
-		MusicVol = game.data.MusicVol;
-		SpeechVol = game.data.SpeechVol;
-		
-		weaponStatus = game.data.weaponStatus;
-		equippedVariants = game.data.equippedVariants;
-		
-		as0 = game.data.as0;
-	}
 }

@@ -10,7 +10,7 @@ public static class SaveSystem
 		string path = Application.persistentDataPath + "/gameData.sus";
 		FileStream stream = new FileStream(path, FileMode.Create);
 		
-		GameData data = new GameData(game);
+		GameData data = game.data;
 		
 		formatter.Serialize(stream, data);
 		stream.Close();
@@ -31,7 +31,7 @@ public static class SaveSystem
 		}else
 		{
 			Debug.LogWarning("Save file not found in " + path + ", loading default values.");
-			return null;
+			return new GameData();
 		}
 	}
 }
