@@ -65,7 +65,7 @@ public class PlayerScript : MonoBehaviour
 
 		game = GameObject.Find("Level").GetComponent<GameManager>();
 
-        LockCursor();
+        //LockCursor();
 		
 		//Disable vsync
 		QualitySettings.vSyncCount = 0;

@@ -27,7 +27,7 @@ public class GameData
 {
 	//Controls
 	public float MouseSensitivity = 1f;
-	
+
 	//Audio
 	public float MasterVol = 0.5f;
 	public float SfxVol = 0.5f;

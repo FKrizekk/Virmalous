@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using TMPro;
 using UnityEngine;
 
@@ -27,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 	float varSlideForce = 20f;
 	float maxHorizontalVelocity = 20f;
 	float maxAirHorizontalVelocity = 20f;
-	float MouseSensitivity = 2f;
 	float jumpForce = 13.5f;
 	
 	bool sliding = false;
@@ -43,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
 	public AudioSource source;
 	int stepIndex = 0;
 	string surface = "Stone";
+
+	public GameManager game;
 	
 	
 	// Start is called before the first frame update
@@ -50,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		cam = GameObject.Find("CameraParent");
 		rb = GetComponent<Rigidbody>();
+
+		game = GameObject.Find("Level").GetComponent<GameManager>();
 		
 		StartCoroutine(Footsteps());
 	}
@@ -247,8 +251,8 @@ public class PlayerMovement : MonoBehaviour
 	void UpdateCamera()
 	{
 		//Get input
-		float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity;
-		float mouseY = Input.GetAxis("Mouse Y") * -MouseSensitivity;
+		float mouseX = Input.GetAxis("Mouse X") * game.data.MouseSensitivity;
+		float mouseY = Input.GetAxis("Mouse Y") * -game.data.MouseSensitivity;
 		
 		//Rotate Player (yaw)
 		transform.eulerAngles += new Vector3(0,mouseX,0);

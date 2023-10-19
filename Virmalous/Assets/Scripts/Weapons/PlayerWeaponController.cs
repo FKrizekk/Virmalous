@@ -10,22 +10,25 @@ public class PlayerWeaponController : MonoBehaviour
 	GameObject obj; //Instantiated/Equipped weapon
 	
 	GameObject gunParent;
+
+	GameManager game;
 	
 	void Start()
 	{
 		gunParent = GameObject.Find("GUNPARENT");
+		game = GameObject.Find("Level").GetComponent<GameManager>();
 	}
 	
 	void Update()
 	{
 		if(Input.GetKeyDown("1"))
 		{
-			SetGun(0);
+			SetGun(0 + game.data.equippedVariants[0]);
 		}
 		else if(Input.GetKeyDown("2"))
 		{
-			SetGun(1);
-		}
+            SetGun(4 + game.data.equippedVariants[1]);
+        }
 	}
 	
 	void SetGun(int index)

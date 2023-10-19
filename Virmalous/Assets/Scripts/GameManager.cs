@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 	public GameData data;
+    public AudioMixer mixer;
 
-    private void Start()
+    
+
+    private void Awake()
     {
         data = SaveSystem.LoadGame();
-        Debug.Log(data.MasterVol);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("t"))
-        {
-            data.MasterVol = 20f;
-        }
-        if (Input.GetKeyDown("i"))
-        {
-            SaveSystem.SaveGame(this);
-        }
+        //Update audio mixer
+        mixer.SetFloat("MasterVol", data.MasterVol);
+        mixer.SetFloat("SfxVol", data.SfxVol);
+        mixer.SetFloat("MusicVol", data.MusicVol);
+        mixer.SetFloat("SpeechVol", data.SpeechVol);
     }
+
+    
 }
