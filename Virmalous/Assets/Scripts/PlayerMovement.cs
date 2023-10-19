@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(Time.timeScale == 1f) { UpdateCamera(); }
+		if(Time.timeScale != 0f) { UpdateCamera(); }
 
         //Get input
         float moveX = Input.GetAxisRaw("Horizontal");
