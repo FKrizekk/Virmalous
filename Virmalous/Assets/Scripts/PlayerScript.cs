@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
 {
 	public static int[] ammoCounts =
 	{
-		0,0,0,0
+		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 	};
 
 	public Announcer announcer;

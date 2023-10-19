@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(data.MasterVol);
         //Update audio mixer
         mixer.SetFloat("MasterVol", data.MasterVol);
         mixer.SetFloat("SfxVol", data.SfxVol);

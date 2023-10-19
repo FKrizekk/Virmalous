@@ -6,6 +6,10 @@ public class UIManager : MonoBehaviour
 {
     public GameObject menu;
     public GameObject settings;
+    public GameObject mainSettings;
+    public GameObject videoSettings;
+    public GameObject audioSettings;
+    public GameObject controlsSettings;
     public GameObject quitOptions;
     public GameObject quitButton;
     public GameObject resumeButton;
@@ -26,6 +30,7 @@ public class UIManager : MonoBehaviour
         game.data.SfxVol = sfxSlider.value;
         game.data.MusicVol = musicSlider.value;
         game.data.SpeechVol = speechSlider.value;
+
         game.data.MouseSensitivity = sensitivitySlider.value;
     }
 
@@ -35,17 +40,11 @@ public class UIManager : MonoBehaviour
         {
             if (!menu.activeSelf && settings.activeSelf)
             {
-                settings.SetActive(false);
-                quitOptions.SetActive(false);
-                PlayerScript.LockCursor(true);
-                Time.timeScale = 1f;
+                Resume();
             }
             else if (menu.activeSelf)
             {
-                menu.SetActive(false);
-                quitOptions.SetActive(false);
-                PlayerScript.LockCursor(true);
-                Time.timeScale = 1f;
+                Resume();
             }
             else if (!menu.activeSelf)
             {
@@ -58,8 +57,16 @@ public class UIManager : MonoBehaviour
 
     public void Resume()
     {
-        menu.SetActive(false);
         settings.SetActive(false);
+        quitOptions.SetActive(false);
+        mainSettings.SetActive(false);
+        videoSettings.SetActive(false);
+        audioSettings.SetActive(false);
+        controlsSettings.SetActive(false);
+        menu.SetActive(false);
+
+        SaveSystem.SaveGame(game);
+
         PlayerScript.LockCursor(true);
         Time.timeScale = 1f;
     }
@@ -73,6 +80,50 @@ public class UIManager : MonoBehaviour
     {
         menu.SetActive(false);
         settings.SetActive(true);
+        mainSettings.SetActive(true);
+    }
+
+    public void OpenVideoSettings()
+    {
+        mainSettings.SetActive(false);
+        videoSettings.SetActive(true);
+    }
+
+    public void CloseVideoSettings()
+    {
+        mainSettings.SetActive(true);
+        videoSettings.SetActive(false);
+    }
+
+    public void OpenAudioSettings()
+    {
+        mainSettings.SetActive(false);
+        audioSettings.SetActive(true);
+
+        masterSlider.value = game.data.MasterVol;
+        sfxSlider.value = game.data.SfxVol;
+        musicSlider.value = game.data.MusicVol;
+        speechSlider.value = game.data.SpeechVol;
+    }
+
+    public void CloseAudioSettings()
+    {
+        mainSettings.SetActive(true);
+        audioSettings.SetActive(false);
+    }
+
+    public void OpenControlsSettings()
+    {
+        mainSettings.SetActive(false);
+        controlsSettings.SetActive(true);
+
+        sensitivitySlider.value = game.data.MouseSensitivity;
+    }
+
+    public void CloseControlsSettings()
+    {
+        mainSettings.SetActive(true);
+        controlsSettings.SetActive(false);
     }
 
     public void CloseSettings()
