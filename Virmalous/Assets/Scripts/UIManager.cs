@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public GameObject settings;
     public GameObject quitOptions;
     public GameObject quitButton;
+    public GameObject resumeButton;
+    public GameObject settingsButton;
 
     public GameManager game;
 
@@ -31,36 +33,40 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!menu.activeSelf && settings.activeSelf)
+            if (!menu.activeSelf && settings.activeSelf)
             {
                 settings.SetActive(false);
+                quitOptions.SetActive(false);
+                PlayerScript.LockCursor(true);
+                Time.timeScale = 1f;
             }
             else if (menu.activeSelf)
             {
                 menu.SetActive(false);
+                quitOptions.SetActive(false);
+                PlayerScript.LockCursor(true);
+                Time.timeScale = 1f;
             }
-            else if(!menu.activeSelf)
+            else if (!menu.activeSelf)
             {
                 menu.SetActive(true);
+                PlayerScript.LockCursor(false);
+                Time.timeScale = 0f;
             }
         }
-    }
-
-    public void OpenMenu()
-    {
-        menu.SetActive(true);
-    }
-
-    public void CloseMenu()
-    {
-        menu.SetActive(false);
-        settings.SetActive(false);
     }
 
     public void Resume()
     {
         menu.SetActive(false);
         settings.SetActive(false);
+        PlayerScript.LockCursor(true);
+        Time.timeScale = 1f;
+    }
+
+    public void StopQuitOptions()
+    {
+        quitOptions.SetActive(false);
     }
 
     public void OpenSettings()
@@ -77,7 +83,7 @@ public class UIManager : MonoBehaviour
 
     public void Quit()
     {
-        quitButton.SetActive(false);
+        //quitButton.SetActive(false);
         quitOptions.SetActive(true);
     }
 

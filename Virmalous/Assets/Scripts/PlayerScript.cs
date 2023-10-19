@@ -6,11 +6,9 @@ using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
-	bool isCursorLocked = true; // Initial state: cursor is locked
-
 	public static int[] ammoCounts =
 	{
-		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		0,0,0,0
 	};
 
 	public Announcer announcer;
@@ -65,7 +63,7 @@ public class PlayerScript : MonoBehaviour
 
 		game = GameObject.Find("Level").GetComponent<GameManager>();
 
-        //LockCursor();
+        LockCursor(true);
 		
 		//Disable vsync
 		QualitySettings.vSyncCount = 0;
@@ -137,10 +135,10 @@ public class PlayerScript : MonoBehaviour
 	}
 	
 	
-	private void LockCursor()
+	public static void LockCursor(bool locked)
 	{
-		Cursor.lockState = isCursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
-		Cursor.visible = !isCursorLocked;
+		Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
+		Cursor.visible = !locked;
 	}
 	
 	void OnCollisionEnter(Collision col) {

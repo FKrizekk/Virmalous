@@ -45,10 +45,12 @@ public class PlayerMovement : MonoBehaviour
 	string surface = "Stone";
 
 	public GameManager game;
-	
-	
-	// Start is called before the first frame update
-	void Start()
+
+	Vector3 inputVector;
+
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		cam = GameObject.Find("CameraParent");
 		rb = GetComponent<Rigidbody>();
@@ -61,10 +63,16 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		UpdateCamera();
-		
-		//Check jump
-		if(Input.GetKeyDown(KeyCode.Space) && grounded)
+		if(Time.timeScale == 1f) { UpdateCamera(); }
+
+        //Get input
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        inputVector = new Vector3(moveX, 0, moveY);
+		inputVector = inputVector.normalized;
+
+        //Check jump
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
 		{
 			// Keep the horizontal momentum when jumping
 			Vector3 horizontalVelocity = rb.velocity;
@@ -85,30 +93,13 @@ public class PlayerMovement : MonoBehaviour
 		if(Input.GetKeyUp("c"))
 		{
 			SlideStop();
-		}
-		
+		}		
 	}
 	
 	void SlideStart()
 	{
 		canMove = false;
 		sliding = true;
-		
-		Vector3 inputVector;
-		
-		//Get input
-		float moveX = Input.GetAxisRaw("Horizontal");
-		float moveY = Input.GetAxisRaw("Vertical");
-		if(Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
-		{
-			inputVector = new Vector3(moveX/1.41421f,0,moveY/1.41421f);
-		}else if(moveX == 0 && moveY == 0)
-		{
-			inputVector = new Vector3(0,0,1);
-		}else
-		{
-			inputVector = new Vector3(moveX, 0, moveY);
-		}
 		
 		slideDirection = transform.TransformDirection(inputVector.normalized);
 		
@@ -124,19 +115,9 @@ public class PlayerMovement : MonoBehaviour
 
 	void Slide()
 	{
-
-		Vector3 inputVector;
-
 		//Get input
 		float moveX = Input.GetAxisRaw("Horizontal");
 		float moveY = Input.GetAxisRaw("Vertical");
-		if (Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
-		{
-			inputVector = new Vector3(moveX / 1.41421f, 0, moveY / 1.41421f);
-		} else
-		{
-			inputVector = new Vector3(moveX, 0, moveY);
-		}
 
 		//Sliding
 		if ((moveX != 0 || moveY != 0) && Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z) > crouchForce+3)
@@ -220,19 +201,6 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Move()
 	{
-		Vector3 inputVector;
-		
-		//Get input
-		float moveX = Input.GetAxisRaw("Horizontal");
-		float moveY = Input.GetAxisRaw("Vertical");
-		if(Mathf.Abs(moveX) == 1 && Mathf.Abs(moveY) == 1)
-		{
-			inputVector = new Vector3(moveX/1.41421f,0,moveY/1.41421f);
-		}else
-		{
-			inputVector = new Vector3(moveX, 0, moveY);
-		}
-
 		Vector3 moveVector = transform.TransformDirection(inputVector) * MoveForce;
 		Vector3 airMoveVector = transform.TransformDirection(inputVector) * AirMoveForce;
 
@@ -244,8 +212,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rb.AddForce(new Vector3(airMoveVector.x, 0, airMoveVector.z));
         }
-		
-		
 	}
 	
 	void UpdateCamera()

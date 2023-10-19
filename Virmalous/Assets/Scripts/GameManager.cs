@@ -25,6 +25,4 @@ public class GameManager : MonoBehaviour
         mixer.SetFloat("MusicVol", data.MusicVol);
         mixer.SetFloat("SpeechVol", data.SpeechVol);
     }
-
-    
 }
