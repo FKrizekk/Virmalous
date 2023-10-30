@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Mono.Cecil.Cil;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -24,14 +26,32 @@ public class UIManager : MonoBehaviour
     public Slider speechSlider;
     public Slider sensitivitySlider;
 
+    //called from the sliders OnValueChanged() thing and the 1.03 check is there so it ignore the default value when activating
+    //for some reason unity calls OnValueChanged() when activated aswell not just when you change the value
     public void UpdateVars()
     {
-        game.data.MasterVol = masterSlider.value;
-        game.data.SfxVol = sfxSlider.value;
-        game.data.MusicVol = musicSlider.value;
-        game.data.SpeechVol = speechSlider.value;
+        if(masterSlider.value != 1.03f) { game.data.MasterVol = masterSlider.value; }
+        if(sfxSlider.value != 1.03f) { game.data.SfxVol = sfxSlider.value; }
+        if(musicSlider.value != 1.03f) { game.data.MusicVol = musicSlider.value; }
+        if(speechSlider.value != 1.03f) { game.data.SpeechVol = speechSlider.value; }
 
-        game.data.MouseSensitivity = sensitivitySlider.value;
+        if(sensitivitySlider.value != 1.03f) { game.data.MouseSensitivity = sensitivitySlider.value; }
+    }
+
+    //Call after activating sliders to update them visually (ex. in open control settings at the end)
+    void UpdateSliders()
+    {
+        masterSlider.value = game.data.MasterVol;
+        masterSlider.GetComponent<SliderScript>().valueText.text = masterSlider.value.ToString();
+        sfxSlider.value = game.data.SfxVol;
+        sfxSlider.GetComponent<SliderScript>().valueText.text = sfxSlider.value.ToString();
+        musicSlider.value = game.data.MusicVol;
+        musicSlider.GetComponent<SliderScript>().valueText.text = musicSlider.value.ToString();
+        speechSlider.value = game.data.SpeechVol;
+        speechSlider.GetComponent<SliderScript>().valueText.text = speechSlider.value.ToString();
+
+        sensitivitySlider.value = game.data.MouseSensitivity;
+        sensitivitySlider.GetComponent<SliderScript>().valueText.text = sensitivitySlider.value.ToString();
     }
 
     private void Update()
@@ -100,10 +120,7 @@ public class UIManager : MonoBehaviour
         mainSettings.SetActive(false);
         audioSettings.SetActive(true);
 
-        masterSlider.value = game.data.MasterVol;
-        sfxSlider.value = game.data.SfxVol;
-        musicSlider.value = game.data.MusicVol;
-        speechSlider.value = game.data.SpeechVol;
+        UpdateSliders();
     }
 
     public void CloseAudioSettings()
@@ -117,7 +134,7 @@ public class UIManager : MonoBehaviour
         mainSettings.SetActive(false);
         controlsSettings.SetActive(true);
 
-        sensitivitySlider.value = game.data.MouseSensitivity;
+        UpdateSliders();
     }
 
     public void CloseControlsSettings()

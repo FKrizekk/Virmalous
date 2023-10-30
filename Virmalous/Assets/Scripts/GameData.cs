@@ -26,13 +26,13 @@ public class Assignment
 public class GameData
 {
 	//Controls
-	public float MouseSensitivity = 1f;
+	public float MouseSensitivity = 1.5f;
 
 	//Audio
-	public float MasterVol = 0.5f;
-	public float SfxVol = 0.5f;
-	public float MusicVol = 0.5f;
-	public float SpeechVol = 0.5f;
+	public float MasterVol = -15f;
+	public float SfxVol = 0f;
+	public float MusicVol = 0f;
+	public float SpeechVol = 0f;
 	
 	//Progress
 	
