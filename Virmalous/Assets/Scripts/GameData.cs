@@ -33,6 +33,9 @@ public class GameData
 	public float SfxVol = 0f;
 	public float MusicVol = 0f;
 	public float SpeechVol = 0f;
+
+	//Video
+	public int fov = 120;
 	
 	//Progress
 	

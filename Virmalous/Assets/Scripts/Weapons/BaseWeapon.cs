@@ -78,6 +78,10 @@ public abstract class BaseWeapon : MonoBehaviour
     protected Rigidbody rb;
     protected float lastShotTime = -100;
 
+    [Space]
+    public float fovModifier = 0f;
+    GameManager game;
+
     void Awake()
     {
         //Get all the references
@@ -87,10 +91,12 @@ public abstract class BaseWeapon : MonoBehaviour
         cam = PlayerScript.cam;
         rb = player.GetComponent<Rigidbody>();
         ammoCountText = GameObject.Find("WeaponInfo/AmmoCount").GetComponent<TMP_Text>();
+        game = GameObject.Find("Level").GetComponent<GameManager>();
     }
 
     protected void WeaponUpdate()
     {
+        cam.transform.GetChild(0).GetComponent<Camera>().fieldOfView = game.data.fov + fovModifier;
         ammoCountText.text = PlayerScript.ammoCounts[weaponIndex].ToString() + "/" + maxAmmo;
         SwayBobRotate();
     }

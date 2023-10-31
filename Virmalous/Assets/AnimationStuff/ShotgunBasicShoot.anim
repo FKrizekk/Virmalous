@@ -714,6 +714,52 @@ AnimationClip:
     path: ShotgunBasicParent/Bullets/ShotgunBullet3
     classID: 1
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 149.99998
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.033333335
+        value: 5
+        inSlope: 149.99998
+        outSlope: -300.00003
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.08748577
+      - serializedVersion: 3
+        time: 0.05
+        value: 0
+        inSlope: -300.00003
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 0
+        inSlope: -0
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: fovModifier
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: 584ceb186de4a814e9d2d207d71b936a, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -853,6 +899,13 @@ AnimationClip:
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
+      attribute: 1196977399
+      script: {fileID: 11500000, guid: 584ceb186de4a814e9d2d207d71b936a, type: 3}
+      typeID: 114
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
@@ -2619,6 +2672,52 @@ AnimationClip:
     path: ShotgunBasicParent/Bullets/ShotgunBullet3
     classID: 1
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 149.99998
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.033333335
+        value: 5
+        inSlope: 149.99998
+        outSlope: -300.00003
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.08748577
+      - serializedVersion: 3
+        time: 0.05
+        value: 0
+        inSlope: -300.00003
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5833333
+        value: 0
+        inSlope: -0
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: fovModifier
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: 584ceb186de4a814e9d2d207d71b936a, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
