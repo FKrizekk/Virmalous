@@ -29,6 +29,7 @@ public class ItemsManager : MonoBehaviour
 	public static float gravBladeCharge = 0f;
 	float gravBladeLastUseTime = 0f;
 	public Image gravBladeImage;
+	public GameObject gravBladePrefab;
 
     private void Update()
     {
@@ -67,6 +68,6 @@ public class ItemsManager : MonoBehaviour
 
 	void ThrowGravBlade()
 	{
-
+		Instantiate(gravBladePrefab, PlayerScript.cam.transform.position, Quaternion.LookRotation(Vector3.forward));
 	}
 }

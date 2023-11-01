@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8569428017046686531}
-  m_Layer: 3
+  - component: {fileID: 9084819971183600428}
+  m_Layer: 0
   m_Name: gravBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9084819971183600428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309907268737350768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993ceed40201934e8bf1844ca9c9680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!1 &3340451798033675874
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +57,7 @@ GameObject:
   - component: {fileID: 4024398736052574032}
   - component: {fileID: 4647071815466441476}
   - component: {fileID: 4926238196408668529}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +140,7 @@ GameObject:
   - component: {fileID: 698369783568448565}
   - component: {fileID: 8066719629285061018}
   - component: {fileID: 9186469339341428720}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3739138004559667707}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: gravBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +236,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4084701746763496257}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -234,7 +248,7 @@ Transform:
   - {fileID: 698369783568448565}
   m_Father: {fileID: 8569428017046686531}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!1 &4377292626027029112
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +260,7 @@ GameObject:
   - component: {fileID: 989534664929823786}
   - component: {fileID: 7246990146538744306}
   - component: {fileID: 1712047552494022966}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +344,7 @@ GameObject:
   - component: {fileID: 546537157880986270}
   - component: {fileID: 9108777872517057536}
   - component: {fileID: 823856216023044319}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +427,7 @@ GameObject:
   - component: {fileID: 1017086396489644330}
   - component: {fileID: 6423657430294091507}
   - component: {fileID: 9140046400892857823}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Blade (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

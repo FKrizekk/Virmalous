@@ -3097,7 +3097,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29370
+  m_Name: pb_Mesh30984
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17378,6 +17378,7 @@ MonoBehaviour:
   medkitText: {fileID: 104801550602785702}
   dashImage: {fileID: 104801549273823236}
   gravBladeImage: {fileID: 104801549156050739}
+  gravBladePrefab: {fileID: 309907268737350768, guid: f9e16b0d7fa01b446a4d0c84e574a21f, type: 3}
 --- !u!114 &9144878381238886372
 MonoBehaviour:
   m_ObjectHideFlags: 0
