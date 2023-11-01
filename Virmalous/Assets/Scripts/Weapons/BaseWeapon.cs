@@ -177,9 +177,9 @@ public abstract class BaseWeapon : MonoBehaviour
         source.pitch = pitch;
     }
 
-    public void Shake(float magnitude)
+    public void Shake(float time, float magnitude)
     {
-        PlayerScript.cameraShake.Shake(magnitude, magnitude);
-        PlayerScript.uIShake.Shake(magnitude, magnitude);
+        PlayerScript.cameraShake.Shake(time, magnitude);
+        //PlayerScript.uIShake.Shake(time, magnitude);
     }
 }

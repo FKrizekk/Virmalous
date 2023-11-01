@@ -31,6 +31,7 @@ public class ShotgunBasic : BaseWeapon
         lastShotTime = Time.time;
         anim.SetBool("Shoot", true);
         muzzleFlash.Play();
+        Shake(0.15f, 0.5f);
         PlayerScript.ammoCounts[weaponIndex] -= 1;
 
         //Shooting logic
