@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -48,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
 	Vector3 inputVector;
 
+	public static List<float> fovModifier = new List<float> { 0f, 0f, 0f };
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
 	void Update()
 	{
 		if(Time.timeScale != 0f) { UpdateCamera(); }
+
+		//Add fov modifiers to the camera
+		cam.transform.GetChild(0).GetComponent<Camera>().fieldOfView = game.data.fov + fovModifier.Sum();
+
+		fovModifier[1] = Mathf.Lerp(fovModifier[1], Mathf.Clamp(transform.InverseTransformDirection(rb.velocity).z, 0f, 999f)*0.6f, Time.deltaTime * 10);
 
         //Get input
         float moveX = Input.GetAxisRaw("Horizontal");

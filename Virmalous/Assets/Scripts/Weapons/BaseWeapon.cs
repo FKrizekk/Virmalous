@@ -96,7 +96,7 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected void WeaponUpdate()
     {
-        cam.transform.GetChild(0).GetComponent<Camera>().fieldOfView = game.data.fov + fovModifier;
+        PlayerMovement.fovModifier[0] = fovModifier;
         ammoCountText.text = PlayerScript.ammoCounts[weaponIndex].ToString() + "/" + maxAmmo;
         SwayBobRotate();
     }
