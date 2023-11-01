@@ -37,6 +37,7 @@ public class Revolver : BaseWeapon
 	{
 		PlayerScript.ammoCounts[weaponIndex]--;
 		anim.SetBool("Shoot",true);
+		Shake(0.15f, 0.2f);
 		lastShotTime = Time.time;
 		muzzleFlash.Play();
         rayParticleSystem.Play();
