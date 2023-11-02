@@ -55,7 +55,7 @@ public class ShotgunBasic : BaseWeapon
         {
             //Instantiate a bullet for each ray and set its damage
             var bullet = Instantiate(bulletPrefab, shootPoint.transform.position, Quaternion.LookRotation(ray.direction)).GetComponent<ShotgunBulletController>();
-            bullet.damage = damage;
+            bullet.damageInfo = damageInfo;
             bullet.piercing = piercing;
         }
     }

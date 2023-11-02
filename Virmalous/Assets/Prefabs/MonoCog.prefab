@@ -116,9 +116,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 973100763205573710}
   methodName: GotHit
-  damageMultiplier: 1
+  damageMultiplier:
+    damageMultiplier: 1
+    stunDamageMultiplier: 1
+    fireDamageMultiplier: 0.4
+    freezeDamageMultiplier: 1.2
+    electricityDamageMultiplier: 2
   info:
-    amount: 0
+    damageInfo:
+      damage: 0
+      stunDamage: 0
+      fireDamage: 0
+      freezeDamage: 0
+      electricityDamage: 0
     point: {x: 0, y: 0, z: 0}
 --- !u!1 &973100763205573710
 GameObject:
@@ -133,6 +143,7 @@ GameObject:
   - component: {fileID: 8293468560829989164}
   - component: {fileID: 9049041468901258516}
   - component: {fileID: 738406574614318144}
+  - component: {fileID: 6872094011929011113}
   m_Layer: 0
   m_Name: MonoCog
   m_TagString: Enemy
@@ -329,6 +340,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &6872094011929011113
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973100763205573710}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2836525989139640032
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,9 +403,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 973100763205573710}
   methodName: GotHit
-  damageMultiplier: 1
+  damageMultiplier:
+    damageMultiplier: 1
+    stunDamageMultiplier: 1
+    fireDamageMultiplier: 0.4
+    freezeDamageMultiplier: 1.2
+    electricityDamageMultiplier: 2
   info:
-    amount: 0
+    damageInfo:
+      damage: 0
+      stunDamage: 0
+      fireDamage: 0
+      freezeDamage: 0
+      electricityDamage: 0
     point: {x: 0, y: 0, z: 0}
 --- !u!64 &2321666019429030879
 MeshCollider:
@@ -507,9 +544,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 973100763205573710}
   methodName: GotHit
-  damageMultiplier: 3
+  damageMultiplier:
+    damageMultiplier: 2
+    stunDamageMultiplier: 2
+    fireDamageMultiplier: 0.8
+    freezeDamageMultiplier: 2.4
+    electricityDamageMultiplier: 4
   info:
-    amount: 0
+    damageInfo:
+      damage: 0
+      stunDamage: 0
+      fireDamage: 0
+      freezeDamage: 0
+      electricityDamage: 0
     point: {x: 0, y: 0, z: 0}
 --- !u!1 &3905759486392984412
 GameObject:

@@ -622,9 +622,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 2924366210437150642}
   methodName: GotHit
-  damageMultiplier: 2
+  damageMultiplier:
+    damageMultiplier: 2
+    stunDamageMultiplier: 1.8
+    fireDamageMultiplier: 2
+    freezeDamageMultiplier: 2
+    electricityDamageMultiplier: 2
   info:
-    amount: 0
+    damageInfo:
+      damage: 0
+      stunDamage: 0
+      fireDamage: 0
+      freezeDamage: 0
+      electricityDamage: 0
     point: {x: 0, y: 0, z: 0}
 --- !u!1 &3249227601066084552
 GameObject:
@@ -1046,9 +1056,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 2924366210437150642}
   methodName: GotHit
-  damageMultiplier: 1
+  damageMultiplier:
+    damageMultiplier: 1
+    stunDamageMultiplier: 1.3
+    fireDamageMultiplier: 1.5
+    freezeDamageMultiplier: 1.2
+    electricityDamageMultiplier: 1.1
   info:
-    amount: 0
+    damageInfo:
+      damage: 0
+      stunDamage: 0
+      fireDamage: 0
+      freezeDamage: 0
+      electricityDamage: 0
     point: {x: 0, y: 0, z: 0}
 --- !u!65 &1030587042511264869
 BoxCollider:

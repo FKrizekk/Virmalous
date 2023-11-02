@@ -17,6 +17,16 @@ public class SoundClip
 }
 
 [System.Serializable]
+public class DamageInfo
+{
+    public float damage;
+    public float stunDamage;
+    public float fireDamage;
+    public float freezeDamage;
+    public float electricityDamage;
+}
+
+[System.Serializable]
 public class SwayConfig
 {
     [Header("Sway")]
@@ -46,7 +56,7 @@ public abstract class BaseWeapon : MonoBehaviour
 {
     [Header("Stats")]
     [Tooltip("Base damage per projectile")]
-    public int damage;
+    public DamageInfo damageInfo;
     public int maxAmmo;
     [Tooltip("Amount of shots per second")]
     public float firerate;

@@ -7754,7 +7754,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d3a95834e24fb40b88349b9328a55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damageInfo:
+    damage: 40
+    stunDamage: 10
+    fireDamage: 0
+    freezeDamage: 0
+    electricityDamage: 0
   maxAmmo: 6
   firerate: 1.5
   piercing: 2

@@ -1588,7 +1588,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584ceb186de4a814e9d2d207d71b936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damageInfo:
+    damage: 25
+    stunDamage: 10
+    fireDamage: 0
+    freezeDamage: 0
+    electricityDamage: 0
   maxAmmo: 8
   firerate: 1
   piercing: 2
@@ -1617,6 +1622,7 @@ MonoBehaviour:
     volumeMultiplier: 1
   - clip: {fileID: 8300000, guid: 2ac25eddc6f5fe049a1ae94f57ed95f4, type: 3}
     volumeMultiplier: 1
+  fovModifier: 0
   spread: 0.5
   bulletPrefab: {fileID: 4579801027962057677, guid: d87fbca279631e741a5df24c9246c04d, type: 3}
   shootPoint: {fileID: 1151399597205671730}

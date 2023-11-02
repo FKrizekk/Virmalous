@@ -66,7 +66,6 @@ public class MonoCogScript : BaseEnemy
     {
         foreach (ContactPoint contact in col.contacts)
         {
-			Debug.Log(contact.otherCollider.gameObject.name);
             //Check if can attack and attack
             if (contact.otherCollider.gameObject.tag == "Player" && (Time.time - lastAttackTime) >= 1 / attackRate)
             {

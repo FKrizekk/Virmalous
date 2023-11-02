@@ -48,10 +48,7 @@ public class Revolver : BaseWeapon
 		{
 			if(hit.collider.tag == "Enemy")
 			{
-				hit.collider.gameObject.GetComponent<HitCollider>().Hit(damage,hit.point);
-			}else if(hit.collider.tag == "EnemyCrit")
-			{
-				hit.collider.gameObject.transform.parent.gameObject.GetComponent<HitCollider>().Hit(damage*2,hit.point);
+				hit.collider.gameObject.GetComponent<HitCollider>().Hit(damageInfo,hit.point);
 			}
 		}
 	}

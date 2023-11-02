@@ -82,10 +82,17 @@ public abstract class BaseEnemy : Entity
     public virtual void GotHit(hitInfo hit)
     {
         killPoint = hit.point;
-        health -= hit.amount;
+        float amount = hit.damageInfo.damage +
+            hit.damageInfo.stunDamage +
+            hit.damageInfo.fireDamage +
+            hit.damageInfo.freezeDamage +
+            hit.damageInfo.electricityDamage;
+        health -= (int)amount;
 
-        //If receives more than half of max health adds 0.5 stun
-        if(hit.amount >= maxHealth / 2) { entityState._stunned += 0.5f; }
+        entityState.stunned += hit.damageInfo.stunDamage / 10f;
+        entityState.onFire += hit.damageInfo.fireDamage / 10f;
+        entityState.frozen += hit.damageInfo.fireDamage / 10f;
+        entityState.electrified += hit.damageInfo.electricityDamage / 10f;
 
         Bleed();
     }

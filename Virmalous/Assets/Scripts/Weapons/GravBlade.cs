@@ -4,7 +4,7 @@ using UnityEngine;
 public class GravBlade : MonoBehaviour
 {
     public float speed = 1.0f;
-    public int damage = 50;
+    public DamageInfo damageInfo;
     bool moving = true;
     Rigidbody rb;
     BoxCollider col;
@@ -21,10 +21,10 @@ public class GravBlade : MonoBehaviour
         col = rb.GetComponent<BoxCollider>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag != "Player") { moving = false; col.enabled = false; transform.parent = collision.transform; }
+        if(other.gameObject.tag != "Player") { moving = false; col.enabled = false; transform.parent = other.transform; transform.localPosition -= transform.TransformDirection(Vector3.forward * 2); }
 
-        if(collision.gameObject.tag == "Enemy") { collision.collider.gameObject.GetComponent<HitCollider>().Hit(damage, collision.contacts[0].point); }
+        if(other.gameObject.tag == "Enemy") { other.gameObject.GetComponent<HitCollider>().Hit(damageInfo, other.ClosestPoint(transform.position)); }
     }
 }

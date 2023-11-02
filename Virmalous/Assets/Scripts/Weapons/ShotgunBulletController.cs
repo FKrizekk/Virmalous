@@ -8,7 +8,7 @@ namespace Assets.Scripts.Weapons
     {
         public float bulletSpeed;
         public Rigidbody rb;
-        public int damage;
+        public DamageInfo damageInfo;
         public int piercing;
         public GameObject bulletHitPrefab;
 
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Weapons
         {
             if(other.gameObject.tag == "Enemy" && targetsHit < piercing)
             {
-                other.gameObject.GetComponent<HitCollider>().Hit(damage, transform.position);
+                other.gameObject.GetComponent<HitCollider>().Hit(damageInfo, transform.position);
                 targetsHit++;
             }
             else if ((other.gameObject.tag != "Bullet" && targetsHit >= piercing) || ((other.gameObject.tag != "Player" && targetsHit >= piercing)))
