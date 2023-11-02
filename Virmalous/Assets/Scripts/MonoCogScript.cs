@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MonoCogScript : MonoBehaviour
+public class MonoCogScript : BaseEnemy
 {
 	GameObject head;
-	
-	NavMeshAgent nav;
-	
-	AudioSource source;
+	public GameObject wheel;
 	
 	// Start is called before the first frame update
 	void Start()
@@ -28,7 +25,11 @@ public class MonoCogScript : MonoBehaviour
 		
 		
 		nav.SetDestination(PlayerScript.cam.transform.position);
-	}
+
+		wheel.transform.eulerAngles += new Vector3(0, 0, Time.deltaTime * nav.velocity.magnitude * 20);
+
+        EnemyUpdate();
+    }
 	
 	void RotateHead()
 	{
@@ -60,4 +61,26 @@ public class MonoCogScript : MonoBehaviour
 			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
 		}
 	}
+
+    void OnCollisionStay(Collision col)
+    {
+        foreach (ContactPoint contact in col.contacts)
+        {
+			Debug.Log(contact.otherCollider.gameObject.name);
+            //Check if can attack and attack
+            if (contact.otherCollider.gameObject.tag == "Player" && (Time.time - lastAttackTime) >= 1 / attackRate)
+            {
+                PlayerScript.ChangeHealth(-damage);
+                lastAttackTime = Time.time;
+            }
+        }
+    }
+
+    protected override void Death()
+    {
+        //Instantiates ragdoll, adds a force away from player to it and destroys the original enemy object
+        GameObject ragdollObj = Instantiate(ragdoll, transform.position, Quaternion.identity);
+        ragdollObj.transform.GetChild(0).GetChild(1).GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position).normalized * 10, ForceMode.VelocityChange);
+        Destroy(gameObject);
+    }
 }

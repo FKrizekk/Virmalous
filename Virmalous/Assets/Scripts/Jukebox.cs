@@ -10,8 +10,8 @@ public class Jukebox : MonoBehaviour
 	
 	void Start()
 	{
-		source = GameObject.Find("CameraParent/Camera").GetComponent<AudioSource>();
+		source = GetComponent<AudioSource>();
 		
-		//source.PlayOneShot(clips[0], PlayerScript.MasterVol*PlayerScript.MusicVol);
+		source.PlayOneShot(clips[0]);
 	}
 }

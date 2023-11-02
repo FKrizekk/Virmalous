@@ -68,6 +68,6 @@ public class ItemsManager : MonoBehaviour
 
 	void ThrowGravBlade()
 	{
-		Instantiate(gravBladePrefab, PlayerScript.cam.transform.position, Quaternion.LookRotation(Vector3.forward));
+		Instantiate(gravBladePrefab, PlayerScript.cam.transform.position - new Vector3(0f,0.5f,0f), Quaternion.LookRotation(PlayerScript.cam.transform.forward));
 	}
 }

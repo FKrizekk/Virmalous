@@ -2754,7 +2754,7 @@ GameObject:
   - component: {fileID: 4920522136098862133}
   - component: {fileID: 2999147992212181464}
   - component: {fileID: 2394496499924238944}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Particle System
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -7787,6 +7787,7 @@ MonoBehaviour:
     volumeMultiplier: 1
   - clip: {fileID: 8300000, guid: 658390573eb0b734c8b96e3dd74a037a, type: 3}
     volumeMultiplier: 1
+  fovModifier: 0
   rayParticleSystem: {fileID: 2999147992212181464}
 --- !u!95 &6736585401201172200
 Animator:
