@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 1335990559309780097}
   - component: {fileID: 8013572726850336133}
   - component: {fileID: 4146307080972110258}
+  - component: {fileID: 1657387750986696814}
+  - component: {fileID: 4607599846531955600}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +89,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1657387750986696814
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262124845379814853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.719109, y: 2.0000002, z: 1.585171}
+  m_Center: {x: 0.14044534, y: 0, z: 0.20741469}
+--- !u!114 &4607599846531955600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262124845379814853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e5e8345114a9f4c85e4da51e35dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 973100763205573710}
+  methodName: GotHit
+  damageMultiplier: 1
+  info:
+    amount: 0
+    point: {x: 0, y: 0, z: 0}
 --- !u!1 &973100763205573710
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,11 +133,9 @@ GameObject:
   - component: {fileID: 8293468560829989164}
   - component: {fileID: 9049041468901258516}
   - component: {fileID: 738406574614318144}
-  - component: {fileID: 1834397145952455797}
-  - component: {fileID: 5079128314193851546}
   m_Layer: 0
   m_Name: MonoCog
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,37 +329,71 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1834397145952455797
+--- !u!1 &2836525989139640032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8032564261800126154}
+  - component: {fileID: 690460759138276020}
+  - component: {fileID: 2321666019429030879}
+  m_Layer: 0
+  m_Name: WheelCollider
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8032564261800126154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2836525989139640032}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 6708782769711198442}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &690460759138276020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973100763205573710}
+  m_GameObject: {fileID: 2836525989139640032}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26e5e8345114a9f4c85e4da51e35dc12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 973100763205573710}
   methodName: GotHit
   damageMultiplier: 1
   info:
     amount: 0
     point: {x: 0, y: 0, z: 0}
---- !u!65 &5079128314193851546
-BoxCollider:
+--- !u!64 &2321666019429030879
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973100763205573710}
+  m_GameObject: {fileID: 2836525989139640032}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2309305249758762421, guid: 2906b5c978affe741ac6a37349ffa679, type: 3}
 --- !u!1 &3668505412441580783
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,9 +405,11 @@ GameObject:
   - component: {fileID: 6595572607621407616}
   - component: {fileID: 8318353062069456319}
   - component: {fileID: 2790378735543593619}
+  - component: {fileID: 9217181983093930010}
+  - component: {fileID: 8220485444038265105}
   m_Layer: 0
   m_Name: Eye
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,6 +480,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &9217181983093930010
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668505412441580783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.944759, y: 0.9447587, z: 0.11962317}
+  m_Center: {x: 0.00000022351742, y: -1.2020446e-15, z: 0.05981206}
+--- !u!114 &8220485444038265105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668505412441580783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e5e8345114a9f4c85e4da51e35dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 973100763205573710}
+  methodName: GotHit
+  damageMultiplier: 3
+  info:
+    amount: 0
+    point: {x: 0, y: 0, z: 0}
 --- !u!1 &3905759486392984412
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +762,7 @@ GameObject:
   - component: {fileID: 1180342706652866024}
   m_Layer: 0
   m_Name: CogL
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -747,7 +845,7 @@ GameObject:
   - component: {fileID: 3905484841971942173}
   m_Layer: 0
   m_Name: CogR
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -863,7 +961,7 @@ GameObject:
   - component: {fileID: 8735118993893644509}
   m_Layer: 0
   m_Name: Wheel
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -879,7 +977,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.4811254, y: 7.4811254, z: 7.4811254}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8032564261800126154}
   m_Father: {fileID: 8668757376034772482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1030,7 +1129,7 @@ GameObject:
   - component: {fileID: 1428232402329012118}
   m_Layer: 0
   m_Name: Jaw
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

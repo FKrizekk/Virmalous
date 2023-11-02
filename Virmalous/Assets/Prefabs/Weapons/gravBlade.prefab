@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d993ceed40201934e8bf1844ca9c9680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 60
+  damage: 10
 --- !u!65 &6845967804205761140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -269,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 4084701746763496257}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.5, y: -0.5, z: -0.5}
+  m_LocalScale: {x: -0.4, y: -0.4, z: -0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4024398736052574032}

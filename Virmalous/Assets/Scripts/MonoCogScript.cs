@@ -80,7 +80,8 @@ public class MonoCogScript : BaseEnemy
     {
         //Instantiates ragdoll, adds a force away from player to it and destroys the original enemy object
         GameObject ragdollObj = Instantiate(ragdoll, transform.position, Quaternion.identity);
-        ragdollObj.transform.GetChild(0).GetChild(1).GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position).normalized * 10, ForceMode.VelocityChange);
+        ragdollObj.transform.GetChild(0).GetChild(1).GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position).normalized * 30, ForceMode.VelocityChange);
+        ragdollObj.transform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().AddForce((transform.position - player.transform.position).normalized * 30, ForceMode.VelocityChange);
         Destroy(gameObject);
     }
 }
