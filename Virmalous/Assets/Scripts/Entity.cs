@@ -73,12 +73,12 @@ public abstract class Entity : MonoBehaviour
 {
     public EntityState entityState = new EntityState();
 
-    private void Update()
+    public void Update()
     {
         //Cooldown checks
-        if (entityState.lastStunTime - Time.time <= entityState.stunnedTime) { entityState.stunned = 0; }
-        if (entityState.lastOnFireTime - Time.time <= entityState.onFireTime) { entityState.onFire = 0; }
-        if (entityState.lastFrozenTime - Time.time <= entityState.frozenTime) { entityState.frozen = 0; }
-        if (entityState.lastElectrifiedTime - Time.time <= entityState.electrifiedTime) { entityState.electrified = 0; }
+        if (Time.time - entityState.lastStunTime >= entityState.stunnedTime) { entityState.stunned = 0; }
+        if (Time.time - entityState.lastOnFireTime >= entityState.onFireTime) { entityState.onFire = 0; }
+        if (Time.time - entityState.lastFrozenTime >= entityState.frozenTime) { entityState.frozen = 0; }
+        if (Time.time - entityState.lastElectrifiedTime >= entityState.electrifiedTime) { entityState.electrified = 0; }
     }
 }

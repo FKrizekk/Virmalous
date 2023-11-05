@@ -65,6 +65,8 @@ public abstract class BaseEnemy : Entity
 
     protected void EnemyUpdate()
     {
+        base.Update();
+
         //Check if dead
         if(health <= 0) { Death(); }
 

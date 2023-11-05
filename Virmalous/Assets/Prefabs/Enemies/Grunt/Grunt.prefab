@@ -413,6 +413,10 @@ MonoBehaviour:
     onFireTime: 2
     frozenTime: 2
     electrifiedTime: 2
+    lastStunTime: 0
+    lastOnFireTime: 0
+    lastFrozenTime: 0
+    lastElectrifiedTime: 0
   maxHealth: 100
   damage: 500
   attackRate: 3
@@ -624,7 +628,7 @@ MonoBehaviour:
   methodName: GotHit
   damageMultiplier:
     damageMultiplier: 2
-    stunDamageMultiplier: 1.8
+    stunDamageMultiplier: 2
     fireDamageMultiplier: 2
     freezeDamageMultiplier: 2
     electricityDamageMultiplier: 2
@@ -1058,10 +1062,10 @@ MonoBehaviour:
   methodName: GotHit
   damageMultiplier:
     damageMultiplier: 1
-    stunDamageMultiplier: 1.3
+    stunDamageMultiplier: 1.2
     fireDamageMultiplier: 1.5
     freezeDamageMultiplier: 1.2
-    electricityDamageMultiplier: 1.1
+    electricityDamageMultiplier: 1.3
   info:
     damageInfo:
       damage: 0

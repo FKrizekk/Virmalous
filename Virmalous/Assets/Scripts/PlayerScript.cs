@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : Entity
 {
 	public static int[] ammoCounts =
 	{
@@ -77,8 +77,10 @@ public class PlayerScript : MonoBehaviour
 	//Update is called once per frame
 	void Update()
 	{
-		//Smoothly update healthBar
-		healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/maxHealth, Time.deltaTime*10);
+		base.Update();
+
+        //Smoothly update healthBar
+        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/maxHealth, Time.deltaTime*10);
 		//Smoothly update healthText
 		string currentHealth = Mathf.Lerp(float.Parse(healthText.text.Split(" / ")[0].Contains(',') ? healthText.text.Split(" / ")[0].Remove(healthText.text.Split(" / ")[0].IndexOf(','), 1) : healthText.text.Split(" / ")[0]), health, Time.deltaTime*10).ToString();
 		string maxHealthText = maxHealth.ToString(); if(maxHealthText.Length >= 4){maxHealthText = maxHealthText.Insert(maxHealthText.Length-3, ",");}
