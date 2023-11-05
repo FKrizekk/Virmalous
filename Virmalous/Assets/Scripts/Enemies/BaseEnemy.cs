@@ -89,10 +89,10 @@ public abstract class BaseEnemy : Entity
             hit.damageInfo.electricityDamage;
         health -= (int)amount;
 
-        entityState.stunned += hit.damageInfo.stunDamage / 100f;
-        entityState.onFire += hit.damageInfo.fireDamage / 100f;
-        entityState.frozen += hit.damageInfo.fireDamage / 100f;
-        entityState.electrified += hit.damageInfo.electricityDamage / 100f;
+        entityState._stunned += hit.damageInfo.stunDamage / 100f;
+        entityState._onFire += hit.damageInfo.fireDamage / 100f;
+        entityState._frozen += hit.damageInfo.fireDamage / 100f;
+        entityState._electrified += hit.damageInfo.electricityDamage / 100f;
 
         Bleed();
     }

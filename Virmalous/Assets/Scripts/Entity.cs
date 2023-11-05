@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 [System.Serializable]
@@ -12,14 +13,41 @@ public class EntityState
 
     public float _stunned
     {
-        get
-        {
-            return stunned;
-        }
+        get { return stunned; }
         set
         {
             stunned = value;
             lastStunTime = Time.time;
+        }
+    }
+
+    public float _onFire
+    {
+        get { return onFire; }
+        set
+        {
+            onFire = value;
+            lastOnFireTime = Time.time;
+        }
+    }
+
+    public float _frozen
+    {
+        get { return frozen; }
+        set
+        {
+            frozen = value;
+            lastFrozenTime = Time.time;
+        }
+    }
+
+    public float _electrified
+    {
+        get { return electrified; }
+        set
+        {
+            electrified = value;
+            lastElectrifiedTime = Time.time;
         }
     }
 
@@ -33,13 +61,24 @@ public class EntityState
     [Tooltip("How long will electrifying this Entity last")]
     public float electrifiedTime = 0f;
 
-    protected float lastStunTime = 0f;
-    protected float lastOnFireTime = 0f;
-    protected float lastFrozenTime = 0f;
-    protected float lastElectrifiedTime = 0f;
+    [HideInInspector] public float lastStunTime = 0f;
+    [HideInInspector] public float lastOnFireTime = 0f;
+    [HideInInspector] public float lastFrozenTime = 0f;
+    [HideInInspector] public float lastElectrifiedTime = 0f;
 }
+
+
 
 public abstract class Entity : MonoBehaviour
 {
     public EntityState entityState = new EntityState();
+
+    private void Update()
+    {
+        //Cooldown checks
+        if (entityState.lastStunTime - Time.time <= entityState.stunnedTime) { entityState.stunned = 0; }
+        if (entityState.lastOnFireTime - Time.time <= entityState.onFireTime) { entityState.onFire = 0; }
+        if (entityState.lastFrozenTime - Time.time <= entityState.frozenTime) { entityState.frozen = 0; }
+        if (entityState.lastElectrifiedTime - Time.time <= entityState.electrifiedTime) { entityState.electrified = 0; }
+    }
 }
