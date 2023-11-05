@@ -89,17 +89,17 @@ public abstract class BaseEnemy : Entity
             hit.damageInfo.electricityDamage;
         health -= (int)amount;
 
-        entityState.stunned += hit.damageInfo.stunDamage / 10f;
-        entityState.onFire += hit.damageInfo.fireDamage / 10f;
-        entityState.frozen += hit.damageInfo.fireDamage / 10f;
-        entityState.electrified += hit.damageInfo.electricityDamage / 10f;
+        entityState.stunned += hit.damageInfo.stunDamage / 100f;
+        entityState.onFire += hit.damageInfo.fireDamage / 100f;
+        entityState.frozen += hit.damageInfo.fireDamage / 100f;
+        entityState.electrified += hit.damageInfo.electricityDamage / 100f;
 
         Bleed();
     }
 
     void Bleed()
     {
-        Instantiate(blood, killPoint, Quaternion.identity);
+        Instantiate(blood, killPoint, Quaternion.LookRotation(killPoint - transform.GetComponentInChildren<Renderer>().bounds.center));
     }
 
     protected virtual void Death()

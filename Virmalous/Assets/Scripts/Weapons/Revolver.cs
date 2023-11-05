@@ -40,6 +40,7 @@ public class Revolver : BaseWeapon
 		Shake(0.15f, 0.2f);
 		lastShotTime = Time.time;
 		muzzleFlash.Play();
+		Instantiate(muzzleFlashLight, muzzleFlash.transform);
         rayParticleSystem.Play();
 		
 		//Shooting logic

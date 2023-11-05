@@ -77,6 +77,7 @@ public abstract class BaseWeapon : MonoBehaviour
     protected TMP_Text ammoCountText;
     public GameObject bulletHitPrefab;
     public VisualEffect muzzleFlash;
+    public GameObject muzzleFlashLight;
     [Tooltip("Point used for calculating the distance between the gun and what's in front of the player")]
     public Transform barrel;
     [Tooltip("All AudioClips for use by the weapon")]

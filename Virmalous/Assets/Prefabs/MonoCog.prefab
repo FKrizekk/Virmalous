@@ -217,7 +217,7 @@ MonoBehaviour:
   stoppingDistance: 0
   autoBraking: 0
   source: {fileID: 738406574614318144}
-  blood: {fileID: 3413951237719649361, guid: bedf8aaab1e92e9479cfed2d71476636, type: 3}
+  blood: {fileID: 3413951237719649361, guid: b4944fc21f0eb3f4c8173d23afab5a2f, type: 3}
   clips: []
   ragdoll: {fileID: 973100763205573710, guid: 4f112af36e1eb6f4ab40397ef01f81d5, type: 3}
   anim: {fileID: 5549419012656658936}

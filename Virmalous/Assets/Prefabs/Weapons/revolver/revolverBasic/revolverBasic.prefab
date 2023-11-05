@@ -7780,6 +7780,7 @@ MonoBehaviour:
     bobEulerRotation: {x: 0, y: 0, z: 0}
   bulletHitPrefab: {fileID: 0}
   muzzleFlash: {fileID: 4980281858100873014}
+  muzzleFlashLight: {fileID: 5534158274280069449, guid: be43ece8597996b4780620cfafed7f10, type: 3}
   barrel: {fileID: 6449800255522941205}
   clips:
   - clip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
