@@ -14,6 +14,7 @@ TagManager:
   - Screen
   - Health
   - EnemyRagdoll
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - VFX
   - Player
   - 
   - 
