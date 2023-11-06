@@ -34,8 +34,7 @@ public abstract class BaseEnemy : Entity
     public GameObject ragdoll;
     [Tooltip("Blood ParticleSystem GameObject")]
     public Animator anim;
-    [Tooltip("References to the VFX parents")]
-    public GameObject[] VFXParents;
+    
 
     protected float lastAttackTime = 0;
     protected Vector3 killPoint;

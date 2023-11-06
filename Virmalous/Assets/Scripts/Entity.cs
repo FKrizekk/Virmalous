@@ -1,6 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.VFX;
 
 [System.Serializable]
 public class EntityState
@@ -73,8 +76,59 @@ public abstract class Entity : MonoBehaviour
 {
     public EntityState entityState = new EntityState();
 
+    [Tooltip("References to the VFX parents")]
+    public GameObject[] VFXParents;
+
+    public GameObject electricityArcPrefab;
+    public float electricitySpreadDistance = 5f;
+
+    List<GameObject> arcs = new List<GameObject>();
+
     public void Update()
     {
+        //TEMP IF
+        if(gameObject.tag != "Player")
+        {
+            //VFXParents[0].SetActive(entityState.stunned > 0);
+            //VFXParents[1].SetActive(entityState.onFire > 0);
+            //VFXParents[2].SetActive(entityState.frozen > 0);
+            VFXParents[3].SetActive(entityState.electrified > 0);
+        }
+
+        if (entityState.electrified >= 1)
+        {
+            Entity[] entities = GameObject.FindObjectsOfType<Entity>();
+            foreach(var entity in entities)
+            {
+                if(Vector3.Distance(entity.transform.position, transform.position) < electricitySpreadDistance)
+                {
+                    if(entity.entityState.electrified < 1 && entity.entityState.electrified > 0)
+                    {
+                        entity.entityState._electrified = 1;
+                        Transform arc = Instantiate(electricityArcPrefab, transform).transform;
+                        arcs.Add(arc.gameObject);
+                        Transform pos1 = arc.GetChild(0);
+                        Transform pos2 = arc.GetChild(1);
+
+                        pos1.parent = transform;
+                        pos2.parent = entity.transform;
+
+                        pos1.position = GetComponentInChildren<Renderer>().bounds.center;
+                        pos2.position = entity.GetComponentInChildren<Renderer>().bounds.center;
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach(GameObject arc in arcs)
+            {
+                arcs.Remove(arc);
+                Destroy(arc);
+            }
+        }
+
+
         //Cooldown checks
         if (Time.time - entityState.lastStunTime >= entityState.stunnedTime) { entityState.stunned = 0; }
         if (Time.time - entityState.lastOnFireTime >= entityState.onFireTime) { entityState.onFire = 0; }

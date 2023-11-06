@@ -418,6 +418,13 @@ MonoBehaviour:
     lastOnFireTime: 0
     lastFrozenTime: 0
     lastElectrifiedTime: 0
+  VFXParents:
+  - {fileID: 4969772632167616378}
+  - {fileID: 4969772632167616378}
+  - {fileID: 4969772632167616378}
+  - {fileID: 4969772632167616378}
+  electricityArcPrefab: {fileID: 8563152326854082560, guid: f3eaa6557a17f5649861e3583eb82093, type: 3}
+  electricitySpreadDistance: 5
   maxHealth: 100
   damage: 500
   attackRate: 3
@@ -454,7 +461,6 @@ MonoBehaviour:
     volumeMultiplier: 1
   ragdoll: {fileID: 2924366210437150642, guid: 6cd32ea5e47fad64ca9fe449d88137d2, type: 3}
   anim: {fileID: 2678637630291617571}
-  VFXParents: []
 --- !u!195 &9071665419284974578
 NavMeshAgent:
   m_ObjectHideFlags: 0
