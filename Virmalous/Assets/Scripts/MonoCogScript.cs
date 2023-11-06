@@ -29,6 +29,9 @@ public class MonoCogScript : BaseEnemy
 		wheel.transform.eulerAngles += new Vector3(0, 0, Time.deltaTime * nav.velocity.magnitude * 20);
 
         EnemyUpdate();
+
+		//Start smoke VFX when health low
+		if(health <= maxHealth / 4) { VFXParents[4].SetActive(true); }
     }
 	
 	void RotateHead()

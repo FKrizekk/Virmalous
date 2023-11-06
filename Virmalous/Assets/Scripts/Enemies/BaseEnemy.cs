@@ -28,10 +28,14 @@ public abstract class BaseEnemy : Entity
     public GameObject blood;
     [Tooltip("Array for any sound to be played by the source")]
     public SoundClip[] clips;
+    [Tooltip("Array for hit sounds, played when this Entity is hit.")]
+    public SoundClip[] HitClips;
     [Tooltip("Ragdoll GameObject to be spawned when enemy dies")]
     public GameObject ragdoll;
     [Tooltip("Blood ParticleSystem GameObject")]
     public Animator anim;
+    [Tooltip("References to the VFX parents")]
+    public GameObject[] VFXParents;
 
     protected float lastAttackTime = 0;
     protected Vector3 killPoint;
@@ -99,8 +103,12 @@ public abstract class BaseEnemy : Entity
         Bleed();
     }
 
+    private int currentHitIndex = 0;
     void Bleed()
     {
+        //Play hit sound from HitClips array
+        source.PlayOneShot(HitClips[currentHitIndex].clip, HitClips[currentHitIndex].volumeMultiplier); currentHitIndex++; if(currentHitIndex >= HitClips.Length) { currentHitIndex = 0; }
+        //Spawn bleed effect
         Instantiate(blood, killPoint, Quaternion.LookRotation(killPoint - transform.GetComponentInChildren<Renderer>().bounds.center));
     }
 
