@@ -7782,6 +7782,15 @@ MonoBehaviour:
   muzzleFlash: {fileID: 4980281858100873014}
   muzzleFlashLight: {fileID: 5534158274280069449, guid: be43ece8597996b4780620cfafed7f10, type: 3}
   barrel: {fileID: 6449800255522941205}
+  shootClips:
+  - clip: {fileID: 8300000, guid: 8d197c05567d5d445a5d0f70269186ad, type: 3}
+    volumeMultiplier: 1
+  - clip: {fileID: 8300000, guid: 54987709ebc707545b106b4c533bec3e, type: 3}
+    volumeMultiplier: 1
+  - clip: {fileID: 8300000, guid: 979872d5d44d2b640817e1341edaf3cf, type: 3}
+    volumeMultiplier: 1
+  - clip: {fileID: 8300000, guid: e4a5c95d4635eef4ea7adad2ee07e640, type: 3}
+    volumeMultiplier: 1
   clips:
   - clip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
     volumeMultiplier: 1
