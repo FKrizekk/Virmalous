@@ -73,13 +73,15 @@ public abstract class BaseWeapon : MonoBehaviour
     public SwayConfig swayConfig;
 
     [Space]
-    [Header("Refferences")]
+    [Header("References")]
     protected TMP_Text ammoCountText;
     public GameObject bulletHitPrefab;
     public VisualEffect muzzleFlash;
     public GameObject muzzleFlashLight;
     [Tooltip("Point used for calculating the distance between the gun and what's in front of the player")]
     public Transform barrel;
+    [Tooltip("Array for shoot sounds, played when this weapon is fired.")]
+    public SoundClip[] shootClips;
     [Tooltip("All AudioClips for use by the weapon")]
     public SoundClip[] clips;
     protected AudioSource source;
@@ -103,6 +105,13 @@ public abstract class BaseWeapon : MonoBehaviour
         rb = player.GetComponent<Rigidbody>();
         ammoCountText = GameObject.Find("WeaponInfo/AmmoCount").GetComponent<TMP_Text>();
         game = GameObject.Find("Level").GetComponent<GameManager>();
+    }
+
+    private int currentShootSound = 0;
+    protected void ShootSound()
+    {
+        source.PlayOneShot(shootClips[currentShootSound].clip, shootClips[currentShootSound].volumeMultiplier);
+        currentShootSound++; if(currentShootSound >= shootClips.Length) { currentShootSound = 0; }
     }
 
     protected void WeaponUpdate()
