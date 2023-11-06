@@ -26,6 +26,10 @@ public class UIManager : MonoBehaviour
     public Slider speechSlider;
     public Slider sensitivitySlider;
 
+    [Header("SFX")]
+    public AudioSource source;
+    public SoundClip[] clips;
+
     //called from the sliders OnValueChanged() thing and the 1.03 check is there so it ignore the default value when activating
     //for some reason unity calls OnValueChanged() when activated aswell not just when you change the value
     public void UpdateVars()
@@ -75,8 +79,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    void PlaySound(int index)
+    {
+        source.PlayOneShot(clips[index].clip, clips[index].volumeMultiplier);
+    }
+
     public void Resume()
     {
+        PlaySound(0);
         settings.SetActive(false);
         quitOptions.SetActive(false);
         mainSettings.SetActive(false);
@@ -93,11 +103,13 @@ public class UIManager : MonoBehaviour
 
     public void StopQuitOptions()
     {
+        PlaySound(0);
         quitOptions.SetActive(false);
     }
 
     public void OpenSettings()
     {
+        PlaySound(0);
         menu.SetActive(false);
         settings.SetActive(true);
         mainSettings.SetActive(true);
@@ -105,18 +117,21 @@ public class UIManager : MonoBehaviour
 
     public void OpenVideoSettings()
     {
+        PlaySound(0);
         mainSettings.SetActive(false);
         videoSettings.SetActive(true);
     }
 
     public void CloseVideoSettings()
     {
+        PlaySound(0);
         mainSettings.SetActive(true);
         videoSettings.SetActive(false);
     }
 
     public void OpenAudioSettings()
     {
+        PlaySound(0);
         mainSettings.SetActive(false);
         audioSettings.SetActive(true);
 
@@ -125,12 +140,14 @@ public class UIManager : MonoBehaviour
 
     public void CloseAudioSettings()
     {
+        PlaySound(0);
         mainSettings.SetActive(true);
         audioSettings.SetActive(false);
     }
 
     public void OpenControlsSettings()
     {
+        PlaySound(0);
         mainSettings.SetActive(false);
         controlsSettings.SetActive(true);
 
@@ -139,29 +156,34 @@ public class UIManager : MonoBehaviour
 
     public void CloseControlsSettings()
     {
+        PlaySound(0);
         mainSettings.SetActive(true);
         controlsSettings.SetActive(false);
     }
 
     public void CloseSettings()
     {
+        PlaySound(0);
         menu.SetActive(true);
         settings.SetActive(false);
     }
 
     public void Quit()
     {
+        PlaySound(0);
         //quitButton.SetActive(false);
         quitOptions.SetActive(true);
     }
 
     public void ToMenu()
     {
+        PlaySound(0);
         //load scene
     }
 
     public void ToDesktop()
     {
+        PlaySound(0);
         SaveSystem.SaveGame(game);
         Application.Quit();
     }
