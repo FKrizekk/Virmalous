@@ -410,10 +410,14 @@ MonoBehaviour:
     onFire: 0
     frozen: 0
     electrified: 0
-    stunnedTime: 2
-    onFireTime: 2
-    frozenTime: 2
-    electrifiedTime: 2
+    stunnedTime: 3
+    onFireTime: 3
+    frozenTime: 3
+    electrifiedTime: 3
+    stunDamageMultiplier: 2
+    fireDamageMultiplier: 1.1
+    freezeDamageMultiplier: 1
+    electricityDamageMultiplier: 1
     lastStunTime: 0
     lastOnFireTime: 0
     lastFrozenTime: 0

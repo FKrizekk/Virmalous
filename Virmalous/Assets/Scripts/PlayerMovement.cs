@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 		inputVector = inputVector.normalized;
 
         //Check jump
-        if (Input.GetKeyDown(KeyCode.Space) && grounded && canMove)
+        if (Input.GetKeyDown(KeyCode.Space) && grounded && PlayerScript.canMove)
 		{
 			// Keep the horizontal momentum when jumping
 			Vector3 horizontalVelocity = rb.velocity;
@@ -135,8 +135,8 @@ public class PlayerMovement : MonoBehaviour
 			Vector3 targetDirection = transform.TransformDirection(inputVector);
 
 			// Calculate the rotation to align the source with the target
-			Quaternion startRotation = Quaternion.LookRotation(sourceDirection);
-			Quaternion endRotation = Quaternion.LookRotation(targetDirection);
+			Quaternion startRotation = sourceDirection == Vector3.zero ? Quaternion.identity : Quaternion.LookRotation(sourceDirection);
+			Quaternion endRotation = targetDirection == Vector3.zero ? Quaternion.identity : Quaternion.LookRotation(targetDirection);
 
 			float step = 0.5f;
 

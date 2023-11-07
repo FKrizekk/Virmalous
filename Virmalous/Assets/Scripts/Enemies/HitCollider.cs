@@ -7,6 +7,12 @@ public class hitInfo
 {
 	public DamageInfo damageInfo;
 	public Vector3 point;
+
+	public hitInfo()
+	{
+		damageInfo = new DamageInfo();
+		point = Vector3.zero;
+	}
 }
 
 [System.Serializable]

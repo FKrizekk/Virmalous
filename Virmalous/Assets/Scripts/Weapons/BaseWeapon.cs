@@ -24,6 +24,15 @@ public class DamageInfo
     public float fireDamage;
     public float freezeDamage;
     public float electricityDamage;
+
+    public DamageInfo()
+    {
+        damage = 0;
+        stunDamage = 0;
+        fireDamage = 0;
+        freezeDamage = 0;
+        electricityDamage = 0;
+    }
 }
 
 [System.Serializable]

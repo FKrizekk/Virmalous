@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts;
 using JetBrains.Annotations;
 using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public abstract class BaseEnemy : Entity
 {
@@ -37,6 +39,8 @@ public abstract class BaseEnemy : Entity
     
 
     protected float lastAttackTime = 0;
+    protected float lastStatusUpdateTime = 0;
+    protected float statusUpdateTick = 1f; //How many times takes damage per second based on status effects
     protected Vector3 killPoint;
     protected NavMeshAgent nav;
     protected GameObject player;
@@ -70,8 +74,26 @@ public abstract class BaseEnemy : Entity
     {
         base.Update();
 
+        if (Time.time - lastStatusUpdateTime >= statusUpdateTick && (entityState.stunned != 0 || entityState.onFire != 0 || entityState.frozen != 0 || entityState.electrified != 0))
+        {
+            lastStatusUpdateTime = Time.time;
+
+            //EntityState check
+            hitInfo stateUpdateInfo = new hitInfo();
+
+            stateUpdateInfo.point = GetComponentInChildren<Renderer>().bounds.center;
+
+            stateUpdateInfo.damageInfo.damage = 0f;
+            stateUpdateInfo.damageInfo.stunDamage = entityState.stunned * entityState.stunDamageMultiplier / maxHealth * 2000;
+            stateUpdateInfo.damageInfo.fireDamage = entityState.onFire * entityState.fireDamageMultiplier / maxHealth * 2000;
+            stateUpdateInfo.damageInfo.freezeDamage = entityState.frozen * entityState.freezeDamageMultiplier / maxHealth * 2000;
+            stateUpdateInfo.damageInfo.electricityDamage = entityState.electrified * entityState.electricityDamageMultiplier / maxHealth * 2000;
+
+            GotHit(stateUpdateInfo, true);
+        }
+
         //Check if dead
-        if(health <= 0) { Death(); }
+        if (health <= 0) { Death(); }
 
         //Check if player is in sight
         RaycastHit hit;
@@ -88,16 +110,37 @@ public abstract class BaseEnemy : Entity
     {
         killPoint = hit.point;
         float amount = hit.damageInfo.damage +
-            hit.damageInfo.stunDamage +
-            hit.damageInfo.fireDamage +
-            hit.damageInfo.freezeDamage +
-            hit.damageInfo.electricityDamage;
+            (hit.damageInfo.stunDamage * entityState.stunDamageMultiplier) +
+            (hit.damageInfo.fireDamage * entityState.fireDamageMultiplier) +
+            (hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier) +
+            (hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier);
         health -= (int)amount;
 
-        entityState._stunned += hit.damageInfo.stunDamage / 100f;
-        entityState._onFire += hit.damageInfo.fireDamage / 100f;
-        entityState._frozen += hit.damageInfo.fireDamage / 100f;
-        entityState._electrified += hit.damageInfo.electricityDamage / 100f;
+        entityState._stunned += hit.damageInfo.stunDamage * entityState.stunDamageMultiplier / 100f;
+        entityState._onFire += hit.damageInfo.fireDamage * entityState.fireDamageMultiplier / 100f;
+        entityState._frozen += hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier / 100f;
+        entityState._electrified += hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier / 100f;
+
+        Bleed();
+    }
+
+    public virtual void GotHit(hitInfo hit, bool statusUpdate)
+    {
+        killPoint = hit.point;
+        float amount = hit.damageInfo.damage +
+            (hit.damageInfo.stunDamage * entityState.stunDamageMultiplier) +
+            (hit.damageInfo.fireDamage * entityState.fireDamageMultiplier) +
+            (hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier) +
+            (hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier);
+        health -= (int)amount;
+
+        if (!statusUpdate)
+        {
+            entityState._stunned += hit.damageInfo.stunDamage * entityState.stunDamageMultiplier / 100f;
+            entityState._onFire += hit.damageInfo.fireDamage * entityState.fireDamageMultiplier / 100f;
+            entityState._frozen += hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier / 100f;
+            entityState._electrified += hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier / 100f;
+        }
 
         Bleed();
     }
@@ -108,7 +151,7 @@ public abstract class BaseEnemy : Entity
         //Play hit sound from HitClips array
         source.PlayOneShot(HitClips[currentHitIndex].clip, HitClips[currentHitIndex].volumeMultiplier); currentHitIndex++; if(currentHitIndex >= HitClips.Length) { currentHitIndex = 0; }
         //Spawn bleed effect
-        Instantiate(blood, killPoint, Quaternion.LookRotation(killPoint - transform.GetComponentInChildren<Renderer>().bounds.center));
+        Instantiate(blood, killPoint, killPoint == transform.GetComponentInChildren<Renderer>().bounds.center ? Quaternion.identity : Quaternion.LookRotation(killPoint - transform.GetComponentInChildren<Renderer>().bounds.center));
     }
 
     protected virtual void Death()

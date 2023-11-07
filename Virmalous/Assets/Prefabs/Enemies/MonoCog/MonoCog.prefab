@@ -238,14 +238,26 @@ MonoBehaviour:
     onFire: 0
     frozen: 0
     electrified: 0
-    stunnedTime: 2
-    onFireTime: 2
-    frozenTime: 2
-    electrifiedTime: 2
+    stunnedTime: 3
+    onFireTime: 3
+    frozenTime: 3
+    electrifiedTime: 3
+    stunDamageMultiplier: 0.5
+    fireDamageMultiplier: 0.6
+    freezeDamageMultiplier: 1.5
+    electricityDamageMultiplier: 2
     lastStunTime: 0
     lastOnFireTime: 0
     lastFrozenTime: 0
     lastElectrifiedTime: 0
+  VFXParents:
+  - {fileID: 5616228434066223027}
+  - {fileID: 5616228434066223027}
+  - {fileID: 5616228434066223027}
+  - {fileID: 5616228434066223027}
+  - {fileID: 2733361132978697969}
+  electricityArcPrefab: {fileID: 8563152326854082560, guid: f3eaa6557a17f5649861e3583eb82093, type: 3}
+  electricitySpreadDistance: 8
   maxHealth: 1000
   damage: 20
   attackRate: 10
@@ -270,12 +282,6 @@ MonoBehaviour:
     volumeMultiplier: 1
   ragdoll: {fileID: 973100763205573710, guid: 4f112af36e1eb6f4ab40397ef01f81d5, type: 3}
   anim: {fileID: 6761419395564116112}
-  VFXParents:
-  - {fileID: 5616228434066223027}
-  - {fileID: 5616228434066223027}
-  - {fileID: 5616228434066223027}
-  - {fileID: 5616228434066223027}
-  - {fileID: 2733361132978697969}
   wheel: {fileID: 7175666938783234710}
 --- !u!195 &7873061157615473788
 NavMeshAgent:

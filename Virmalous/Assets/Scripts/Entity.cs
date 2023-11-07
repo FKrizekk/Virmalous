@@ -64,6 +64,11 @@ public class EntityState
     public float frozenTime = 0f;
     [Tooltip("How long will electrifying this Entity last")]
     public float electrifiedTime = 0f;
+    [Space]
+    public float stunDamageMultiplier = 1f;
+    public float fireDamageMultiplier = 1f;
+    public float freezeDamageMultiplier = 1f;
+    public float electricityDamageMultiplier = 1f;
 
     [HideInInspector] public float lastStunTime = 0f;
     [HideInInspector] public float lastOnFireTime = 0f;
@@ -83,36 +88,26 @@ public abstract class Entity : MonoBehaviour
     public GameObject electricityArcPrefab;
     public float electricitySpreadDistance = 5f;
 
-    Dictionary<GameObject, Entity> arcs = new Dictionary<GameObject, Entity>();
+    Dictionary<GameObject[], Entity> arcs = new Dictionary<GameObject[], Entity>();
 
-
-
-    public void Update()
+    void HandleElectricity()
     {
-        //TEMP IF
-        if(gameObject.tag != "Player")
-        {
-            //VFXParents[0].SetActive(entityState.stunned > 0);
-            //VFXParents[1].SetActive(entityState.onFire > 0);
-            //VFXParents[2].SetActive(entityState.frozen > 0);
-            VFXParents[3].SetActive(entityState.electrified > 0);
-        }
-
+        //Electricity spreading
         if (entityState.electrified > 0)
         {
             Entity[] entities = GameObject.FindObjectsOfType<Entity>();
-            foreach(var entity in entities)
+            foreach (var entity in entities)
             {
-                if(Vector3.Distance(entity.transform.position, transform.position) < electricitySpreadDistance)
+                if (Vector3.Distance(entity.transform.position, transform.position) < electricitySpreadDistance)
                 {
                     if (entity.entityState.electrified == 0 && entity.tag != "Player" && !arcs.ContainsValue(entity))
                     {
-                        entity.entityState._electrified = entityState.electrified;
+                        entity.entityState.electrified = entityState.electrified;
                         entity.entityState.lastElectrifiedTime = entityState.lastElectrifiedTime;
                         Transform arc = Instantiate(electricityArcPrefab, transform).transform;
-                        arcs.Add(arc.gameObject, entity);
                         Transform pos1 = arc.GetChild(0);
                         Transform pos2 = arc.GetChild(1);
+                        arcs.Add(new GameObject[]{ arc.gameObject, pos1.gameObject, pos2.gameObject}, entity);
 
                         pos1.parent = transform;
                         pos2.parent = entity.transform;
@@ -125,15 +120,31 @@ public abstract class Entity : MonoBehaviour
         }
         else
         {
-            var tempArcs = new Dictionary<GameObject, Entity>(arcs);
+            var tempArcs = new Dictionary<GameObject[], Entity>(arcs);
             foreach (var arc in arcs.Keys)
             {
                 tempArcs.Remove(arc);
-                Destroy(arc);
+                foreach(var subArc in arc)
+                {
+                    Destroy(subArc);
+                }
             }
             arcs = tempArcs;
         }
+    }
 
+    public void Update()
+    {
+        //TEMP IF
+        if(gameObject.tag != "Player")
+        {
+            //VFXParents[0].SetActive(entityState.stunned > 0);
+            //VFXParents[1].SetActive(entityState.onFire > 0);
+            //VFXParents[2].SetActive(entityState.frozen > 0);
+            VFXParents[3].SetActive(entityState.electrified > 0);
+        }
+
+        HandleElectricity();
 
         //Cooldown checks
         if (Time.time - entityState.lastStunTime >= entityState.stunnedTime) { entityState.stunned = 0; }
