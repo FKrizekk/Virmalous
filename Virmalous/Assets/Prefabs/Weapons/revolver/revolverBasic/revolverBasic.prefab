@@ -1291,6 +1291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4114161845412696922}
+  - component: {fileID: 5367550288918413362}
   m_Layer: 3
   m_Name: rightHand
   m_TagString: Player
@@ -1315,6 +1316,48 @@ Transform:
   m_Father: {fileID: 2155399262382049561}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &5367550288918413362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626418914591394272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 1
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms:
+  - {fileID: 4114161845412696922}
+  - {fileID: 5019443429187371972}
+  - {fileID: 7335475345103315112}
+  - {fileID: 1805868222214687779}
+  - {fileID: 705176130264129510}
+  - {fileID: 1396953587013265286}
+  - {fileID: 183783176798080551}
+  - {fileID: 8745658292543478414}
+  - {fileID: 1298713868105355697}
+  - {fileID: 3500549965635748536}
+  - {fileID: 6424782851185696010}
+  - {fileID: 2622221438291889683}
+  - {fileID: 7476295643201398141}
+  - {fileID: 5576776587520071365}
+  - {fileID: 2840029320261647598}
+  - {fileID: 5385291203075589960}
+  - {fileID: 8296393051290414010}
+  - {fileID: 6316842680728787213}
+  - {fileID: 1786600116567645434}
+  - {fileID: 5530042771439941798}
+  - {fileID: 3170604683074636235}
+  - {fileID: 5425401538953393244}
+  - {fileID: 6505851344854354439}
 --- !u!1 &3886845072878175695
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,6 +2677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3718623967150594313}
+  - component: {fileID: 4480895358716076997}
   m_Layer: 3
   m_Name: leftHand
   m_TagString: Player
@@ -2658,6 +2702,48 @@ Transform:
   m_Father: {fileID: 829999962689126814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 46.71, y: 90, z: 90}
+--- !u!114 &4480895358716076997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623586535440501026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 1
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms:
+  - {fileID: 3718623967150594313}
+  - {fileID: 6221718601234508872}
+  - {fileID: 6376554514785882720}
+  - {fileID: 3312738716453559106}
+  - {fileID: 483130823910791347}
+  - {fileID: 6179147768070426403}
+  - {fileID: 2445161177765064690}
+  - {fileID: 3745894699488154195}
+  - {fileID: 7321171233103384728}
+  - {fileID: 5990122293608976849}
+  - {fileID: 5908918736867760448}
+  - {fileID: 6532488347819995270}
+  - {fileID: 3472301276260787549}
+  - {fileID: 3946713697155285690}
+  - {fileID: 7569764300496696015}
+  - {fileID: 895894165305052727}
+  - {fileID: 3370881199480835726}
+  - {fileID: 4730302659210998512}
+  - {fileID: 3445004577408689810}
+  - {fileID: 2913244312376729965}
+  - {fileID: 3778632311774594811}
+  - {fileID: 8840116794160636499}
+  - {fileID: 2163083993326637703}
 --- !u!1 &7706087374451618843
 GameObject:
   m_ObjectHideFlags: 0

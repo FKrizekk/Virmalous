@@ -15,6 +15,7 @@ TagManager:
   - Health
   - EnemyRagdoll
   - Bullet
+  - Interactable
   layers:
   - Default
   - TransparentFX

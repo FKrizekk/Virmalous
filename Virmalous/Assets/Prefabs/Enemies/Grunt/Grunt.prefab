@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3009867340887771235}
   - component: {fileID: 388252359950150088}
   m_Layer: 6
-  m_Name: Cylinder.001
+  m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -299,6 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1115933099693223367}
+  - component: {fileID: 6541462778873899298}
   m_Layer: 6
   m_Name: Armature
   m_TagString: Untagged
@@ -324,6 +325,46 @@ Transform:
   m_Father: {fileID: 8344117254505069913}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6541462778873899298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577207027328345997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 1
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms:
+  - {fileID: 1115933099693223367}
+  - {fileID: 4457991670499958783}
+  - {fileID: 5399168420579686174}
+  - {fileID: 151723653025484707}
+  - {fileID: 4005114703962801838}
+  - {fileID: 4851338921148608019}
+  - {fileID: 7087621362493291750}
+  - {fileID: 2311553732387181099}
+  - {fileID: 2444061296546355392}
+  - {fileID: 2555496653345343037}
+  - {fileID: 2517260724107716549}
+  - {fileID: 1302082384675181160}
+  - {fileID: 3903043506427865042}
+  - {fileID: 7056727664662664495}
+  - {fileID: 3419351694590044727}
+  - {fileID: 8276647776721589296}
+  - {fileID: 6865825906276258594}
+  - {fileID: 4161174950959355199}
+  - {fileID: 7594729859847972628}
+  - {fileID: 6015260440104522363}
+  - {fileID: 3120897874099676895}
 --- !u!1 &2505460749595281958
 GameObject:
   m_ObjectHideFlags: 0

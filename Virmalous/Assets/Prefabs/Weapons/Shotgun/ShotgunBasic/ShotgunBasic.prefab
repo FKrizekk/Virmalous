@@ -316,6 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4095263655757781769}
+  - component: {fileID: 4665161813775362748}
   m_Layer: 3
   m_Name: leftHand
   m_TagString: Untagged
@@ -340,6 +341,48 @@ Transform:
   m_Father: {fileID: 3889892895701102332}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -150.32918, y: -193.2343, z: 480.91672}
+--- !u!114 &4665161813775362748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576150154449626568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 1
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms:
+  - {fileID: 4095263655757781769}
+  - {fileID: 4055653896722173086}
+  - {fileID: 7085480991196292981}
+  - {fileID: 182583994491918321}
+  - {fileID: 8027891198833474614}
+  - {fileID: 8555732713735571209}
+  - {fileID: 5862866565764587343}
+  - {fileID: 2858694913622982219}
+  - {fileID: 8996902545443624946}
+  - {fileID: 6789055706266503668}
+  - {fileID: 8046480517922793400}
+  - {fileID: 5195408710202310040}
+  - {fileID: 2390380012840916290}
+  - {fileID: 7884575256815682551}
+  - {fileID: 6597014550421874252}
+  - {fileID: 3102701008846411837}
+  - {fileID: 4786356804323262225}
+  - {fileID: 1572532054199909240}
+  - {fileID: 4804557092855995928}
+  - {fileID: 5492742833227776502}
+  - {fileID: 7707983365246680486}
+  - {fileID: 3730923995663017342}
+  - {fileID: 4142616649278408214}
 --- !u!1 &1817256155568954137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1659,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 2174717984621020495}
   muzzleFlashLight: {fileID: 5534158274280069449, guid: 57c47b9420e05104c8b30fac2b48a8d6, type: 3}
   barrel: {fileID: 7870797250016857674}
+  shootClips: []
   clips:
   - clip: {fileID: 8300000, guid: 4deb2be943b4bec42894d1d9fc486046, type: 3}
     volumeMultiplier: 1
@@ -3397,6 +3441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6140940218457697507}
+  - component: {fileID: 8827904621340389987}
   m_Layer: 3
   m_Name: rightHand
   m_TagString: Player
@@ -3421,6 +3466,48 @@ Transform:
   m_Father: {fileID: 3889892895658420791}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: -0.139, y: 87.538, z: -88.054}
+--- !u!114 &8827904621340389987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7572091422429764440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boneShape: 1
+  drawBones: 1
+  drawTripods: 0
+  boneSize: 1
+  tripodSize: 1
+  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
+  m_Transforms:
+  - {fileID: 6140940218457697507}
+  - {fileID: 914823218865147369}
+  - {fileID: 3153469241847975219}
+  - {fileID: 4966094134013383040}
+  - {fileID: 8443390849114830140}
+  - {fileID: 8644489958626546672}
+  - {fileID: 670513181930485075}
+  - {fileID: 432624757337576932}
+  - {fileID: 6758004019764131079}
+  - {fileID: 7742466412142550652}
+  - {fileID: 1822655994635056869}
+  - {fileID: 5291905589190255739}
+  - {fileID: 5481063385598682920}
+  - {fileID: 7600431782605125817}
+  - {fileID: 1860655865265230691}
+  - {fileID: 2538853505835984310}
+  - {fileID: 8957571937188613547}
+  - {fileID: 7627105611374213783}
+  - {fileID: 1147318007030241464}
+  - {fileID: 2895993792781142226}
+  - {fileID: 7023352647126470999}
+  - {fileID: 6301167870052123628}
+  - {fileID: 7440301437033594093}
 --- !u!1 &7655595485452633967
 GameObject:
   m_ObjectHideFlags: 0

@@ -128,7 +128,6 @@ public abstract class BaseEnemy : Entity
     {
         killPoint = hit.point;
         float amount = hit.damageInfo.damage +
-            (hit.damageInfo.stunDamage * entityState.stunDamageMultiplier) +
             (hit.damageInfo.fireDamage * entityState.fireDamageMultiplier) +
             (hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier) +
             (hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier);

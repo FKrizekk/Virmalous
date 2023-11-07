@@ -110,7 +110,7 @@ public class PlayerScript : Entity
 		RaycastHit hit2;
 		if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit2, 6, layerMask))
 		{
-			if(hit2.collider.gameObject.tag == "Screen")
+			if(hit2.collider.gameObject.tag == "Interactable")
 			{
 				isInteracting = true;
 			}else
