@@ -4332,7 +4332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6578242998220515673, guid: 2e8493f1ae03613499606f9414e2a8e9, type: 3}
       propertyPath: entityState.electrifiedTime
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8493f1ae03613499606f9414e2a8e9, type: 3}
@@ -4826,7 +4826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6578242998220515673, guid: 2e8493f1ae03613499606f9414e2a8e9, type: 3}
       propertyPath: entityState.electrifiedTime
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e8493f1ae03613499606f9414e2a8e9, type: 3}
@@ -18285,7 +18285,7 @@ MonoBehaviour:
     lastFrozenTime: 0
     lastElectrifiedTime: 0
   VFXParents: []
-  electricityArcPrefab: {fileID: 0}
+  electricityArcPrefab: {fileID: 8563152326854082560, guid: f3eaa6557a17f5649861e3583eb82093, type: 3}
   electricitySpreadDistance: 5
   announcer: {fileID: 7942169452443705128}
   transferer: {fileID: 3997358427835193055}

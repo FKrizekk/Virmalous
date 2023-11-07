@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -82,7 +83,7 @@ public abstract class Entity : MonoBehaviour
     public GameObject electricityArcPrefab;
     public float electricitySpreadDistance = 5f;
 
-    List<GameObject> arcs = new List<GameObject>();
+    Dictionary<GameObject, Entity> arcs = new Dictionary<GameObject, Entity>();
 
 
 
@@ -104,12 +105,12 @@ public abstract class Entity : MonoBehaviour
             {
                 if(Vector3.Distance(entity.transform.position, transform.position) < electricitySpreadDistance)
                 {
-                    if(entity.entityState.electrified == 0 && entity.tag != "Player")
+                    if (entity.entityState.electrified == 0 && entity.tag != "Player" && !arcs.ContainsValue(entity))
                     {
                         entity.entityState._electrified = entityState.electrified;
                         entity.entityState.lastElectrifiedTime = entityState.lastElectrifiedTime;
                         Transform arc = Instantiate(electricityArcPrefab, transform).transform;
-                        arcs.Add(arc.gameObject);
+                        arcs.Add(arc.gameObject, entity);
                         Transform pos1 = arc.GetChild(0);
                         Transform pos2 = arc.GetChild(1);
 
@@ -124,7 +125,7 @@ public abstract class Entity : MonoBehaviour
         }
         else
         {
-            foreach(GameObject arc in arcs)
+            foreach(var arc in arcs.Keys)
             {
                 arcs.Remove(arc);
                 Destroy(arc);
