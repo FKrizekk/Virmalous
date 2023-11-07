@@ -430,7 +430,12 @@ MonoBehaviour:
   electricityArcPrefab: {fileID: 8563152326854082560, guid: f3eaa6557a17f5649861e3583eb82093, type: 3}
   electricitySpreadDistance: 5
   maxHealth: 100
-  damage: 500
+  damage:
+    damage: 40
+    stunDamage: 10
+    fireDamage: 0
+    freezeDamage: 0
+    electricityDamage: 1
   attackRate: 3
   speed: 10
   angularSpeed: 270

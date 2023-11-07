@@ -93,7 +93,7 @@ public abstract class Entity : MonoBehaviour
     void HandleElectricity()
     {
         //Electricity spreading
-        if (entityState.electrified > 0)
+        if (entityState.electrified > 0 && gameObject.tag != "Player")
         {
             Entity[] entities = GameObject.FindObjectsOfType<Entity>();
             foreach (var entity in entities)
@@ -135,14 +135,10 @@ public abstract class Entity : MonoBehaviour
 
     public void Update()
     {
-        //TEMP IF
-        if(gameObject.tag != "Player")
-        {
-            //VFXParents[0].SetActive(entityState.stunned > 0);
-            //VFXParents[1].SetActive(entityState.onFire > 0);
-            //VFXParents[2].SetActive(entityState.frozen > 0);
-            VFXParents[3].SetActive(entityState.electrified > 0);
-        }
+        //VFXParents[0].SetActive(entityState.stunned > 0);
+        //VFXParents[1].SetActive(entityState.onFire > 0);
+        //VFXParents[2].SetActive(entityState.frozen > 0);
+        VFXParents[3].SetActive(entityState.electrified > 0);
 
         HandleElectricity();
 

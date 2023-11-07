@@ -72,7 +72,7 @@ public class MonoCogScript : BaseEnemy
             //Check if can attack and attack
             if (contact.otherCollider.gameObject.tag == "Player" && (Time.time - lastAttackTime) >= 1 / attackRate)
             {
-                PlayerScript.ChangeHealth(-damage);
+                contact.otherCollider.GetComponentInParent<PlayerScript>().GotHit(damage);
                 lastAttackTime = Time.time;
             }
         }

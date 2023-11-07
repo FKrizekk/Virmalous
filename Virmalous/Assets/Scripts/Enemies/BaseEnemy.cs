@@ -12,7 +12,7 @@ public abstract class BaseEnemy : Entity
     public int maxHealth;
     protected int health;
     [Tooltip("Damage per attack for melee or Damage per projectile for ranged")]
-    public int damage;
+    public DamageInfo damage;
     [Tooltip("Attacks per second")]
     public float attackRate;
 

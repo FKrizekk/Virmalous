@@ -120,10 +120,21 @@ public class PlayerScript : Entity
 		}
 	}
 	
-	public void GotHit(int amount)
+	public void GotHit(DamageInfo hit)
 	{
-		ChangeHealth(-amount);
-	}
+        float amount = hit.damage +
+            (hit.stunDamage * entityState.stunDamageMultiplier) +
+            (hit.fireDamage * entityState.fireDamageMultiplier) +
+            (hit.freezeDamage * entityState.freezeDamageMultiplier) +
+            (hit.electricityDamage * entityState.electricityDamageMultiplier);
+
+        ChangeHealth(-(int)amount);
+
+        entityState._stunned += hit.stunDamage * entityState.stunDamageMultiplier / 100f;
+        entityState._onFire += hit.fireDamage * entityState.fireDamageMultiplier / 100f;
+        entityState._frozen += hit.freezeDamage * entityState.freezeDamageMultiplier / 100f;
+        entityState._electrified += hit.electricityDamage * entityState.electricityDamageMultiplier / 100f;
+    }
 	
 	public static void ChangeHealth(int amount)
 	{
