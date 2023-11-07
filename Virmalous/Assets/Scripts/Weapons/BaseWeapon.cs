@@ -1,6 +1,4 @@
-﻿using JetBrains.Annotations;
-using OpenCover.Framework.Model;
-using System.Collections;
+﻿using System.Collections;
 using System.ComponentModel;
 using System.Threading;
 using TMPro;

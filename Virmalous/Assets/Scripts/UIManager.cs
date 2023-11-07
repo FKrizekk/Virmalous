@@ -5,8 +5,6 @@ using UnityEngine.Analytics;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
-using UnityEditor.Experimental.GraphView;
 using System;
 
 public class UIManager : MonoBehaviour
