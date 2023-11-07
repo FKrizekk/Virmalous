@@ -249,7 +249,8 @@ public class PlayerMovement : MonoBehaviour
 	public void Dash()
 	{
 		Vector3 dashVector = new Vector3(inputVector.x, Input.GetKey(KeyCode.Space) ? 1 : 0, inputVector.z);
-		dashVector = cam.transform.TransformDirection(dashVector);
+		dashVector = cam.transform.GetChild(0).transform.TransformDirection(dashVector);
+		dashVector.y = Mathf.Clamp(dashVector.y, 0, Mathf.Infinity);
 		rb.AddForce(dashVector * dashForce, ForceMode.Impulse);
 	}
 

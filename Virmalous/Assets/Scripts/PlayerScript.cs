@@ -84,10 +84,11 @@ public class PlayerScript : Entity
         //Smoothly update healthBar
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/maxHealth, 0.2f);
 		//Smoothly update healthText
-		string currentHealth = Mathf.Lerp(float.Parse(healthText.text.Split(" / ")[0].Contains(',') ? healthText.text.Split(" / ")[0].Remove(healthText.text.Split(" / ")[0].IndexOf(','), 1) : healthText.text.Split(" / ")[0]), health, 0.2f).ToString();
+		//string currentHealth = Mathf.Lerp(float.Parse(healthText.text.Split(" / ")[0].Contains(',') ? healthText.text.Split(" / ")[0].Remove(healthText.text.Split(" / ")[0].IndexOf(','), 1) : healthText.text.Split(" / ")[0]), health, 0.2f).ToString();
 		string maxHealthText = maxHealth.ToString(); if(maxHealthText.Length >= 4){maxHealthText = maxHealthText.Insert(maxHealthText.Length-3, ",");}
-		if(currentHealth.Contains('.')){currentHealth = currentHealth.Split('.')[0];}
-		if(Mathf.Abs(int.Parse(currentHealth) - health) < 10){currentHealth = health.ToString();}
+		//if(currentHealth.Contains('.')){currentHealth = currentHealth.Split('.')[0];}
+		//if(Mathf.Abs(int.Parse(currentHealth) - health) < 10){currentHealth = health.ToString();}
+		string currentHealth = health.ToString();
 		if(currentHealth.Length >= 4){currentHealth = currentHealth.Insert(currentHealth.Length-3, ",");}
 		healthText.text = currentHealth + " / " + maxHealthText;
 		

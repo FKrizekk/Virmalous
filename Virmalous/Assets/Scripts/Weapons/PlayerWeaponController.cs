@@ -26,7 +26,8 @@ public class PlayerWeaponController : MonoBehaviour
 			weaponsLastUsedTime.Add(0f);
 			PlayerScript.ammoCounts[i] = weapons[i].GetComponent<BaseWeapon>().maxAmmo;
         }
-	}
+        SetGun(0 + game.data.equippedVariants[0]);
+    }
 	
 	void Update()
 	{
@@ -42,7 +43,7 @@ public class PlayerWeaponController : MonoBehaviour
 		//Check background reload
 		for (int i = 0; i < weapons.Length; i++)
 		{
-			if (Time.time - weaponsLastUsedTime[i] <= backgroundReloadCooldown && currentIndex != i && PlayerScript.ammoCounts[i] != weapons[i].GetComponent<BaseWeapon>().maxAmmo) 
+			if (Time.time - weaponsLastUsedTime[i] >= backgroundReloadCooldown && currentIndex != i && PlayerScript.ammoCounts[i] != weapons[i].GetComponent<BaseWeapon>().maxAmmo) 
 			{
 				PlayerScript.ammoCounts[i] = weapons[i].GetComponent<BaseWeapon>().maxAmmo;
 			}
@@ -51,7 +52,7 @@ public class PlayerWeaponController : MonoBehaviour
 	
 	void SetGun(int index)
 	{
-		if(currentIndex >= 0)
+		if(currentIndex != -1)
 		{
 			weaponsLastUsedTime[currentIndex] = Time.time;
 		}
@@ -66,7 +67,4 @@ public class PlayerWeaponController : MonoBehaviour
 		obj = Instantiate(weapons[index], transform.TransformPoint(new Vector3(0,-1,-1)), Quaternion.Euler(new Vector3(0,0,90)), transform);
 		obj.transform.SetParent(gunParent.transform);
 	}
-	
-	
-	
 }
