@@ -45,7 +45,7 @@ public class Revolver : BaseWeapon
 		
 		//Shooting logic
 		RaycastHit hit;
-		if(Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, PlayerScript.layerMask))
+		if(Physics.SphereCast(cam.transform.position, 0.2f, cam.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, PlayerScript.layerMask))
 		{
 			if(hit.collider.tag == "Enemy")
 			{

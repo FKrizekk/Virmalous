@@ -28,6 +28,7 @@ public class PlayerScript : Entity
 	
 	public static int health = 2000;
 	public static int maxHealth = 10000;
+
 	
 	Vector3 currentObjectivePos;
 	
@@ -39,6 +40,7 @@ public class PlayerScript : Entity
 
 	public static bool isInteracting = false;
 	public static bool isReloading = false;
+	public static bool canMove = true;
 	
 	//Start is called before the first frame update
 	void Start()

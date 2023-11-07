@@ -84,6 +84,8 @@ public abstract class Entity : MonoBehaviour
 
     List<GameObject> arcs = new List<GameObject>();
 
+
+
     public void Update()
     {
         //TEMP IF
@@ -95,16 +97,17 @@ public abstract class Entity : MonoBehaviour
             VFXParents[3].SetActive(entityState.electrified > 0);
         }
 
-        if (entityState.electrified >= 1)
+        if (entityState.electrified > 0)
         {
             Entity[] entities = GameObject.FindObjectsOfType<Entity>();
             foreach(var entity in entities)
             {
                 if(Vector3.Distance(entity.transform.position, transform.position) < electricitySpreadDistance)
                 {
-                    if(entity.entityState.electrified < 1 && entity.entityState.electrified > 0)
+                    if(entity.entityState.electrified == 0 && entity.tag != "Player")
                     {
-                        entity.entityState._electrified = 1;
+                        entity.entityState._electrified = entityState.electrified;
+                        entity.entityState.lastElectrifiedTime = entityState.lastElectrifiedTime;
                         Transform arc = Instantiate(electricityArcPrefab, transform).transform;
                         arcs.Add(arc.gameObject);
                         Transform pos1 = arc.GetChild(0);

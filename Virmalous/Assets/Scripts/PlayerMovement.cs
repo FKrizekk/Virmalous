@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if(Time.timeScale != 0f) { UpdateCamera(); }
+		if(Time.timeScale != 0f && PlayerScript.canMove) { UpdateCamera(); }
 
 		//Add fov modifiers to the camera
 		cam.transform.GetChild(0).GetComponent<Camera>().fieldOfView = game.data.fov + fovModifier.Sum();
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 		inputVector = inputVector.normalized;
 
         //Check jump
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && grounded && canMove)
 		{
 			// Keep the horizontal momentum when jumping
 			Vector3 horizontalVelocity = rb.velocity;
@@ -171,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-		if(canMove)
+		if(canMove && PlayerScript.canMove)
 		{
 			Move();
 		}else if(sliding)

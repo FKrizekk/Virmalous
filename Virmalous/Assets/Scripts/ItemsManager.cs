@@ -34,22 +34,25 @@ public class ItemsManager : MonoBehaviour
 
     private void Update()
     {
-		if (Input.GetKeyDown("e") && medkitCount > 0 && Time.time - medkitLastUsedTime >= medkitCooldown)
+		if (PlayerScript.canMove)
 		{
-			medkitCount--;
-			PlayerScript.ChangeHealth(5000);
-			medkitLastUsedTime = Time.time;
-		}
-		if(Input.GetKeyDown("q") && Time.time - gravBladeLastUseTime >= gravBladeCooldown)
-		{
-			ThrowGravBlade();
-			gravBladeLastUseTime = Time.time;
-		}
-		if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time - dashLastUseTime >= gravBladeCooldown)
-		{
-			GetComponent<PlayerMovement>().Dash();
-			dashLastUseTime = Time.time;
-		}
+            if (Input.GetKeyDown("e") && medkitCount > 0 && Time.time - medkitLastUsedTime >= medkitCooldown)
+            {
+                medkitCount--;
+                PlayerScript.ChangeHealth(5000);
+                medkitLastUsedTime = Time.time;
+            }
+            if (Input.GetKeyDown("q") && Time.time - gravBladeLastUseTime >= gravBladeCooldown)
+            {
+                ThrowGravBlade();
+                gravBladeLastUseTime = Time.time;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time - dashLastUseTime >= gravBladeCooldown)
+            {
+                GetComponent<PlayerMovement>().Dash();
+                dashLastUseTime = Time.time;
+            }
+        }
 
 		UpdateAbilites();
     }

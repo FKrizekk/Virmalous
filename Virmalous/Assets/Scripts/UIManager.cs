@@ -3,6 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
+using UnityEditor.Experimental.GraphView;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +24,9 @@ public class UIManager : MonoBehaviour
 
     public GameManager game;
 
+    private List<string> consoleOutput = new List<string>();
+    private TMP_Text consoleOutputText;
+
     [Header("Sliders")]
     public Slider masterSlider;
     public Slider sfxSlider;
@@ -26,9 +34,66 @@ public class UIManager : MonoBehaviour
     public Slider speechSlider;
     public Slider sensitivitySlider;
 
+    [Header("References")]
+    public GameObject consoleParent;
+
     [Header("SFX")]
     public AudioSource source;
     public SoundClip[] clips;
+
+
+    private void Awake()
+    {
+        consoleOutputText = consoleParent.GetComponentInChildren<TMP_Text>();
+    }
+
+    public void AskConsole(string command)
+    {
+        string output;
+
+        if (command.Contains("allwpns"))
+        {
+            for (int i = 0; i < game.data.weaponStatus.Count; i++)
+            {
+                if (game.data.weaponStatus[i] == false) { game.data.weaponStatus[i] = true; }
+            }
+            output = "Added all weapons.";
+        }else if (command.Contains("heal"))
+        {
+            int amount = int.Parse(command.Split(" ")[1]);
+            PlayerScript.ChangeHealth(amount);
+            output = $"Increased changed health by: {amount}";
+        }else if (command.Contains("enchant"))
+        {
+            BaseWeapon wpn = PlayerScript.cam.GetComponentInChildren<BaseWeapon>();
+            string propertyName = command.Split(" ")[1];
+            float amount = int.Parse(command.Split(" ")[2]);
+
+            switch(propertyName)
+            {
+                case "stun":
+                    wpn.damageInfo.stunDamage = amount;
+                    break;
+                case "fire":
+                    wpn.damageInfo.fireDamage = amount;
+                    break;
+                case "freeze":
+                    wpn.damageInfo.freezeDamage = amount;
+                    break;
+                case "electricity":
+                    wpn.damageInfo.electricityDamage = amount;
+                    break;
+            }
+
+            output = $"Set {propertyName}Damage to: {amount}";
+        }
+        else
+        {
+            output = "Invalid command.";
+        }
+
+        consoleOutputText.text += ($"\n[{DateTime.Now}] {output}");
+    }
 
     //called from the sliders OnValueChanged() thing and the 1.03 check is there so it ignore the default value when activating
     //for some reason unity calls OnValueChanged() when activated aswell not just when you change the value
@@ -60,6 +125,17 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if(consoleParent.activeSelf)
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                TMP_InputField field = consoleParent.GetComponentInChildren<TMP_InputField>();
+                field.text = "";
+                field.Select();
+                field.ActivateInputField();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!menu.activeSelf && settings.activeSelf)
@@ -76,6 +152,17 @@ public class UIManager : MonoBehaviour
                 PlayerScript.LockCursor(false);
                 Time.timeScale = 0f;
             }
+        }
+
+        if (Input.GetKeyDown("`")) 
+        {
+            TMP_InputField field = consoleParent.GetComponentInChildren<TMP_InputField>();
+            field.text = "";
+            consoleParent.SetActive(!consoleParent.activeSelf);
+            PlayerScript.LockCursor(!consoleParent.activeSelf);
+            if (consoleParent.activeSelf) { field.Select(); field.ActivateInputField(); }
+            PlayerScript.canMove = !consoleParent.activeSelf;
+            //Time.timeScale = consoleParent.activeSelf ? 0f :1f;
         }
     }
 
