@@ -13,7 +13,7 @@ public class Revolver : BaseWeapon
 		WeaponUpdate();
 		RotateParticleSystem();
 
-        if (Input.GetMouseButtonDown(0) && Time.time - lastShotTime > 1 / firerate && !PlayerScript.isInteracting && !PlayerScript.isReloading && Time.timeScale != 0f)
+        if (Input.GetMouseButtonDown(0) && Time.time - lastShotTime > 1 / firerate && !PlayerScript.isInteracting && !PlayerScript.isReloading && Time.timeScale != 0f && Time.time - equipStartTime >= equipTime)
         {
             if (PlayerScript.ammoCounts[weaponIndex] > 0) { Shoot(); } else { Reload(); }
         }

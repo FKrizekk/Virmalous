@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -88,6 +89,11 @@ public class UIManager : MonoBehaviour
                 }
 
                 output = $"Set {propertyName}Damage to: {amount}";
+            }else if (command.Contains("load"))
+            {
+                string sceneName = command.Split(" ")[1];
+                SceneManager.LoadScene(sceneName);
+                output = $"Loaded scene: {sceneName}";
             }
             else
             {

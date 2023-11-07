@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 	public Rigidbody rb;
 	
 	float MoveForce = 15f;
-	float AirMoveForce = 12;
+	float AirMoveForce = 24f;
 	float crouchForce = 7f;
 	float SlideForce = 20f;
 	float dashForce = 40f;

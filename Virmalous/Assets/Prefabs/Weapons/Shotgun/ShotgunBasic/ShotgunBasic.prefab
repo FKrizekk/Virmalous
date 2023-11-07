@@ -1642,6 +1642,7 @@ MonoBehaviour:
   piercing: 2
   weaponIndex: 4
   relativePos: {x: 0.37, y: -0.23, z: 0.5}
+  equipTime: 0.15
   swayConfig:
     step: 0.01
     maxStepDistance: 0.06

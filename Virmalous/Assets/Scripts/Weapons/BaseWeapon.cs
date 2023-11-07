@@ -76,6 +76,9 @@ public abstract class BaseWeapon : MonoBehaviour
     public int weaponIndex;
     [Tooltip("The target relative position to the camera")]
     public Vector3 relativePos;
+    [Tooltip("The time before you are allowed to shoot after equipping this weapon")]
+    public float equipTime;
+    protected float equipStartTime;
 
     public SwayConfig swayConfig;
 
@@ -112,6 +115,8 @@ public abstract class BaseWeapon : MonoBehaviour
         rb = player.GetComponent<Rigidbody>();
         ammoCountText = GameObject.Find("WeaponInfo/AmmoCount").GetComponent<TMP_Text>();
         game = GameObject.Find("Level").GetComponent<GameManager>();
+
+        equipStartTime = Time.time;
     }
 
     private int currentShootSound = 0;

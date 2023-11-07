@@ -13,6 +13,7 @@ public class PlayerWeaponController : MonoBehaviour
 	GameObject gunParent;
 
 	GameManager game;
+	int currentIndex = -1;
 	
 	void Start()
 	{
@@ -22,11 +23,11 @@ public class PlayerWeaponController : MonoBehaviour
 	
 	void Update()
 	{
-		if(Input.GetKeyDown("1"))
+		if(Input.GetKeyDown("1") && currentIndex != 0 + game.data.equippedVariants[0])
 		{
 			SetGun(0 + game.data.equippedVariants[0]);
 		}
-		else if(Input.GetKeyDown("2"))
+		else if(Input.GetKeyDown("2") && currentIndex != 4 + game.data.equippedVariants[1])
 		{
             SetGun(4 + game.data.equippedVariants[1]);
         }
@@ -34,6 +35,7 @@ public class PlayerWeaponController : MonoBehaviour
 	
 	void SetGun(int index)
 	{
+		currentIndex = index;
 		PlayerScript.isReloading = false;
 
 		if(obj != null)
