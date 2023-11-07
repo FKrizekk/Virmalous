@@ -47,7 +47,7 @@ public class ItemsManager : MonoBehaviour
                 ThrowGravBlade();
                 gravBladeLastUseTime = Time.time;
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time - dashLastUseTime >= gravBladeCooldown)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time - dashLastUseTime >= dashCooldown)
             {
                 GetComponent<PlayerMovement>().Dash();
                 dashLastUseTime = Time.time;
