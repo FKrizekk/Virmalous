@@ -87,7 +87,7 @@ public class PlayerScript : Entity
 		string currentHealth = Mathf.Lerp(float.Parse(healthText.text.Split(" / ")[0].Contains(',') ? healthText.text.Split(" / ")[0].Remove(healthText.text.Split(" / ")[0].IndexOf(','), 1) : healthText.text.Split(" / ")[0]), health, Time.deltaTime*10).ToString();
 		string maxHealthText = maxHealth.ToString(); if(maxHealthText.Length >= 4){maxHealthText = maxHealthText.Insert(maxHealthText.Length-3, ",");}
 		if(currentHealth.Contains('.')){currentHealth = currentHealth.Split('.')[0];}
-		if(int.Parse(currentHealth) > (health - 300)){currentHealth = health.ToString();}
+		if(Mathf.Abs(int.Parse(currentHealth) - health) < 10){currentHealth = health.ToString();}
 		if(currentHealth.Length >= 4){currentHealth = currentHealth.Insert(currentHealth.Length-3, ",");}
 		healthText.text = currentHealth + " / " + maxHealthText;
 		

@@ -8,6 +8,8 @@ using UnityEngine;
 public class PlayerWeaponController : MonoBehaviour
 {
 	public GameObject[] weapons; //Prefabs for all weapons (indexed in the ideas doc)
+	List<float> weaponsLastUsedTime = new List<float>();
+	float backgroundReloadCooldown = 2f;
 	GameObject obj; //Instantiated/Equipped weapon
 	
 	GameObject gunParent;
@@ -19,6 +21,11 @@ public class PlayerWeaponController : MonoBehaviour
 	{
 		gunParent = GameObject.Find("GUNPARENT");
 		game = GameObject.Find("Level").GetComponent<GameManager>();
+		for (int i = 0; i < weapons.Length; i++)
+		{
+			weaponsLastUsedTime.Add(0f);
+			PlayerScript.ammoCounts[i] = weapons[i].GetComponent<BaseWeapon>().maxAmmo;
+        }
 	}
 	
 	void Update()
@@ -31,10 +38,23 @@ public class PlayerWeaponController : MonoBehaviour
 		{
             SetGun(4 + game.data.equippedVariants[1]);
         }
+
+		//Check background reload
+		for (int i = 0; i < weapons.Length; i++)
+		{
+			if (Time.time - weaponsLastUsedTime[i] <= backgroundReloadCooldown && currentIndex != i && PlayerScript.ammoCounts[i] != weapons[i].GetComponent<BaseWeapon>().maxAmmo) 
+			{
+				PlayerScript.ammoCounts[i] = weapons[i].GetComponent<BaseWeapon>().maxAmmo;
+			}
+		}
 	}
 	
 	void SetGun(int index)
 	{
+		if(currentIndex >= 0)
+		{
+			weaponsLastUsedTime[currentIndex] = Time.time;
+		}
 		currentIndex = index;
 		PlayerScript.isReloading = false;
 

@@ -22,10 +22,10 @@ public class PlayerMovement : MonoBehaviour
 	public Rigidbody rb;
 	
 	float MoveForce = 15f;
-	float AirMoveForce = 24f;
+	float AirMoveForce = 60f;
 	float crouchForce = 7f;
 	float SlideForce = 20f;
-	float dashForce = 40f;
+	float dashForce = 110f;
 	float varSlideForce = 20f;
 	float maxHorizontalVelocity = 20f;
 	float maxAirHorizontalVelocity = 20f;
@@ -248,7 +248,9 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Dash()
 	{
-		rb.AddForce(rb.velocity.normalized * dashForce, ForceMode.Impulse);
+		Vector3 dashVector = new Vector3(inputVector.x, Input.GetKey(KeyCode.Space) ? 1 : 0, inputVector.z);
+		dashVector = cam.transform.TransformDirection(dashVector);
+		rb.AddForce(dashVector * dashForce, ForceMode.Impulse);
 	}
 
 	void OnCollisionEnter(Collision col)
