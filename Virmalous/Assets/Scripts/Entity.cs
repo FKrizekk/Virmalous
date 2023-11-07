@@ -125,11 +125,13 @@ public abstract class Entity : MonoBehaviour
         }
         else
         {
-            foreach(var arc in arcs.Keys)
+            var tempArcs = new Dictionary<GameObject, Entity>(arcs);
+            foreach (var arc in arcs.Keys)
             {
-                arcs.Remove(arc);
+                tempArcs.Remove(arc);
                 Destroy(arc);
             }
+            arcs = tempArcs;
         }
 
 

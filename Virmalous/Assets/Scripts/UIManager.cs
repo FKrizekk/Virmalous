@@ -51,43 +51,52 @@ public class UIManager : MonoBehaviour
     {
         string output;
 
-        if (command.Contains("allwpns"))
+        try
         {
-            for (int i = 0; i < game.data.weaponStatus.Count; i++)
+            if (command.Contains("allwpns"))
             {
-                if (game.data.weaponStatus[i] == false) { game.data.weaponStatus[i] = true; }
+                for (int i = 0; i < game.data.weaponStatus.Count; i++)
+                {
+                    if (game.data.weaponStatus[i] == false) { game.data.weaponStatus[i] = true; }
+                }
+                output = "Added all weapons.";
             }
-            output = "Added all weapons.";
-        }else if (command.Contains("heal"))
-        {
-            int amount = int.Parse(command.Split(" ")[1]);
-            PlayerScript.ChangeHealth(amount);
-            output = $"Increased changed health by: {amount}";
-        }else if (command.Contains("enchant"))
-        {
-            BaseWeapon wpn = PlayerScript.cam.GetComponentInChildren<BaseWeapon>();
-            string propertyName = command.Split(" ")[1];
-            float amount = int.Parse(command.Split(" ")[2]);
-
-            switch(propertyName)
+            else if (command.Contains("heal"))
             {
-                case "stun":
-                    wpn.damageInfo.stunDamage = amount;
-                    break;
-                case "fire":
-                    wpn.damageInfo.fireDamage = amount;
-                    break;
-                case "freeze":
-                    wpn.damageInfo.freezeDamage = amount;
-                    break;
-                case "electricity":
-                    wpn.damageInfo.electricityDamage = amount;
-                    break;
+                int amount = int.Parse(command.Split(" ")[1]);
+                PlayerScript.ChangeHealth(amount);
+                output = $"Increased changed health by: {amount}";
             }
+            else if (command.Contains("enchant"))
+            {
+                BaseWeapon wpn = PlayerScript.cam.GetComponentInChildren<BaseWeapon>();
+                string propertyName = command.Split(" ")[1];
+                float amount = int.Parse(command.Split(" ")[2]);
 
-            output = $"Set {propertyName}Damage to: {amount}";
+                switch (propertyName)
+                {
+                    case "stun":
+                        wpn.damageInfo.stunDamage = amount;
+                        break;
+                    case "fire":
+                        wpn.damageInfo.fireDamage = amount;
+                        break;
+                    case "freeze":
+                        wpn.damageInfo.freezeDamage = amount;
+                        break;
+                    case "electricity":
+                        wpn.damageInfo.electricityDamage = amount;
+                        break;
+                }
+
+                output = $"Set {propertyName}Damage to: {amount}";
+            }
+            else
+            {
+                output = "Invalid command.";
+            }
         }
-        else
+        catch
         {
             output = "Invalid command.";
         }
