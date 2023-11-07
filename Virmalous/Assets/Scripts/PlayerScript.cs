@@ -96,11 +96,6 @@ public class PlayerScript : Entity
 		{
 			Die();
 		}
-			
-		if(Input.GetKeyDown(KeyCode.Escape))
-		{
-			Application.Quit();
-		}
 		
 		InteractionCheck();
 	}
