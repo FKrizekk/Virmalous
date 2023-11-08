@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+	public Announcer announcer;
 	public GameObject[] weapons; //Prefabs for all weapons (indexed in the ideas doc)
 	List<float> weaponsLastUsedTime = new List<float>();
 	float backgroundReloadCooldown = 2f;
@@ -16,6 +17,8 @@ public class PlayerWeaponController : MonoBehaviour
 
 	GameManager game;
 	int currentIndex = -1;
+	int currentClassIndex = -1;
+	int lastClassIndex = -1;
 	
 	void Start()
 	{
@@ -27,6 +30,7 @@ public class PlayerWeaponController : MonoBehaviour
 			PlayerScript.ammoCounts[i] = weapons[i].GetComponent<BaseWeapon>().maxAmmo;
         }
         SetGun(0 + game.data.equippedVariants[0]);
+        currentClassIndex = 0;
     }
 	
 	void Update()
@@ -34,10 +38,12 @@ public class PlayerWeaponController : MonoBehaviour
 		if(Input.GetKeyDown("1") && currentIndex != 0 + game.data.equippedVariants[0])
 		{
 			SetGun(0 + game.data.equippedVariants[0]);
+			currentClassIndex = 0;
 		}
 		else if(Input.GetKeyDown("2") && currentIndex != 4 + game.data.equippedVariants[1])
 		{
             SetGun(4 + game.data.equippedVariants[1]);
+			currentClassIndex = 1;
         }
 
 		//Check background reload
@@ -46,7 +52,8 @@ public class PlayerWeaponController : MonoBehaviour
 			if (Time.time - weaponsLastUsedTime[i] >= backgroundReloadCooldown && currentIndex != i && PlayerScript.ammoCounts[i] != weapons[i].GetComponent<BaseWeapon>().maxAmmo) 
 			{
 				PlayerScript.ammoCounts[i] = weapons[i].GetComponent<BaseWeapon>().maxAmmo;
-			}
+                announcer.AnnounceItem(lastClassIndex);
+            }
 		}
 	}
 	
@@ -56,13 +63,14 @@ public class PlayerWeaponController : MonoBehaviour
 		{
 			weaponsLastUsedTime[currentIndex] = Time.time;
 		}
-		currentIndex = index;
 		PlayerScript.isReloading = false;
 
 		if(obj != null)
 		{
+			lastClassIndex = currentClassIndex;
 			Destroy(obj);
 		}
+		currentIndex = index;
 		
 		obj = Instantiate(weapons[index], transform.TransformPoint(new Vector3(0,-1,-1)), Quaternion.Euler(new Vector3(0,0,90)), transform);
 		obj.transform.SetParent(gunParent.transform);

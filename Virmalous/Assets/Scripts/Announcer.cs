@@ -20,4 +20,10 @@ public class Announcer : MonoBehaviour
             }
         }
     }
+
+    public void AnnounceItem(int index)
+    {
+        var itemObj = Instantiate(itemPrefab, announcerParent);
+        itemObj.GetComponent<AnnounceItemScript>().Setup(items[index].itemName, items[index].image);
+    }
 }
