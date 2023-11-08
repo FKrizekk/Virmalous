@@ -476,7 +476,7 @@ MonoBehaviour:
     stunDamage: 10
     fireDamage: 0
     freezeDamage: 0
-    electricityDamage: 1
+    electricityDamage: 0
   attackRate: 3
   speed: 10
   angularSpeed: 270
