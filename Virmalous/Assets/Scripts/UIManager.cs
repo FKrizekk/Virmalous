@@ -95,6 +95,12 @@ public class UIManager : MonoBehaviour
                 SceneManager.LoadScene(sceneName);
                 output = $"Loaded scene: {sceneName}";
             }
+            else if (command.Contains("timescale"))
+            {
+                float scale = float.Parse(command.Split(" ")[1]);
+                Time.timeScale = scale;
+                output = $"Set the timeScale to: {scale}";
+            }
             else
             {
                 output = "Invalid command.";

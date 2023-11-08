@@ -97,7 +97,7 @@ public abstract class BaseEnemy : Entity
 
         //Check if player is in sight
         RaycastHit hit;
-        if (Physics.Raycast(GetComponentInChildren<Renderer>().bounds.center, player.transform.position - transform.position, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(GetComponentInChildren<Renderer>().bounds.center, player.transform.position - GetComponentInChildren<Renderer>().bounds.center, out hit, Mathf.Infinity, layerMask))
         {
             playerInSight = hit.collider.gameObject.tag == "Player";
         }

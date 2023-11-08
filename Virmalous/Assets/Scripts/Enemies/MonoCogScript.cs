@@ -22,11 +22,11 @@ public class MonoCogScript : BaseEnemy
 		RotateHead();
 		
 		RotateAgent();
-		
-		
-		nav.SetDestination(PlayerScript.cam.transform.position);
 
-		wheel.transform.eulerAngles += new Vector3(0, 0, Time.deltaTime * nav.velocity.magnitude * 20);
+
+        if (playerInSight) { nav.SetDestination(player.transform.position); }
+
+        wheel.transform.eulerAngles += new Vector3(0, 0, Time.deltaTime * nav.velocity.magnitude * 20);
 
         EnemyUpdate();
 
