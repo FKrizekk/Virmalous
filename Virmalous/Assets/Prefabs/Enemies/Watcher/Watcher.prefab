@@ -532,7 +532,7 @@ MonoBehaviour:
     volumeMultiplier: 1
   ragdoll: {fileID: 7937015258286315640, guid: e6f169d600953854194e665235cd4a11, type: 3}
   anim: {fileID: 0}
-  lookSpeed: 0.2
+  lookSpeed: 0.05
 --- !u!195 &7937015258286315525
 NavMeshAgent:
   m_ObjectHideFlags: 0
