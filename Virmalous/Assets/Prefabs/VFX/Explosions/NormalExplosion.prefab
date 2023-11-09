@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5186680227412074774}
   - component: {fileID: 5186680227412074775}
   - component: {fileID: 8020434484394675174}
+  - component: {fileID: 4875190380385190185}
   m_Layer: 0
   m_Name: NormalExplosion
   m_TagString: Untagged
@@ -146,7 +147,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 1
+  MinDistance: 3
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -222,3 +223,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4875190380385190185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186680227412074776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2180f804d9d1b2e439f6cd25162ab76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  damageInfo:
+    damage: 200
+    stunDamage: 0
+    fireDamage: 50
+    freezeDamage: 0
+    electricityDamage: 0

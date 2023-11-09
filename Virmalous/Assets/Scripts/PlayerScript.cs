@@ -41,9 +41,12 @@ public class PlayerScript : Entity
 	public static bool isInteracting = false;
 	public static bool isReloading = false;
 	public static bool canMove = true;
-	
-	//Start is called before the first frame update
-	void Start()
+
+    protected float lastStatusUpdateTime = 0;
+    protected float statusUpdateTick = 1f; //How many times takes damage per second based on status effects
+
+    //Start is called before the first frame update
+    void Start()
 	{
 		//Layermask against everything except layer 8 (player)
 		layerMask = LayerMask.GetMask("Player") | (1 << 2);
@@ -91,9 +94,26 @@ public class PlayerScript : Entity
 		string currentHealth = health.ToString();
 		if(currentHealth.Length >= 4){currentHealth = currentHealth.Insert(currentHealth.Length-3, ",");}
 		healthText.text = currentHealth + " / " + maxHealthText;
-		
-		//Check if dead
-		if(health <= 0)
+
+		//Status updates
+        if (Time.time - lastStatusUpdateTime >= statusUpdateTick && (entityState.stunned != 0 || entityState.onFire != 0 || entityState.frozen != 0 || entityState.electrified != 0))
+        {
+            lastStatusUpdateTime = Time.time;
+
+            //EntityState check
+            DamageInfo stateUpdateInfo = new DamageInfo();
+
+            stateUpdateInfo.damage = 0f;
+            stateUpdateInfo.stunDamage = entityState.stunned * entityState.stunDamageMultiplier / maxHealth * 20000f;
+            stateUpdateInfo.fireDamage = entityState.onFire * entityState.fireDamageMultiplier / maxHealth * 20000f;
+            stateUpdateInfo.freezeDamage = entityState.frozen * entityState.freezeDamageMultiplier / maxHealth * 20000f;
+            stateUpdateInfo.electricityDamage = entityState.electrified * entityState.electricityDamageMultiplier / maxHealth * 20000f;
+
+            GotHit(stateUpdateInfo, true);
+        }
+
+        //Check if dead
+        if (health <= 0)
 		{
 			Die();
 		}
@@ -131,8 +151,19 @@ public class PlayerScript : Entity
         entityState._frozen += hit.freezeDamage * entityState.freezeDamageMultiplier / 100f;
         entityState._electrified += hit.electricityDamage * entityState.electricityDamageMultiplier / 100f;
     }
-	
-	public static void ChangeHealth(int amount)
+
+    public void GotHit(DamageInfo hit, bool statusUpdate)
+    {
+        float amount = hit.damage +
+            (hit.stunDamage * entityState.stunDamageMultiplier) +
+            (hit.fireDamage * entityState.fireDamageMultiplier) +
+            (hit.freezeDamage * entityState.freezeDamageMultiplier) +
+            (hit.electricityDamage * entityState.electricityDamageMultiplier);
+
+        ChangeHealth(-(int)amount);
+    }
+
+    public static void ChangeHealth(int amount)
 	{
 		health = Mathf.Clamp(health + amount, 0, maxHealth);
 		if(Mathf.Abs(amount) == amount)

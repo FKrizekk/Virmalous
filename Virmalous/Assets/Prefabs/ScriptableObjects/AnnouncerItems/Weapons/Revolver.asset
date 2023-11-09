@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   itemName: Revolver Reloaded
-  image: {fileID: 21300000, guid: a66787d34f5a25248b60ed030906eef0, type: 3}
+  image: {fileID: 21300000, guid: 91938b5a2bc4a694f95eaec7956f7529, type: 3}
   description: The first weapon class
   tag: 
