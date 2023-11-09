@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.9007, g: 324.45554, b: 429.43463, a: 1}
+  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3681,7 +3681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4124590929507914582, guid: 54eac75f7ea632b45a0f7d2b882d3538, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4124590929507914582, guid: 54eac75f7ea632b45a0f7d2b882d3538, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3992,7 +3992,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh91232
+  m_Name: pb_Mesh31394
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12218,6 +12218,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[5].m_Name
+      value: Lifetime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[2].m_Value
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[3].m_Value
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[4].m_Value
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[5].m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Name
+      value: LaserTargetPos
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[5].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
+      value: -6.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.z
+      value: 101.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267499714920427555, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Overridden
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220888681412177194, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062636367045738565, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789710588953546286, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276394073351133112, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7308816628088734402, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -12228,11 +12292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7308816628088734402, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7308816628088734402, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.129871
+      value: 15.56
       objectReference: {fileID: 0}
     - target: {fileID: 7308816628088734402, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12265,6 +12329,10 @@ PrefabInstance:
     - target: {fileID: 7937015258286315640, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
       propertyPath: m_Name
       value: Watcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7937015258286315642, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
+      propertyPath: laserTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fd4d212b00438c448fa0187c4adc651, type: 3}
@@ -12875,7 +12943,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh90864
+  m_Name: pb_Mesh31276
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -6,8 +6,13 @@ using UnityEngine.PlayerLoop;
 public class Watcher : BaseEnemy
 {
     bool inCombat = false;
+    bool shootDone = false;
 
+    [Header("Watcher specific")]
     public float lookSpeed = 1f;
+    public float chargeTime = 1f;
+    public float laserTime = 1f;
+
     private Transform body;
 
     private void Start()
@@ -18,7 +23,9 @@ public class Watcher : BaseEnemy
     private void Update()
     {
         //Move to player if in sight
-        if (playerInSight) { nav.SetDestination(player.transform.position); if ((!inCombat)){ /*StartCoroutine(Combat());*/ } inCombat = true; } else { inCombat = false; }
+        if (playerInSight) { nav.SetDestination(player.transform.position); }
+
+        if(nav.remainingDistance < 1 && !inCombat) { inCombat = true; StartCoroutine(Combat()); }
 
         EnemyUpdate();
     }
@@ -39,6 +46,24 @@ public class Watcher : BaseEnemy
 
     IEnumerator Combat()
     {
-        return null;
+        nav.speed = 0f;
+        shootDone = false;
+        StartCoroutine(ChargeLaser());
+        yield return new WaitUntil(() => shootDone);
+        Debug.Log(playerInSight && (nav.remainingDistance < 1 || nav.isStopped));
+        if (playerInSight && (nav.remainingDistance < 1)) { StartCoroutine(Combat()); }
+        nav.speed = speed;
+        inCombat = false;
+    }
+
+    IEnumerator ChargeLaser()
+    {
+        VFXParents[4].SetActive(true);
+        yield return new WaitForSeconds(chargeTime);
+        VFXParents[4].SetActive(false);
+        VFXParents[5].SetActive(true);
+        yield return new WaitForSeconds(laserTime);
+        VFXParents[5].SetActive(false);
+        shootDone = true;
     }
 }
