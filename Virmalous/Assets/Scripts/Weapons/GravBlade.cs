@@ -3,27 +3,34 @@ using UnityEngine;
 
 public class GravBlade : MonoBehaviour
 {
-    public float speed = 1.0f;
     public DamageInfo damageInfo;
-    bool moving = true;
     Rigidbody rb;
     BoxCollider col;
-
-    // Update is called once per frame
-    void Update()
-    {
-        rb.velocity = moving ? transform.TransformDirection(Vector3.forward) * speed : Vector3.zero;
-    }
+    Vector3 finalPos;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        col = rb.GetComponent<BoxCollider>();
+        col = GetComponent<BoxCollider>();
+    }
+
+    private void Update()
+    {
+        if (rb.velocity.magnitude > 1)
+        {
+            transform.rotation = Quaternion.LookRotation(rb.velocity);
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2f))
+            {
+                finalPos = hit.point;
+            }
+            Debug.DrawRay(transform.position, hit.point - transform.position, Color.white, 5f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag != "Player") { moving = false; col.enabled = false; transform.parent = other.transform; transform.localPosition -= transform.TransformDirection(Vector3.forward * 2); }
+        if(other.gameObject.tag != "Player") { col.enabled = false; transform.parent = other.transform; rb.constraints = RigidbodyConstraints.FreezeAll; transform.position = finalPos; }
 
         if(other.gameObject.tag == "Enemy") { other.gameObject.GetComponent<HitCollider>().Hit(damageInfo, other.ClosestPoint(transform.position)); }
     }

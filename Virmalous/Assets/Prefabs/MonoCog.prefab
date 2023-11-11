@@ -238,7 +238,7 @@ MonoBehaviour:
     onFire: 0
     frozen: 0
     electrified: 0
-    stunnedTime: 2
+    stunnedTime: 5
     onFireTime: 2
     frozenTime: 2
     electrifiedTime: 2
@@ -260,8 +260,8 @@ MonoBehaviour:
   electricitySpreadDistance: 5
   maxHealth: 1000
   damage:
-    damage: 0
-    stunDamage: 0
+    damage: 40
+    stunDamage: 10
     fireDamage: 0
     freezeDamage: 0
     electricityDamage: 0

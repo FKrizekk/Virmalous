@@ -116,7 +116,7 @@ public abstract class BaseEnemy : Entity
             (hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier);
         health -= (int)amount;
 
-        entityState._stunned += hit.damageInfo.stunDamage * entityState.stunDamageMultiplier / 100f;
+        entityState._stunned += hit.damageInfo.stunDamage * entityState.stunDamageMultiplier;
         entityState._onFire += hit.damageInfo.fireDamage * entityState.fireDamageMultiplier / 100f;
         entityState._frozen += hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier / 100f;
         entityState._electrified += hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier / 100f;
@@ -135,7 +135,7 @@ public abstract class BaseEnemy : Entity
 
         if (!statusUpdate)
         {
-            entityState._stunned += hit.damageInfo.stunDamage * entityState.stunDamageMultiplier / 100f;
+            entityState._stunned += hit.damageInfo.stunDamage * entityState.stunDamageMultiplier;
             entityState._onFire += hit.damageInfo.fireDamage * entityState.fireDamageMultiplier / 100f;
             entityState._frozen += hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier / 100f;
             entityState._electrified += hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier / 100f;
