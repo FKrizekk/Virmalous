@@ -19153,7 +19153,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4018169542554729502}
-  - component: {fileID: 4361937743907186341}
   m_Layer: 3
   m_Name: leftHand
   m_TagString: Untagged
@@ -19161,54 +19160,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4361937743907186341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4361937743907186340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boneShape: 1
-  drawBones: 1
-  drawTripods: 0
-  boneSize: 1
-  tripodSize: 1
-  boneColor: {r: 0, g: 0, b: 1, a: 0.5}
-  m_Transforms:
-  - {fileID: 4018169542554729502}
-  - {fileID: 5436885687400885376}
-  - {fileID: 7716848109972246508}
-  - {fileID: 1717186589887259495}
-  - {fileID: 509573586922827938}
-  - {fileID: 2142005248211585218}
-  - {fileID: 8569428016572196293}
-  - {fileID: 3739138004891520893}
-  - {fileID: 1017086396964034476}
-  - {fileID: 989534664464671404}
-  - {fileID: 546537158622958616}
-  - {fileID: 698369783095055027}
-  - {fileID: 889454729567969635}
-  - {fileID: 8612508042879989194}
-  - {fileID: 2080349596739288821}
-  - {fileID: 4489917492901654012}
-  - {fileID: 6337266683366830670}
-  - {fileID: 3080206024154800471}
-  - {fileID: 7573423760059877945}
-  - {fileID: 4881804466318735745}
-  - {fileID: 3004701468246479786}
-  - {fileID: 4929034071211108364}
-  - {fileID: 9077464680596866302}
-  - {fileID: 6445488333091190345}
-  - {fileID: 1589859563021087678}
-  - {fileID: 4784440287330719714}
-  - {fileID: 2511697593417082511}
-  - {fileID: 5013054466344229656}
-  - {fileID: 6094068323925108035}
 --- !u!1 &4377292626627316990
 GameObject:
   m_ObjectHideFlags: 0
