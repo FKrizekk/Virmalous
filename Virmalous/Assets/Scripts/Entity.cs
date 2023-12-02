@@ -132,7 +132,7 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    public void Update()
+    public void EntityUpdate()
     {
         //VFXParents[0].SetActive(entityState.stunned > 0);
         //VFXParents[1].SetActive(entityState.onFire > 0);

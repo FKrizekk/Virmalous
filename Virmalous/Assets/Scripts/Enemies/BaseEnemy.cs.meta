@@ -3,7 +3,12 @@ guid: a621dd060834b9e408ce521e90d58904
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - electricityArcPrefab: {fileID: 8563152326854082560, guid: f3eaa6557a17f5649861e3583eb82093, type: 3}
+  - source: {instanceID: 0}
+  - blood: {instanceID: 0}
+  - ragdoll: {instanceID: 0}
+  - anim: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

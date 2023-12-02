@@ -72,7 +72,7 @@ public abstract class BaseEnemy : Entity
 
     protected void EnemyUpdate()
     {
-        base.Update();
+        EntityUpdate();
 
         if (Time.time - lastStatusUpdateTime >= statusUpdateTick && (entityState.stunned != 0 || entityState.onFire != 0 || entityState.frozen != 0 || entityState.electrified != 0))
         {

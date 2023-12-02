@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			varSlideForce = MoveForce;
 		}else{
-			varSlideForce = 1f;
+			varSlideForce = rb.velocity.magnitude;
 		}
 		
 		transform.localScale = new Vector3(0.5f,0.5f,0.5f);

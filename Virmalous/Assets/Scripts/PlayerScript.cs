@@ -82,7 +82,7 @@ public class PlayerScript : Entity
 	//Update is called once per frame
 	void Update()
 	{
-		base.Update();
+        EntityUpdate();
 
         //Smoothly update healthBar
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, (float)health/maxHealth, 0.2f);

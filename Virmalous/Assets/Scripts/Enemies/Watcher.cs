@@ -24,8 +24,7 @@ public class Watcher : BaseEnemy
     {
         //Move to player if in sight
         if (playerInSight) { nav.SetDestination(player.transform.position); }
-
-        if(nav.remainingDistance < 1 && !inCombat) { inCombat = true; StartCoroutine(Combat()); }
+        if(nav.remainingDistance - nav.stoppingDistance < 1 && !inCombat) { inCombat = true; StartCoroutine(Combat()); }
 
         EnemyUpdate();
     }
@@ -33,7 +32,7 @@ public class Watcher : BaseEnemy
     private void FixedUpdate()
     {
         //Slowly rotate towards player
-        body.rotation = Quaternion.Lerp(body.rotation, Quaternion.LookRotation(player.GetComponentInChildren<Renderer>().bounds.center - body.position) * Quaternion.Euler(-90f, 90f, 0) , lookSpeed);
+        body.rotation = Quaternion.Lerp(body.rotation, Quaternion.LookRotation(Camera.main.transform.position - body.position) * Quaternion.Euler(-90f, 90f, 0) , lookSpeed);
     }
 
     protected override void Death()
@@ -50,8 +49,6 @@ public class Watcher : BaseEnemy
         shootDone = false;
         StartCoroutine(ChargeLaser());
         yield return new WaitUntil(() => shootDone);
-        Debug.Log(playerInSight && (nav.remainingDistance < 1 || nav.isStopped));
-        if (playerInSight && (nav.remainingDistance < 1)) { StartCoroutine(Combat()); }
         nav.speed = speed;
         inCombat = false;
     }
