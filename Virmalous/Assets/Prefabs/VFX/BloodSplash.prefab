@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449112999765008833}
   - component: {fileID: 2233577118242233929}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BloodSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,8 @@ GameObject:
   - component: {fileID: 4704807455406620361}
   - component: {fileID: 465616878076111931}
   - component: {fileID: 8994169348714325179}
-  m_Layer: 0
+  - component: {fileID: 1592779668194517658}
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3827,15 +3828,15 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minKillSpeed: 0
-    maxKillSpeed: 10000
+    maxKillSpeed: 0
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 319
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -4858,3 +4859,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1592779668194517658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551662674173887684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13bc602e329bc954a927c3989e87218f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodDecal: {fileID: 2048910171979635428, guid: f7537f8969de07e43bbf702ad88425d6, type: 3}
