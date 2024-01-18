@@ -66,7 +66,7 @@ public class PlayerScript : Entity
 		healOverlayAnim = GameObject.Find("HealOverlay").GetComponent<Animator>();
         damageOverlayAnim = GameObject.Find("DamageOverlay").GetComponent<Animator>();
 
-		game = GameObject.Find("Level").GetComponent<GameManager>();
+		game = GameManager.instance;
 
         LockCursor(true);
 		
