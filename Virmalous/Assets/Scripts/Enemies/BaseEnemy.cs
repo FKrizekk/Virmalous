@@ -108,20 +108,8 @@ public abstract class BaseEnemy : Entity
 
     public virtual void GotHit(hitInfo hit)
     {
-        killPoint = hit.point;
-        float amount = hit.damageInfo.damage +
-            (hit.damageInfo.stunDamage * entityState.stunDamageMultiplier) +
-            (hit.damageInfo.fireDamage * entityState.fireDamageMultiplier) +
-            (hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier) +
-            (hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier);
-        health -= (int)amount;
-
-        entityState._stunned += hit.damageInfo.stunDamage * entityState.stunDamageMultiplier;
-        entityState._onFire += hit.damageInfo.fireDamage * entityState.fireDamageMultiplier / 100f;
-        entityState._frozen += hit.damageInfo.freezeDamage * entityState.freezeDamageMultiplier / 100f;
-        entityState._electrified += hit.damageInfo.electricityDamage * entityState.electricityDamageMultiplier / 100f;
-
-        Bleed();
+        //idk if this is the right fix but i am like 99% sure
+        GotHit(hit, false);
     }
 
     public virtual void GotHit(hitInfo hit, bool statusUpdate)
