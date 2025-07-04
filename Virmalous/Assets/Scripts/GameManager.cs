@@ -14,7 +14,20 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+<<<<<<< Updated upstream
         instance = this;
+=======
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        DontDestroyOnLoad(gameObject);
+
+>>>>>>> Stashed changes
         data = SaveSystem.LoadGame();
     }
 
